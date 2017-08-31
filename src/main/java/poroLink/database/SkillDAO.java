@@ -12,6 +12,13 @@ import poroLink.entities.base.BaseEntity;
  *
  */
 public class SkillDAO extends BaseDAO{
+	
+	public static final String TABLE = "Skill";
+
+	public SkillDAO() {
+		super(TABLE);
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public void insert(BaseEntity item) {
