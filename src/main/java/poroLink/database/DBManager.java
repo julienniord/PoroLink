@@ -120,6 +120,18 @@ public class DBManager {
 			e.printStackTrace();
 		}
 	}
+	
+	public void delateDB () {
+		Statement stmt;
+		try {
+			stmt = creaCon.createStatement();
+			stmt.execute("DROP DATABASE " + dbName + ";");
+			con.close();
+			con = null;
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+	}
 
 	public void connect() {
 		connect(CONFIG, DBCONFIG);
