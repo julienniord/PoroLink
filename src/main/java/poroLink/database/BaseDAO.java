@@ -6,6 +6,7 @@ package poroLink.database;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import poroLink.entities.base.BaseEntity;
@@ -77,7 +78,15 @@ public abstract class BaseDAO implements IDAOBase{
 	@Override
 	public BaseEntity get(double id) {
 		ResultSet rs = executeRequest("SELECT *  FROM " + table + "WHERE " + this.id + " = " + id);
-		BaseEntity entity = parse(rs);
+		BaseEntity entity = null;
+		try {
+			rs.next();
+			entity = parse(rs);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return entity;
 	}
 
@@ -86,8 +95,19 @@ public abstract class BaseDAO implements IDAOBase{
 	 */
 	@Override
 	public List<BaseEntity> get() {
-		// TODO Auto-generated method stub
-		return null;
+		List<BaseEntity> entities = new ArrayList<BaseEntity>();
+		ResultSet rs = executeRequest("SELECT * FROM " + table);
+		
+		try {
+			while(rs.next()) {
+				entities.add(parse(rs));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return entities;
 	}
 	
 	
