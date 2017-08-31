@@ -60,7 +60,7 @@ public abstract class BaseDAO implements IDAOBase{
 	 */
 	@Override
 	public void delete(BaseEntity item) {
-		executeRequest("DELETE FROM " + table + " WHERE id = " + item.getId());
+		executeRequest("DELETE FROM " + table + " WHERE " + id + "  = " + item.getId());
 		
 	}
 
