@@ -14,9 +14,10 @@ import poroLink.entities.base.BaseEntity;
 public class SkillDAO extends BaseDAO{
 	
 	public static final String TABLE = "Skill";
+	public static final String ID = "id";
 
 	public SkillDAO() {
-		super(TABLE);
+		super(TABLE, ID);
 		// TODO Auto-generated constructor stub
 	}
 
