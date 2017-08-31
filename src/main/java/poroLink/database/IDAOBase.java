@@ -14,6 +14,7 @@ import poroLink.entities.base.BaseEntity;
  */
 public interface IDAOBase {
 	public ResultSet executeRequest(String Request);
+	public BaseEntity parse (ResultSet rs);
 	public void insert(BaseEntity item);
 	public void update(BaseEntity item);
 	public void delete(BaseEntity item);
