@@ -27,16 +27,6 @@ public class SkillDAO extends BaseDAO{
 	}
 
 
-	public void insert(BaseEntity item) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	public void update(BaseEntity item) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void delete(BaseEntity item) {
@@ -81,10 +71,10 @@ public class SkillDAO extends BaseDAO{
 		Skill skill = (Skill) item;
 		res += "NULL, ";
 		if (skill.getId() != 0.0) {
-			res = String.valueOf(skill.getId());
+			res = "'" + String.valueOf(skill.getId()) + "'";
 			res += ", ";
 		}
-		res += skill.getSkill_name();
+		res +="'" +  skill.getSkill_name().toString() + "'";
 		return res;
 	}
 

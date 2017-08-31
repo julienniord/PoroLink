@@ -53,6 +53,19 @@ public abstract class BaseDAO implements IDAOBase{
 		}
 		return result;
 	}
+	
+	@Override
+	public ResultSet executeRequestUpdate(String request) {
+		ResultSet result = null; 
+		try {
+			Statement stmt = DBManager.getInstance().getCon().createStatement();
+			stmt.executeUpdate(request);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+
+	}
 
 
 
@@ -115,7 +128,7 @@ public abstract class BaseDAO implements IDAOBase{
 	 */
 	@Override
 	public void insert(BaseEntity item) {
-		executeRequest("INSERT INTO " + table + " VALUES( " + parseObjectToString(item) + ")");
+		executeRequestUpdate("INSERT INTO " + table + " VALUES( " + parseObjectToString(item) + ")");
 		
 	}
 
