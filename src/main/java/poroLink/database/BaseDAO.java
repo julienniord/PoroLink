@@ -76,8 +76,9 @@ public abstract class BaseDAO implements IDAOBase{
 	 */
 	@Override
 	public BaseEntity get(double id) {
-		// TODO Auto-generated method stub
-		return null;
+		ResultSet rs = executeRequest("SELECT *  FROM " + table + "WHERE " + this.id + " = " + id);
+		BaseEntity entity = parse(rs);
+		return entity;
 	}
 
 	/* (non-Javadoc)
