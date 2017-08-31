@@ -128,6 +128,9 @@ public class DBManager {
 			stmt.execute("DROP DATABASE " + dbName + ";");
 			con.close();
 			con = null;
+			creaCon.close();
+			creaCon = null;
+			instance = null;
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
