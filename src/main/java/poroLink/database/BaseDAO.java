@@ -81,7 +81,7 @@ public abstract class BaseDAO implements IDAOBase{
 		BaseEntity entity = null;
 		try {
 			rs.next();
-			entity = parse(rs);
+			entity = parseResultSetToObject(rs);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -100,7 +100,7 @@ public abstract class BaseDAO implements IDAOBase{
 		
 		try {
 			while(rs.next()) {
-				entities.add(parse(rs));
+				entities.add(parseResultSetToObject(rs));
 			}
 			
 		} catch (SQLException e) {
@@ -108,6 +108,24 @@ public abstract class BaseDAO implements IDAOBase{
 		}
 		
 		return entities;
+	}
+
+	/* (non-Javadoc)
+	 * @see poroLink.database.IDAOBase#insert(poroLink.entities.base.BaseEntity)
+	 */
+	@Override
+	public void insert(BaseEntity item) {
+		executeRequest("INSERT INTO " + table + " VALUES( " + parseObjectToString(item) + ")");
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see poroLink.database.IDAOBase#update(poroLink.entities.base.BaseEntity)
+	 */
+	@Override
+	public void update(BaseEntity item) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
