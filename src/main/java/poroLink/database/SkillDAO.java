@@ -66,16 +66,25 @@ public class SkillDAO extends BaseDAO{
 	}
 	
 	@Override
-	public String parseObjectToString(BaseEntity item) {
-		String res = "";
+	public String parseInsert(BaseEntity item) {
+		String result = "null,";
 		Skill skill = (Skill) item;
-		res += "NULL, ";
-		if (skill.getId() != 0.0) {
-			res = "'" + String.valueOf(skill.getId()) + "'";
-			res += ", ";
-		}
-		res +="'" +  skill.getSkill_name().toString() + "'";
-		return res;
+
+		result += "'" + skill.getSkill_name() + "'";
+		
+
+		return result;
+	}
+
+	@Override
+	public String parseUpdate(BaseEntity item) {
+		String result = "";
+		Skill skill = (Skill) item;
+
+		result += NAME + " = '" + skill.getSkill_name() + "'";
+		
+
+		return result;
 	}
 
 	

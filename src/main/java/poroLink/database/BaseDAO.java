@@ -3,6 +3,7 @@
  */
 package poroLink.database;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -55,18 +56,42 @@ public abstract class BaseDAO implements IDAOBase{
 	}
 	
 	@Override
-	public ResultSet executeRequestUpdate(String request) {
-		ResultSet result = null; 
+	public int executeRequestUpdate(String request) {
+		int result = 0; 
 		try {
 			Statement stmt = DBManager.getInstance().getCon().createStatement();
 			stmt.executeUpdate(request);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+		return result;
 
 	}
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see imiepoecjava2017.database.IDAOBase#executeRequest(java.lang.String)
+	 */
+	@Override
+	public BaseEntity executePreparedStatement(BaseEntity item, String request) {
 
+		try {
+			PreparedStatement prest;
+
+			prest = DBManager.getInstance().getCon()
+					.prepareStatement(request, Statement.RETURN_GENERATED_KEYS);
+			prest.executeUpdate();
+			ResultSet rs = prest.getGeneratedKeys();
+			if (rs.next()) {
+				item.setId(rs.getInt(1));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return item;
+	}
 
 
 	/* (non-Javadoc)
@@ -128,7 +153,7 @@ public abstract class BaseDAO implements IDAOBase{
 	 */
 	@Override
 	public void insert(BaseEntity item) {
-		executeRequestUpdate("INSERT INTO " + table + " VALUES( " + parseObjectToString(item) + ")");
+		executeRequestUpdate("INSERT INTO " + table + " VALUES( " + parseInsert(item) + ")");
 		
 	}
 
