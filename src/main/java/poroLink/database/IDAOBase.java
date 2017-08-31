@@ -17,6 +17,7 @@ public interface IDAOBase {
 	public void insert(BaseEntity item);
 	public void update(BaseEntity item);
 	public void delete(BaseEntity item);
+	public void deleteAll();
 	public BaseEntity get(double id);
 	public List<BaseEntity> get();
 	

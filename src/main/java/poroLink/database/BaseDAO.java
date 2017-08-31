@@ -56,12 +56,19 @@ public abstract class BaseDAO implements IDAOBase{
 
 
 	/* (non-Javadoc)
+	 * @see poroLink.database.IDAOBase#deleteAll()
+	 */
+	@Override
+	public void deleteAll() {
+		executeRequest("DELETE FROM " + table);
+	}
+
+	/* (non-Javadoc)
 	 * @see poroLink.database.IDAOBase#delete(poroLink.entities.base.BaseEntity)
 	 */
 	@Override
 	public void delete(BaseEntity item) {
-		executeRequest("DELETE FROM " + table + " WHERE " + id + "  = " + item.getId());
-		
+		executeRequest("DELETE FROM " + table + " WHERE " + id + "  = " + item.getId());	
 	}
 
 	/* (non-Javadoc)
