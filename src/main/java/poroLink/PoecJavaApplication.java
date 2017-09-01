@@ -6,14 +6,18 @@ package poroLink;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import poroLink.database.BaseDAO;
 import poroLink.database.DBManager;
 import poroLink.database.SkillDAO;
+import poroLink.entities.Skill;
 import poroLink.managers.ViewsManager;
 
 public class PoecJavaApplication {
 
 	public static void main(String[] args) {
-
+		
+		
+		
 		//ViewsManager.getInstance().start();
 		SkillDAO dao = new SkillDAO();
 		ResultSet set = dao.executeRequest("SHOW TABLES;");
@@ -27,5 +31,8 @@ public class PoecJavaApplication {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		Skill skill = new Skill("Java");
+		dao.insert(skill);
 	}
 }

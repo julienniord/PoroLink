@@ -1,11 +1,13 @@
 package poroLink.views.customrenders;
 
-import poroLink.entities.*;
+
 
 import java.awt.Component;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;
+
+import poroLink.entities.Post;
 
 public class ListCellUserRender extends DefaultListCellRenderer {
 	public Component getListCellRendererComponent(JList<?> list, Object value,

@@ -8,18 +8,23 @@ public class Skill extends BaseEntity{
 
 
 	 private String skill_name;
-	 private int needs;
-	 private int owns;
+	 private int needs;// == Candidate_Skill
+	 private int owns;// == Post_Skill
 	 private int purcentageneeds;
 	/**
      * Default constructor
      */
+	 public Skill() {
+		 
+	 }
     public Skill(String name, int need, int owns) {
     	this.setSkill_name(name);
-    	this.setNeeds(need);
-    	this.setOwns(owns);
+    	this.setNeeds(need); 
+    	this.setOwns(owns); 
     }
-
+    public Skill (String name) {
+    	this.setSkill_name(name);
+    }
 
 	/**
 	 * @return the needs
@@ -82,10 +87,6 @@ public class Skill extends BaseEntity{
 	public void setPurcentageneeds(int purcentageneeds) {
 		this.purcentageneeds = purcentageneeds;
 	}
-
-	
-   
-
 
 
 
