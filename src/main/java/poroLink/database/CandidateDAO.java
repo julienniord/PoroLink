@@ -15,9 +15,18 @@ import poroLink.entities.base.BaseEntity;
  *
  */
 public class CandidateDAO extends BaseDAO {
-	public static final String TABLE = "Skill";
-	public static final String ID = "skill_id";
-	public static final String NAME = "skill_name";
+	public static final String TABLE = "candidate";
+	public static final String ID = "appuser_id";
+	public static final String GENDER = "gender";
+	public static final String FIRSTNAME = "firstname";
+	public static final String LASTNAME = "lastname";
+	public static final String PHONE = "phone";
+	public static final String BIRTHDATE = "birthdate";
+	public static final String TRANSPORT = "transport";
+	public static final String PRESENTATION = "presentation";
+	public static final String LINKS = "links";
+	public static final String CERTIFICATES = "cetificates";
+	public static final String CERTIFICATES_IN_PROGRESS = "certificates_in_progress";
 
 
 	public CandidateDAO() {
@@ -35,7 +44,15 @@ public class CandidateDAO extends BaseDAO {
 		
 		try {
 			candidate.setId(rs.getDouble(ID));
-			candidate.set (rs.getString(NAME));
+			candidate.setFirstname(rs.getString(FIRSTNAME));
+			candidate.setLastname(rs.getString(LASTNAME));
+			candidate.setPhone(rs.getString(PHONE));
+			candidate.setBirthdate(rs.getDate(BIRTHDATE));
+			candidate.setTransport(rs.getString(TRANSPORT));
+			candidate.setPresentation(rs.getString(PRESENTATION));
+			candidate.setLinks(rs.getString(LINKS));
+			candidate.setCertificates(rs.getString(CERTIFICATES));
+			candidate.setCertificate_in_progress(rs.getString(CERTIFICATES_IN_PROGRESS));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -50,7 +67,15 @@ public class CandidateDAO extends BaseDAO {
 		String result = "null,";
 		Candidate candidate = (Candidate) item;
 
-		result += "'" + candidate.getSkill_name() + "'";
+		result += "'" + candidate.getFirstname() + "',";
+		result += "'" + candidate.getLastname() + "',";
+		result += "'" + candidate.getPhone() + "',";
+		result += "'" + candidate.getBirthdate() + "',";
+		result += "'" + candidate.getTransport() + "',";
+		result += "'" + candidate.getPresentation() + "',";
+		result += "'" + candidate.getLinks() + "',";
+		result += "'" + candidate.getCertificates() + "',";
+		result += "'" + candidate.getCertificate_in_progress() + "'";
 		
 
 		return result;
@@ -61,7 +86,15 @@ public class CandidateDAO extends BaseDAO {
 		String result = "";
 		Candidate candidate = (Candidate) item;
 
-		result += NAME + " = '" + candidate.getCandidate_name() + "'";
+		result += FIRSTNAME + " = '" + candidate.getFirstname() + "',";
+		result += LASTNAME + " = '" + candidate.getLastname() + "',";
+		result += PHONE + " = '" + candidate.getPhone() + "',";
+		result += BIRTHDATE + " = '" + candidate.getBirthdate() + "',";
+		result += TRANSPORT + " = '" + candidate.getTransport() + "',";
+		result += LINKS + " = '" + candidate.getLinks() + "',";
+		result += CERTIFICATES + " = '" + candidate.getCertificates() + "',";
+		result += CERTIFICATES_IN_PROGRESS + " = '" + candidate.getCertificate_in_progress() + "'";
+		
 		
 
 		return result;
