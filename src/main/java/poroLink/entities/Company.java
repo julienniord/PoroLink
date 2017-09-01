@@ -18,6 +18,11 @@ public class Company extends AppUser {
     	this.role_appuser=2;
     	this.company_name=company_name;
     }
+    
+    
+	public Company() {
+		// TODO Auto-generated constructor stub
+	}
 	/**
 	 * @return the company_name
 	 */
