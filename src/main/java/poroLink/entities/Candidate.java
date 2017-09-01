@@ -28,6 +28,10 @@ public class Candidate extends AppUser {
     	this.lastname=lastname;
     }
 
+	public Candidate() {
+		// TODO Auto-generated constructor stub
+	}
+
 	/**
 	 * @return the gender
 	 */

@@ -97,16 +97,16 @@ public abstract class BaseDAO implements IDAOBase{
 	 * @see poroLink.database.IDAOBase#deleteAll()
 	 */
 	@Override
-	public void deleteAll() {
-		executeRequest("DELETE FROM " + table);
+	public int deleteAll() {
+		return executeRequestUpdate("DELETE FROM " + table);
 	}
 
 	/* (non-Javadoc)
 	 * @see poroLink.database.IDAOBase#delete(poroLink.entities.base.BaseEntity)
 	 */
 	@Override
-	public void delete(BaseEntity item) {
-		executeRequest("DELETE FROM " + table + " WHERE " + id + "  = " + item.getId());	
+	public int delete(BaseEntity item) {
+		return executeRequestUpdate("DELETE FROM " + table + " WHERE " + id + "  = " + item.getId());	
 	}
 
 	/* (non-Javadoc)
@@ -151,8 +151,8 @@ public abstract class BaseDAO implements IDAOBase{
 	 * @see poroLink.database.IDAOBase#insert(poroLink.entities.base.BaseEntity)
 	 */
 	@Override
-	public void insert(BaseEntity item) {
-		executeRequestUpdate("INSERT INTO " + table + " VALUES( " + parseInsert(item) + ")");
+	public BaseEntity insert(BaseEntity item) {
+		return executePreparedStatement(item, "INSERT INTO " + table + " VALUES( " + parseInsert(item) + ")");
 		
 	}
 
@@ -160,8 +160,9 @@ public abstract class BaseDAO implements IDAOBase{
 	 * @see poroLink.database.IDAOBase#update(poroLink.entities.base.BaseEntity)
 	 */
 	@Override
-	public void update(BaseEntity item) {
-		// TODO Auto-generated method stub
+	public int update(BaseEntity item) {
+		
+		return executeRequestUpdate("UPDATE " + table + " SET " + parseUpdate(item) + " WHERE " + id + " = " + item.getId());
 		
 	}
 	

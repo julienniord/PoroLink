@@ -46,7 +46,7 @@ public class ConnectionController extends BaseController {
 			public void actionPerformed(ActionEvent e) {
 				view.getBtnRegistration().setContentAreaFilled(false);
 				//new RegistrationController(frame);
-				user.setMail("toto");
+				user.set("toto");
 				ViewsManager.getInstance().next(new MatchingController(frame));
 			}
 		});	
