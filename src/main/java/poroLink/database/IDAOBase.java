@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package poroLink.database;
 
 import java.sql.ResultSet;

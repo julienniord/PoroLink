@@ -86,7 +86,6 @@ public abstract class BaseDAO implements IDAOBase{
 				item.setId(rs.getInt(1));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
