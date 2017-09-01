@@ -3,7 +3,7 @@ import java.sql.Date;
 
 import poroLink.entities.base.BaseEntity;
 
-public abstract class AppUser extends BaseEntity {
+public class AppUser extends BaseEntity {
 
 
     protected String mail;
