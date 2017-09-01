@@ -5,18 +5,19 @@ import java.sql.SQLException;
 import java.util.List;
 
 import poroLink.entities.Company;
+import poroLink.entities.Post;
 import poroLink.entities.base.BaseEntity;
 
 public class CompanyDAO extends BaseDAO{
 	
 	public static final String TABLE = "Company";
-	public static final String ID = "company_id";
-	public static final String ADDRESS = "address";
+	public static final String ID = "appuser_id";
 	public static final String NAME = "company_name";
+	public static final String ADDRESS = "address";
 	public static final String DESCRIPTION = "description";
 	public static final String LINKS = "links";
+	public static final String SIRET = "siret";
 	public static final String POSTS = "posts";
-	public static final String SIRET = "siret=";
 
 
 	public CompanyDAO() {
@@ -35,6 +36,10 @@ public class CompanyDAO extends BaseDAO{
 		try {
 			company.setId(rs.getDouble(ID));
 			company.setCompany_name(rs.getString(NAME));
+			company.setAddress(rs.getString(ADDRESS));
+			company.setDescription(rs.getString(DESCRIPTION));
+			company.setLinks(rs.getString(LINKS));
+			company.setSiret(rs.getString(SIRET));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -50,6 +55,10 @@ public class CompanyDAO extends BaseDAO{
 		Company company = (Company) item;
 
 		result += "'" + company.getCompany_name() + "'";
+		result += "'" + company.getAddress() + "'";
+		result += "'" + company.getDescription() + "'";
+		result += "'" + company.getLinks() + "'";
+		result += "'" + company.getSiret() + "'";
 		
 
 		return result;
@@ -61,8 +70,10 @@ public class CompanyDAO extends BaseDAO{
 		Company company = (Company) item;
 
 		result += NAME + " = '" + company.getCompany_name() + "'";
-		
-
+		result += ADDRESS + " = '" + company.getAddress() + "'";
+		result += DESCRIPTION + " = '" + company.getDescription() + "'";
+		result += LINKS + " = '" + company.getLinks() + "'";
+		result += SIRET + " = '" + company.getSiret() + "'";
 		return result;
 	}
 

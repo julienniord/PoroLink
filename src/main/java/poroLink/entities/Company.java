@@ -1,6 +1,5 @@
 package poroLink.entities;
 
-//coucou
 import java.util.List;
 
 public class Company extends AppUser {

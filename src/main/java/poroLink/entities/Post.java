@@ -34,6 +34,13 @@ public class Post extends BaseEntity{
 
 
 
+	public Post() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+
 	/**
 	 * @return the post_name
 	 */
