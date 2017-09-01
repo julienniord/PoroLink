@@ -15,7 +15,7 @@ import poroLink.entities.base.BaseEntity;
  *
  */
 public class SkillDAO extends BaseDAO{
-	
+	//test jpp ta maman la pute
 	public static final String TABLE = "Skill";
 	public static final String ID = "skill_id";
 	public static final String NAME = "skill_name";
@@ -26,25 +26,6 @@ public class SkillDAO extends BaseDAO{
 		// TODO Auto-generated constructor stub
 	}
 
-
-
-	@Override
-	public void delete(BaseEntity item) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public BaseEntity get(double id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<BaseEntity> get() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	/* (non-Javadoc)
 	 * @see poroLink.database.IDAOBase#parse(java.sql.ResultSet)
