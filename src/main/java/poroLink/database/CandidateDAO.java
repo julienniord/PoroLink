@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import poroLink.entities.Candidate;
-import poroLink.entities.Skill;
 import poroLink.entities.base.BaseEntity;
 
 /**
