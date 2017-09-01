@@ -11,7 +11,12 @@ public class CompanyDAO extends BaseDAO{
 	
 	public static final String TABLE = "Company";
 	public static final String ID = "company_id";
+	public static final String ADDRESS = "address";
 	public static final String NAME = "company_name";
+	public static final String DESCRIPTION = "description";
+	public static final String LINKS = "links";
+	public static final String POSTS = "posts";
+	public static final String SIRET = "siret=";
 
 
 	public CompanyDAO() {
@@ -19,25 +24,6 @@ public class CompanyDAO extends BaseDAO{
 		// TODO Auto-generated constructor stub
 	}
 
-
-
-	@Override
-	public void delete(BaseEntity item) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public BaseEntity get(double id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<BaseEntity> get() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	/* (non-Javadoc)
 	 * @see poroLink.database.IDAOBase#parse(java.sql.ResultSet)

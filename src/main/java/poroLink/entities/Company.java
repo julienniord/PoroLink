@@ -6,7 +6,7 @@ import java.util.List;
 public class Company extends AppUser {
 
     private String company_name;
-    private String adress;
+    private String address;
     private String description;
     private String links;
     private String siret;
@@ -38,14 +38,14 @@ public class Company extends AppUser {
 	/**
 	 * @return the adress
 	 */
-	public String getAdress() {
-		return adress;
+	public String getAddress() {
+		return address;
 	}
 	/**
 	 * @param adress the adress to set
 	 */
-	public void setAdress(String adress) {
-		this.adress = adress;
+	public void setAddress(String adress) {
+		this.address = adress;
 	}
 	/**
 	 * @return the description

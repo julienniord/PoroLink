@@ -25,26 +25,6 @@ public class SkillDAO extends BaseDAO{
 		super(TABLE, ID);
 		// TODO Auto-generated constructor stub
 	}
-
-
-
-	@Override
-	public void delete(BaseEntity item) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public BaseEntity get(double id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<BaseEntity> get() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	/* (non-Javadoc)
 	 * @see poroLink.database.IDAOBase#parse(java.sql.ResultSet)

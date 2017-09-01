@@ -18,10 +18,10 @@ public interface IDAOBase {
 	public BaseEntity parseResultSetToObject (ResultSet rs);
 	public String parseInsert (BaseEntity item);
 	public String parseUpdate (BaseEntity item);
-	public void insert(BaseEntity item);
-	public void update(BaseEntity item);
-	public void delete(BaseEntity item);
-	public void deleteAll();
+	public BaseEntity insert(BaseEntity item);
+	public int update(BaseEntity item);
+	public int delete(BaseEntity item);
+	public int deleteAll();
 	public BaseEntity get(double id);
 	public List<BaseEntity> get();
 	public BaseEntity executePreparedStatement(BaseEntity item, String request);
