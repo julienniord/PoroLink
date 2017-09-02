@@ -172,33 +172,33 @@ public class ConnectionView  extends BaseView {
 		super.contentPane = panel;
 		
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWeights = new double[]{0.0};
-		gbl_contentPane.columnWidths = new int[]{13};
-		gbl_contentPane.rowHeights = new int[]{30};
+		gbl_contentPane.rowWeights = new double[]{1.0, 1.0, 1.0};
+		gbl_contentPane.columnWeights = new double[]{1.0, 1.0, 1.0};
+		gbl_contentPane.columnWidths = new int[]{0, 13, 0};
+		gbl_contentPane.rowHeights = new int[]{0, 30, 0};
 		panel.setLayout(gbl_contentPane);
 		
 		panelBlok = new JPanel();
 		panelBlok.setOpaque(false);
 		GridBagConstraints gbc_panel = new GridBagConstraints();
+		gbc_panel.insets = new Insets(0, 0, 5, 5);
 		gbc_panel.fill = GridBagConstraints.BOTH;
-		gbc_panel.gridx = 0;
-		gbc_panel.gridy = 0;
+		gbc_panel.gridx = 1;
+		gbc_panel.gridy = 1;
 		panel.add(panelBlok, gbc_panel);
 		GridBagLayout gbl_panelBlok = new GridBagLayout();
-		gbl_panelBlok.columnWidths = new int[]{13, 435, 0};
-		gbl_panelBlok.rowHeights = new int[]{30, 30, 30, 30, 61, 0};
-		gbl_panelBlok.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
-		gbl_panelBlok.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panelBlok.columnWidths = new int[]{0, 13, 0, 0};
+		gbl_panelBlok.rowHeights = new int[]{0, 30, 61, 0};
+		gbl_panelBlok.columnWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_panelBlok.rowWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
 		panelBlok.setLayout(gbl_panelBlok);
 		
 		JPanel connectionPanel = new JPanel();
 		GridBagConstraints gbc_connectionPanel = new GridBagConstraints();
 		gbc_connectionPanel.fill = GridBagConstraints.BOTH;
-		gbc_connectionPanel.gridheight = 4;
-		gbc_connectionPanel.gridwidth = 2;
-		gbc_connectionPanel.insets = new Insets(0, 0, 5, 0);
-		gbc_connectionPanel.gridx = 0;
-		gbc_connectionPanel.gridy = 0;
+		gbc_connectionPanel.insets = new Insets(0, 0, 5, 5);
+		gbc_connectionPanel.gridx = 1;
+		gbc_connectionPanel.gridy = 1;
 		panelBlok.add(connectionPanel, gbc_connectionPanel);
 		connectionPanel.setBackground(new java.awt.Color(245, 243, 245, 150));
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
@@ -283,10 +283,9 @@ public class ConnectionView  extends BaseView {
 		
 		btnRegistration = new JButton();
 		GridBagConstraints gbc_btnRegistration = new GridBagConstraints();
-		gbc_btnRegistration.gridwidth = 2;
 		gbc_btnRegistration.insets = new Insets(0, 0, 0, 5);
-		gbc_btnRegistration.gridx = 0;
-		gbc_btnRegistration.gridy = 4;
+		gbc_btnRegistration.gridx = 1;
+		gbc_btnRegistration.gridy = 2;
 		panelBlok.add(btnRegistration, gbc_btnRegistration);
 		btnRegistration.setIcon(new ImageIcon("Pictures/registrationButton.png"));
 		btnRegistration.setBorder(null);

@@ -5,8 +5,6 @@ package poroLink.database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
-
 import poroLink.entities.Skill;
 import poroLink.entities.base.BaseEntity;
 

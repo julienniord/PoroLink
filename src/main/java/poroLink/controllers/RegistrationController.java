@@ -1,14 +1,11 @@
 package poroLink.controllers;
 
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.regex.Pattern;
 
 import javax.swing.JFrame;
 
-import poroLink.entities.Candidate;
-import poroLink.views.ConnectionView;
 import poroLink.views.RegistrationView;
 
 public class RegistrationController extends BaseController{
@@ -25,11 +22,8 @@ public class RegistrationController extends BaseController{
 	}
 	@Override
 	public void initEvent() {
-		RegistrationView view = (RegistrationView) super.view;
-		//ConnectionView view = (ConnectionView) super.view;
-	}
-	/*
-	private void choixent() {
+		view = (RegistrationView) super.view;
+		
 		view.getCompanyRadioButton().addActionListener(new ActionListener() {
 			
 			@Override
@@ -39,9 +33,6 @@ public class RegistrationController extends BaseController{
 			}
 		});
 		
-	}
-	
-	private void choixcan() {
 		view.getCandidateRadioButton().addActionListener(new ActionListener() {
 			
 			@Override
@@ -52,9 +43,6 @@ public class RegistrationController extends BaseController{
 			}
 		});
 		
-	}
-	
-	private void validmail() {
 		view.getBtnRegistration().addActionListener(new ActionListener() {
 			
 			@Override
@@ -105,6 +93,5 @@ public class RegistrationController extends BaseController{
 			}
 		});
 	}
-*/
 
 }

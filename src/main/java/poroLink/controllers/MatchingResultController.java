@@ -1,48 +1,74 @@
 package poroLink.controllers;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.JFrame;
-import poroLink.entities.AppUser;
 import poroLink.entities.Candidate;
-import poroLink.entities.Company;
 import poroLink.entities.Post;
 import poroLink.entities.Skill;
-import poroLink.managers.ViewsManager;
-import poroLink.views.HomeView;
-import poroLink.views.LoginView;
 import poroLink.views.MatchingResultView;
-import poroLink.views.MatchingView;
 
 public class MatchingResultController extends BaseController {
+	
+	private JFrame frame;
+	private  MatchingResultView view;
 
-	public MatchingResultController(JFrame frame){
+	//public TreeMap<Integer,Integer> tmCandidate = new TreeMap<>();
+	//List<String> list = new ArrayList<String>();
+	//private ArrayList<Candidate> candidatlist;
+	
+	public  MatchingResultController(JFrame frame){
 		super.frame = frame;
 		super.view = new MatchingResultView(this.frame);
 	}
+	
+	List<Candidate> candidatlist = new ArrayList<Candidate>();
+	Candidate candidat = new Candidate();
+
+	/**
+	 * @return the candidat
+	 */
+	public Candidate getCandidat() {
+		return candidat;
+	}
+
+	/**
+	 * @param candidat the candidat to set
+	 */
+	public void setCandidat(Candidate candidat) {
+		this.candidat = candidat;
+	}
+
+	/**
+	 * @param candidatlist the candidatlist to set
+	 */
+	public void setCandidatlist(ArrayList<Candidate> candidatlist) {
+		this.candidatlist = candidatlist;
+	}
+
+	private Object getTmCandidate;
+	
+	
 
 	@Override
 	public void initEvent() {
-		MatchingResultView view = (MatchingResultView) super.view;
+		view = (MatchingResultView) super.view;
+		/*
 		view.getBtnValidate().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 					//ViewsManager.getInstance().next(new MatchingResultController(frame));	
 			}
 		});
+		*/
 	}
-//
-	
-	//
-	//
-	//
+
 	
 	@Override
 	public void initView() {
-		((MatchingResultView)getView()).getTextField().setText(((Post)this.viewDatas.get("currentPost")).getPost_name());	
+		//((MatchingResultView)getView()).getTextField().setText(((Post)this.viewDatas.get("currentPost")).getPost_name());	
+		((MatchingResultView)getView()).getLblRsultatDeLa().setText("R\u00E9sultat de la recherche pour le poste : " + ((Post)this.viewDatas.get("currentPost")).getPost_name());
+		
 		//affichage des skills
 		for(int i=0;i<((Post) this.viewDatas.get("currentPost")).getSkills().size();i++) {
 			((MatchingResultView)getView()).getTextAreaSkills().setText(((MatchingResultView)getView()).getTextAreaSkills().getText()+ "\n" +((Post)this.viewDatas.get("currentPost")).getSkills().get(i).getSkill_name() + " niveau "+ ((Post)this.viewDatas.get("currentPost")).getSkills().get(i).getNeeds());
@@ -55,28 +81,31 @@ public class MatchingResultController extends BaseController {
 		for (Candidate postulant : generateCandidate()) {
 			for(int i=0;i<postulant.getSkills().size();i++) {
 				((MatchingResultView)getView()).getTextAreaCanditate().setText(((MatchingResultView)getView()).getTextAreaCanditate().getText()+ "\n" +(postulant.getFirstname()+" compétences : "+ postulant.getSkills().get(i).getSkill_name()+ " niveau" +postulant.getSkills().get(i).getOwns()));
+				
 			}
 			// recherche des pourcentage des canditats
 				
-			compatibilite(postulant);
+			candidatlist.add(compatibilite(postulant));
 			
 		}
+		//return StudentName1.compareTo(StudentName2);
+		//Collections.sort(candidatlist, getPurcentcompatibility());
+		//candidatlist.sort(null);
+		System.out.println(candidat.FirstCandidate(candidatlist).getFirstname());
+		candidatlist.remove(candidat.FirstCandidate(candidatlist));
+		System.out.println(candidat.FirstCandidate(candidatlist).getFirstname());
+		/*
+		for(int i=0;i<candidatlist.size();i++) {
+			System.out.println(candidatlist.get(i).getPurcentcompatibility());
+		}
+		*/
+	}	
+	public Candidate compatibilite(Candidate candidate) {
 		
-	}
-	/*
-	public void setpurcentageneeds() {
-		int totalpriority=0;
-		for(int j=0;j<((Post) this.viewDatas.get("currentPost")).getSkills().size();j++) {
-			totalpriority += ((Post)this.viewDatas.get("currentPost")).getSkills().get(j).getNeeds();
-			
-		}
-		((Post) this.viewDatas.get("currentPost")).getSkills().set("", 1);
-		System.out.println(totalpriority);
-	}
-	*/
-	
-	
-	public void compatibilite(Candidate candidate) {
+		
+
+		
+		
 		int purcentagecomatibility=0;
 		int purcentagebesoin=0;
 		purcentagecomatibility=0;
@@ -91,8 +120,7 @@ public class MatchingResultController extends BaseController {
 				purcentagebesoin=((Post)this.viewDatas.get("currentPost")).getSkills().get(j).getNeeds()*(100/purcentagebesoin);
 				
 				if(candidate.getSkills().get(i).getId()==((Post) this.viewDatas.get("currentPost")).getSkills().get(j).getId()) {
-					
-					
+							
 					switch (candidate.getSkills().get(i).getOwns()) {
 					case 1:
 						purcentagecomatibility+=purcentagebesoin*30/100;
@@ -114,13 +142,20 @@ public class MatchingResultController extends BaseController {
 				}
 				
 			}
-			//System.out.println(purcentagecomatibility);
+			
 		}
 		((MatchingResultView)getView()).getTextAreaCanditate().setText(((MatchingResultView)getView()).getTextAreaCanditate().getText()+ "\n" +candidate.getFirstname()+" "+ purcentagecomatibility + " %");
-		//System.out.println(purcentagecomatibility);
+			//this.tmCandidate.put(candidate.getAppuser_id(), purcentagecomatibility);
+		candidate.setPurcentcompatibility(purcentagecomatibility);
 		
+		return candidate;
 	}
 	
+	/**
+	 * @return the tmCandidate
+	 */
+	
+
 	public List<Candidate> generateCandidate() {
 		
 		List<Candidate> result = new ArrayList<Candidate>();
@@ -141,17 +176,17 @@ public class MatchingResultController extends BaseController {
 		skills1.add(s6);
 
 		skills2.add(s1);
-		skills2.add(s5);
-		skills2.add(s7);
+		//skills2.add(s5);
+		//skills2.add(s7);
 		
 		Candidate c1 = new Candidate(1,"Jean louis","on");
 		c1.setSkills(skills1);
 		
 		Candidate c2 = new Candidate(2,"Carl Eric","ongh");
 		c2.setSkills(skills2);
-		
-		result.add(c1);
 		result.add(c2);
+		result.add(c1);
+		
 		return result;
 
 	}

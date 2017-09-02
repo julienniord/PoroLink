@@ -3,6 +3,8 @@ package poroLink.controllers;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
 
@@ -34,7 +36,6 @@ public class ConnectionController extends BaseController {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//new ForgottenPwdController(frame);
 				ViewsManager.getInstance().next(new ProfileCompanyController(frame));
 			}
 			
@@ -45,11 +46,22 @@ public class ConnectionController extends BaseController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				view.getBtnRegistration().setContentAreaFilled(false);
-				//new RegistrationController(frame);
-				user.setMail("toto");
+				//ViewsManager.getInstance().next(new RegistrationController(frame));
 				ViewsManager.getInstance().next(new MatchingController(frame));
+				user.setMail("toto");
 			}
-		});	
+		});
+		
+		view.getForgottenPwdLabel().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            	ViewsManager.getInstance().next(new ForgottenPwdController(frame));
+            }
+
+        });
+		
+		
+		
 	}
 	@Override
 	public void setupDatas() {
