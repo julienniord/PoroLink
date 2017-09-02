@@ -36,7 +36,7 @@ public class ProfileCompanyController extends BaseController{
 		super.frame = frame;
 		super.view = new ProfileCompanyView(this.frame);
 		
-		user = new Company(1,"rrr");
+		user = new Company("rrr");
 
 		/**
 		 * Launch the application.
@@ -86,7 +86,7 @@ public class ProfileCompanyController extends BaseController{
 		view.getComboBox().setSelectedIndex(0);
 		
 		
-		Company company1 = new Company(2,"Ma comp");
+		Company company1 = new Company("Ma comp");
 		company1.setPosts(post);
 		ViewUtils.Edit(view, view.getEditAddress(), view.getTxtAddress());
 		ViewUtils.Edit(view, view.getEditName(), view.getTxtNomEntreprise());

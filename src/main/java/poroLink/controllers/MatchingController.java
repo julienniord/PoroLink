@@ -110,7 +110,7 @@ public class MatchingController extends BaseController {
 
 
 
-		Company comp1 = new Company(3,"la comp1");
+		Company comp1 = new Company("la comp1");
 
 
 		Post j1 = new Post("le podte1");

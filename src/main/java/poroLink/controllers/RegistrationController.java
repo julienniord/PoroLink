@@ -2,10 +2,17 @@ package poroLink.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
+import java.util.Calendar;
 import java.util.regex.Pattern;
 
 import javax.swing.JFrame;
 
+import poroLink.entities.AppUser;
+import poroLink.entities.Candidate;
+import poroLink.entities.Company;
+import poroLink.managers.ViewsManager;
+//import poroLink.database.AppUserDAO;
 import poroLink.views.RegistrationView;
 
 public class RegistrationController extends BaseController{
@@ -53,7 +60,11 @@ public class RegistrationController extends BaseController{
 							if(view.getCompanyRadioButton().isSelected()){
 								if(view.getSiretText().getText().isEmpty() == false){
 									if(view.getSiretText().getText().length()==14){
-										new ConnectionController(frame);
+										Calendar currenttime = Calendar.getInstance();
+										AppUser user = new AppUser(view.getMailText().getText(),new String((view.getPwdText()).getPassword()),new Date((currenttime.getTime()).getTime()),new Date((currenttime.getTime()).getTime()),2);
+										Company company = new Company();
+										//AppUserDAO dao = new AppUserDAO();
+										//dao.insert(user);ViewsManager.getInstance().next(new ProfileCompanyController(frame));
 									}else {
 										view.getFailLabel().setText("Le siret renseigné n'est pas valide !");
 										view.getFailLabel().setVisible(true);
@@ -66,7 +77,12 @@ public class RegistrationController extends BaseController{
 								}
 							}else {
 									if(view.getCandidateRadioButton().isSelected()){
-										new ConnectionController(frame);
+										Calendar currenttime = Calendar.getInstance();
+										AppUser user = new AppUser(view.getMailText().getText(),new String((view.getPwdText()).getPassword()),new Date((currenttime.getTime()).getTime()),new Date((currenttime.getTime()).getTime()),1);
+										Candidate candidate = new Candidate();
+										//AppUserDAO dao = new AppUserDAO();
+										//dao.insert(user);
+										ViewsManager.getInstance().next(new ProfileCandidateController(frame));
 									}else {
 										view.getFailLabel().setText("Vous devez sélectionner un rôle !");
 										view.getFailLabel().setVisible(true);
