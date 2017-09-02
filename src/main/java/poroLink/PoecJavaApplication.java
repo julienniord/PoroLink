@@ -18,21 +18,21 @@ public class PoecJavaApplication {
 		
 		
 		
-		//ViewsManager.getInstance().start();
-		SkillDAO dao = new SkillDAO();
-		ResultSet set = dao.executeRequest("SHOW TABLES;");
+		ViewsManager.getInstance().start();
+//		SkillDAO dao = new SkillDAO();
+//		ResultSet set = dao.executeRequest("SHOW TABLES;");
 		//ResultSet set = dao.executeRequest("SHOW TABLES");
 		
-		try {
-			while(set.next()) {
-				System.out.println(set.getString(1));
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			while(set.next()) {
+//				System.out.println(set.getString(1));
+//			}
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
-		Skill skill = new Skill("Java");
-		dao.insert(skill);
+//		Skill skill = new Skill("Java");
+//		dao.insert(skill);
 	}
 }

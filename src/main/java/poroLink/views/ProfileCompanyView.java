@@ -28,6 +28,8 @@ import java.awt.Dimension;
 import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class ProfileCompanyView extends BaseView {
 
@@ -42,16 +44,15 @@ public class ProfileCompanyView extends BaseView {
 	private JTextArea txtDescriptionPost;
 	private JComboBox<Post> comboBox;
 	private JLabel lblDescritpionDuPoste;
-	private JList list_1;
 	private JLabel lblListeDeComptence;
-	private JButton EditLinkWebSite;
-	private JButton EditLinkedinLink;
-	private JButton EditName;
-	private JButton EditPhone;
-	private JButton EditAddress;
-	private JButton EditPost;
-	private JButton EditDescription;
-	private JButton EditSkillList;
+	private JButton editLinkWebSite;
+	private JButton editLinkedinLink;
+	private JButton editName;
+	private JButton editPhone;
+	private JButton editAddress;
+	private JButton editPost;
+	private JButton editDescription;
+	private JButton editSkillList;
 	private JScrollPane scrollPane_1;
 	private JScrollPane scrollPane_2;
 	private JLabel label;
@@ -60,6 +61,7 @@ public class ProfileCompanyView extends BaseView {
 	private JPanel panel_2;
 	private JTextArea txtRecruteurCoordonnee;
 	private JPanel panel_3;
+	private JTable table;
 
 	/**
 	 * @return the contentPane
@@ -262,17 +264,6 @@ public class ProfileCompanyView extends BaseView {
 	/**
 	 * @return the list_1
 	 */
-	public JList getList_1() {
-		return list_1;
-	}
-
-	/**
-	 * @param list_1
-	 *            the list_1 to set
-	 */
-	public void setList_1(JList list_1) {
-		this.list_1 = list_1;
-	}
 
 	/**
 	 * @return the lblListeDeComptence
@@ -293,7 +284,7 @@ public class ProfileCompanyView extends BaseView {
 	 * @return the editLinkWebSite
 	 */
 	public JButton getEditLinkWebSite() {
-		return EditLinkWebSite;
+		return editLinkWebSite;
 	}
 
 	/**
@@ -301,14 +292,14 @@ public class ProfileCompanyView extends BaseView {
 	 *            the editLinkWebSite to set
 	 */
 	public void setEditLinkWebSite(JButton editLinkWebSite) {
-		EditLinkWebSite = editLinkWebSite;
+		editLinkWebSite = editLinkWebSite;
 	}
 
 	/**
 	 * @return the editLinkedinLink
 	 */
 	public JButton getEditLinkedinLink() {
-		return EditLinkedinLink;
+		return editLinkedinLink;
 	}
 
 	/**
@@ -316,14 +307,14 @@ public class ProfileCompanyView extends BaseView {
 	 *            the editLinkedinLink to set
 	 */
 	public void setEditLinkedinLink(JButton editLinkedinLink) {
-		EditLinkedinLink = editLinkedinLink;
+		editLinkedinLink = editLinkedinLink;
 	}
 
 	/**
 	 * @return the editName
 	 */
 	public JButton getEditName() {
-		return EditName;
+		return editName;
 	}
 
 	/**
@@ -331,14 +322,14 @@ public class ProfileCompanyView extends BaseView {
 	 *            the editName to set
 	 */
 	public void setEditName(JButton editName) {
-		EditName = editName;
+		editName = editName;
 	}
 
 	/**
 	 * @return the editPhone
 	 */
 	public JButton getEditPhone() {
-		return EditPhone;
+		return editPhone;
 	}
 
 	/**
@@ -346,14 +337,14 @@ public class ProfileCompanyView extends BaseView {
 	 *            the editPhone to set
 	 */
 	public void setEditPhone(JButton editPhone) {
-		EditPhone = editPhone;
+		editPhone = editPhone;
 	}
 
 	/**
 	 * @return the editAddress
 	 */
 	public JButton getEditAddress() {
-		return EditAddress;
+		return editAddress;
 	}
 
 	/**
@@ -361,14 +352,14 @@ public class ProfileCompanyView extends BaseView {
 	 *            the editAddress to set
 	 */
 	public void setEditAddress(JButton editAddress) {
-		EditAddress = editAddress;
+		editAddress = editAddress;
 	}
 
 	/**
 	 * @return the editList
 	 */
 	public JButton getEditPost() {
-		return EditPost;
+		return editPost;
 	}
 
 	/**
@@ -376,14 +367,14 @@ public class ProfileCompanyView extends BaseView {
 	 *            the editList to set
 	 */
 	public void setEditPost(JButton editPost) {
-		EditPost = editPost;
+		editPost = editPost;
 	}
 
 	/**
 	 * @return the editDescription
 	 */
 	public JButton getEditDescription() {
-		return EditDescription;
+		return editDescription;
 	}
 
 	/**
@@ -391,14 +382,14 @@ public class ProfileCompanyView extends BaseView {
 	 *            the editDescription to set
 	 */
 	public void setEditDescription(JButton editDescription) {
-		EditDescription = editDescription;
+		editDescription = editDescription;
 	}
 
 	/**
 	 * @return the editSkillList
 	 */
 	public JButton getEditSkillList() {
-		return EditSkillList;
+		return editSkillList;
 	}
 
 	/**
@@ -406,7 +397,7 @@ public class ProfileCompanyView extends BaseView {
 	 *            the editSkillList to set
 	 */
 	public void setEditSkillList(JButton editSkillList) {
-		EditSkillList = editSkillList;
+		editSkillList = editSkillList;
 	}
 
 	/**
@@ -427,6 +418,14 @@ public class ProfileCompanyView extends BaseView {
 	/**
 	 * Launch the application.
 	 */
+
+	public JTable getTable() {
+		return table;
+	}
+
+	public void setTable(JTable table) {
+		this.table = table;
+	}
 
 	/**
 	 * Create the frame.
@@ -483,23 +482,23 @@ public class ProfileCompanyView extends BaseView {
 								panelBlock.add(txtNomEntreprise, gbc_txtNomEntreprise);
 								txtNomEntreprise.setColumns(10);
 				
-						EditName = new JButton("Modifier");
-						EditName.setForeground(Color.WHITE);
-						EditName.setBackground(new Color(87, 108, 168));
-						GridBagConstraints gbc_EditName = new GridBagConstraints();
-						gbc_EditName.insets = new Insets(0, 0, 5, 5);
-						gbc_EditName.gridx = 1;
-						gbc_EditName.gridy = 0;
-						panelBlock.add(EditName, gbc_EditName);
+						editName = new JButton("Modifier");
+						editName.setForeground(Color.WHITE);
+						editName.setBackground(new Color(87, 108, 168));
+						GridBagConstraints gbc_editName = new GridBagConstraints();
+						gbc_editName.insets = new Insets(0, 0, 5, 5);
+						gbc_editName.gridx = 1;
+						gbc_editName.gridy = 0;
+						panelBlock.add(editName, gbc_editName);
 				
-						EditLinkWebSite = new JButton("Modifier");
-						EditLinkWebSite.setForeground(Color.WHITE);
-						EditLinkWebSite.setBackground(new Color(87, 108, 168));
-						GridBagConstraints gbc_EditLinkWebSite = new GridBagConstraints();
-						gbc_EditLinkWebSite.insets = new Insets(0, 0, 5, 5);
-						gbc_EditLinkWebSite.gridx = 3;
-						gbc_EditLinkWebSite.gridy = 0;
-						panelBlock.add(EditLinkWebSite, gbc_EditLinkWebSite);
+						editLinkWebSite = new JButton("Modifier");
+						editLinkWebSite.setForeground(Color.WHITE);
+						editLinkWebSite.setBackground(new Color(87, 108, 168));
+						GridBagConstraints gbc_editLinkWebSite = new GridBagConstraints();
+						gbc_editLinkWebSite.insets = new Insets(0, 0, 5, 5);
+						gbc_editLinkWebSite.gridx = 3;
+						gbc_editLinkWebSite.gridy = 0;
+						panelBlock.add(editLinkWebSite, gbc_editLinkWebSite);
 				
 						txtLienSiteEntreprise = new JTextField();
 						txtLienSiteEntreprise.setForeground(Color.BLACK);
@@ -527,14 +526,14 @@ public class ProfileCompanyView extends BaseView {
 				panelBlock.add(txtTlphone, gbc_txtTlphone);
 				txtTlphone.setColumns(10);
 						
-								EditPhone = new JButton("Modifier");
-								EditPhone.setForeground(Color.WHITE);
-								EditPhone.setBackground(new Color(87, 108, 168));
-								GridBagConstraints gbc_EditPhone = new GridBagConstraints();
-								gbc_EditPhone.insets = new Insets(0, 0, 5, 5);
-								gbc_EditPhone.gridx = 1;
-								gbc_EditPhone.gridy = 1;
-								panelBlock.add(EditPhone, gbc_EditPhone);
+								editPhone = new JButton("Modifier");
+								editPhone.setForeground(Color.WHITE);
+								editPhone.setBackground(new Color(87, 108, 168));
+								GridBagConstraints gbc_editPhone = new GridBagConstraints();
+								gbc_editPhone.insets = new Insets(0, 0, 5, 5);
+								gbc_editPhone.gridx = 1;
+								gbc_editPhone.gridy = 1;
+								panelBlock.add(editPhone, gbc_editPhone);
 				
 						txtAddress = new JTextField();
 						txtAddress.setForeground(Color.BLACK);
@@ -549,23 +548,23 @@ public class ProfileCompanyView extends BaseView {
 						panelBlock.add(txtAddress, gbc_txtAddress);
 						txtAddress.setColumns(10);
 		
-				EditAddress = new JButton("Modifier");
-				EditAddress.setForeground(Color.WHITE);
-				EditAddress.setBackground(new Color(87, 108, 168));
-				GridBagConstraints gbc_EditAddress = new GridBagConstraints();
-				gbc_EditAddress.insets = new Insets(0, 0, 0, 5);
-				gbc_EditAddress.gridx = 1;
-				gbc_EditAddress.gridy = 2;
-				panelBlock.add(EditAddress, gbc_EditAddress);
+				editAddress = new JButton("Modifier");
+				editAddress.setForeground(Color.WHITE);
+				editAddress.setBackground(new Color(87, 108, 168));
+				GridBagConstraints gbc_editAddress = new GridBagConstraints();
+				gbc_editAddress.insets = new Insets(0, 0, 0, 5);
+				gbc_editAddress.gridx = 1;
+				gbc_editAddress.gridy = 2;
+				panelBlock.add(editAddress, gbc_editAddress);
 		
-				EditLinkedinLink = new JButton("Modifier");
-				EditLinkedinLink.setForeground(Color.WHITE);
-				EditLinkedinLink.setBackground(new Color(87, 108, 168));
-				GridBagConstraints gbc_EditLinkedinLink = new GridBagConstraints();
-				gbc_EditLinkedinLink.insets = new Insets(0, 0, 0, 5);
-				gbc_EditLinkedinLink.gridx = 3;
-				gbc_EditLinkedinLink.gridy = 2;
-				panelBlock.add(EditLinkedinLink, gbc_EditLinkedinLink);
+				editLinkedinLink = new JButton("Modifier");
+				editLinkedinLink.setForeground(Color.WHITE);
+				editLinkedinLink.setBackground(new Color(87, 108, 168));
+				GridBagConstraints gbc_editLinkedinLink = new GridBagConstraints();
+				gbc_editLinkedinLink.insets = new Insets(0, 0, 0, 5);
+				gbc_editLinkedinLink.gridx = 3;
+				gbc_editLinkedinLink.gridy = 2;
+				panelBlock.add(editLinkedinLink, gbc_editLinkedinLink);
 		
 				txtLienLinkedin = new JTextField();
 				txtLienLinkedin.setBackground(Color.WHITE);
@@ -594,15 +593,15 @@ public class ProfileCompanyView extends BaseView {
 		gbl_panel_3.rowWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
 		panel_3.setLayout(gbl_panel_3);
 		
-				EditDescription = new JButton("Modifier");
-				GridBagConstraints gbc_EditDescription = new GridBagConstraints();
-				gbc_EditDescription.anchor = GridBagConstraints.EAST;
-				gbc_EditDescription.insets = new Insets(0, 0, 5, 0);
-				gbc_EditDescription.gridx = 0;
-				gbc_EditDescription.gridy = 0;
-				panel_3.add(EditDescription, gbc_EditDescription);
-				EditDescription.setForeground(Color.WHITE);
-				EditDescription.setBackground(new Color(87, 108, 168));
+				editDescription = new JButton("Modifier");
+				GridBagConstraints gbc_editDescription = new GridBagConstraints();
+				gbc_editDescription.anchor = GridBagConstraints.EAST;
+				gbc_editDescription.insets = new Insets(0, 0, 5, 0);
+				gbc_editDescription.gridx = 0;
+				gbc_editDescription.gridy = 0;
+				panel_3.add(editDescription, gbc_editDescription);
+				editDescription.setForeground(Color.WHITE);
+				editDescription.setBackground(new Color(87, 108, 168));
 		
 				scrollPane_1 = new JScrollPane();
 				GridBagConstraints gbc_scrollPane_1 = new GridBagConstraints();
@@ -645,15 +644,15 @@ public class ProfileCompanyView extends BaseView {
 						gbc_comboBox.gridy = 0;
 						panel_1.add(comboBox, gbc_comboBox);
 						
-								EditPost = new JButton("Modifier");
-								EditPost.setForeground(Color.WHITE);
-								EditPost.setBackground(new Color(87, 108, 168));
-								GridBagConstraints gbc_EditPost = new GridBagConstraints();
-								gbc_EditPost.anchor = GridBagConstraints.EAST;
-								gbc_EditPost.insets = new Insets(0, 0, 5, 0);
-								gbc_EditPost.gridx = 2;
-								gbc_EditPost.gridy = 0;
-								panel_1.add(EditPost, gbc_EditPost);
+								editPost = new JButton("Modifier");
+								editPost.setForeground(Color.WHITE);
+								editPost.setBackground(new Color(87, 108, 168));
+								GridBagConstraints gbc_editPost = new GridBagConstraints();
+								gbc_editPost.anchor = GridBagConstraints.EAST;
+								gbc_editPost.insets = new Insets(0, 0, 5, 0);
+								gbc_editPost.gridx = 2;
+								gbc_editPost.gridy = 0;
+								panel_1.add(editPost, gbc_editPost);
 				
 						label = new JLabel("Coordonn\u00E9es du recruteur");
 						GridBagConstraints gbc_label = new GridBagConstraints();
@@ -716,15 +715,15 @@ public class ProfileCompanyView extends BaseView {
 				gbc_lblListeDeComptence.gridy = 0;
 				panel_2.add(lblListeDeComptence, gbc_lblListeDeComptence);
 				
-						EditSkillList = new JButton("Modifier");
-						GridBagConstraints gbc_EditSkillList = new GridBagConstraints();
-						gbc_EditSkillList.anchor = GridBagConstraints.EAST;
-						gbc_EditSkillList.insets = new Insets(0, 0, 5, 0);
-						gbc_EditSkillList.gridx = 2;
-						gbc_EditSkillList.gridy = 0;
-						panel_2.add(EditSkillList, gbc_EditSkillList);
-						EditSkillList.setForeground(Color.WHITE);
-						EditSkillList.setBackground(new Color(87, 108, 168));
+						editSkillList = new JButton("Modifier");
+						GridBagConstraints gbc_editSkillList = new GridBagConstraints();
+						gbc_editSkillList.anchor = GridBagConstraints.EAST;
+						gbc_editSkillList.insets = new Insets(0, 0, 5, 0);
+						gbc_editSkillList.gridx = 2;
+						gbc_editSkillList.gridy = 0;
+						panel_2.add(editSkillList, gbc_editSkillList);
+						editSkillList.setForeground(Color.WHITE);
+						editSkillList.setBackground(new Color(87, 108, 168));
 		
 				scrollPane_3 = new JScrollPane();
 				GridBagConstraints gbc_scrollPane_3 = new GridBagConstraints();
@@ -734,33 +733,20 @@ public class ProfileCompanyView extends BaseView {
 				gbc_scrollPane_3.gridy = 1;
 				panel_2.add(scrollPane_3, gbc_scrollPane_3);
 				
-						list_1 = new JList();
-						scrollPane_3.setViewportView(list_1);
-						list_1.setBackground(Color.WHITE);
-						list_1.setForeground(Color.BLACK);
-						list_1.setOpaque(false);
-						list_1.setModel(new AbstractListModel() {
-							String[] values = new String[] { "Comp\u00E9tence 4Comp\u00E9tence 1", "Comp\u00E9tence 2",
-									"Comp\u00E9tence 3", "Comp\u00E9tence 4", "Comp\u00E9tence 4", "Comp\u00E9tence 4",
-									"Comp\u00E9tence 4", "Comp\u00E9tence 4", "Comp\u00E9tence 4", "Comp\u00E9tence 4",
-									"Comp\u00E9tence 4", "Comp\u00E9tence 4", "Comp\u00E9tence 4", "Comp\u00E9tence 4",
-									"Comp\u00E9tence 4", "Comp\u00E9tence 4", "Comp\u00E9tence 4", "Comp\u00E9tence 4",
-									"Comp\u00E9tence 4", "Comp\u00E9tence 4", "Comp\u00E9tence 4", "Comp\u00E9tence 4",
-									"Comp\u00E9tence 4", "Comp\u00E9tence 4", "Comp\u00E9tence 4", "Comp\u00E9tence 4",
-									"Comp\u00E9tence 4", "Comp\u00E9tence 4", "Comp\u00E9tence 4", "Comp\u00E9tence 4",
-									"Comp\u00E9tence 4", "Comp\u00E9tence 4", "Comp\u00E9tence 4", "Comp\u00E9tence 4" };
-
-							public int getSize() {
-								return values.length;
-							}
-
-							public Object getElementAt(int index) {
-								return values[index];
-							}
-						});
-						list_1.setVisibleRowCount(7);
-						list_1.setToolTipText("");
-						list_1.setBorder(new LineBorder(new Color(51, 102, 153), 1, true));
+				table = new JTable();
+				table.setModel(new DefaultTableModel(
+					new Object[][] {
+					},
+					new String[] {
+						"Comp\u00E9tences", "Niveau"
+					}
+				));
+				table.getColumnModel().getColumn(0).setPreferredWidth(498);
+				table.getColumnModel().getColumn(1).setPreferredWidth(124);
+				table.setAutoCreateRowSorter(true);
+				table.setEditingRow(1);
+				table.setEditingColumn(2);
+				scrollPane_3.setViewportView(table);
 	}
 
 }
