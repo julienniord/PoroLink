@@ -102,22 +102,19 @@ public class MatchingResultController extends BaseController {
 	}	
 	public Candidate compatibilite(Candidate candidate) {
 		
-		
-
-		
-		
 		int purcentagecomatibility=0;
 		int purcentagebesoin=0;
-		purcentagecomatibility=0;
+		int sommebesoin=0;
+		
 		for(int i=0;i<candidate.getSkills().size();i++) {
-			
+			purcentagecomatibility=0;
 			for(int j=0;j<((Post) this.viewDatas.get("currentPost")).getSkills().size();j++) {
-				purcentagebesoin=0;
+				sommebesoin=0;
 				for(int k=0;k<((Post) this.viewDatas.get("currentPost")).getSkills().size();k++) {
-						purcentagebesoin+=((Post)this.viewDatas.get("currentPost")).getSkills().get(k).getNeeds();	
+						sommebesoin+=((Post)this.viewDatas.get("currentPost")).getSkills().get(k).getNeeds();	
 				}
 				
-				purcentagebesoin=((Post)this.viewDatas.get("currentPost")).getSkills().get(j).getNeeds()*(100/purcentagebesoin);
+				purcentagebesoin=((Post)this.viewDatas.get("currentPost")).getSkills().get(j).getNeeds()*(100/sommebesoin);
 				
 				if(candidate.getSkills().get(i).getId()==((Post) this.viewDatas.get("currentPost")).getSkills().get(j).getId()) {
 							
@@ -140,9 +137,7 @@ public class MatchingResultController extends BaseController {
 					break;
 					}	
 				}
-				
 			}
-			
 		}
 		((MatchingResultView)getView()).getTextAreaCanditate().setText(((MatchingResultView)getView()).getTextAreaCanditate().getText()+ "\n" +candidate.getFirstname()+" "+ purcentagecomatibility + " %");
 			//this.tmCandidate.put(candidate.getAppuser_id(), purcentagecomatibility);
@@ -179,13 +174,13 @@ public class MatchingResultController extends BaseController {
 		//skills2.add(s5);
 		//skills2.add(s7);
 		
-		Candidate c1 = new Candidate(1,"Jean louis","on");
-		c1.setSkills(skills1);
+		//Candidate c1 = new Candidate(1,"Jean louis","on");
+		//c1.setSkills(skills1);
 		
 		Candidate c2 = new Candidate(2,"Carl Eric","ongh");
 		c2.setSkills(skills2);
 		result.add(c2);
-		result.add(c1);
+		//result.add(c1);
 		
 		return result;
 

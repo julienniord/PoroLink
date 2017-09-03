@@ -58,12 +58,11 @@ public class AppUserDAO extends BaseDAO {
 	public String parseInsert(BaseEntity item) {
 		String result = "null,";
 		AppUser appUser = (AppUser) item;
-
+		result += "'" + appUser.getRole_appuser() + "',";
 		result += "'" + appUser.getMail() + "',";
 		result += "'" + appUser.getPassword() + "',";
 		result += "'" + appUser.getCreated_at() + "',";
-		result += "'" + appUser.getUpdated_at() + "',";
-		result += "'" + appUser.getRole_appuser() + "'";
+		result += "'" + appUser.getUpdated_at() + "'";
 		
 
 		return result;

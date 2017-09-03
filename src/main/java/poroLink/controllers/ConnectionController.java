@@ -4,8 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import javax.swing.JFrame;
 
+import poroLink.database.AppUserDAO;
 import poroLink.entities.AppUser;
 import poroLink.entities.Candidate;
 import poroLink.managers.ViewsManager;
@@ -35,21 +39,28 @@ public class ConnectionController extends BaseController {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-//				AppUserDAO dao = new AppUserDAO();
-//				ResultSet rs = dao.executeRequest("SELECT * FROM AppUser WHERE mail = '" + view.getMailText().getText() + "'");
-//				
-//				if (rs != null) {
-//					if (view.getMailText().getText()==rs.getString(MAIL) && new String((view.getPwd()).getPassword()).equals(rs.getString(PASSWORD))){
-						ViewsManager.getInstance().next(new HomeController(frame));
-//					}else {
-//						view.getFailLabel().setText("Informations incorrectes !");
-//						view.getFailLabel().setVisible(true);
-//					}
-//				}else {
-//					view.getFailLabel().setText("Cet utilisateur n'existe pas !");
-//					view.getFailLabel().setVisible(true);
-//				}
-//				
+				AppUserDAO dao = new AppUserDAO();
+				ResultSet rs = dao.executeRequest("SELECT * FROM AppUser WHERE mail = '" + view.getMailText().getText() + "'");
+				
+				try {
+					if (rs.next()) {
+						if (view.getMailText().getText().equals(rs.getString(AppUserDAO.MAIL)) && new String((view.getPwd()).getPassword()).equals(rs.getString(AppUserDAO.PASSWORD))){
+							ViewsManager.getInstance().next(new HomeController(frame));
+						}else {
+							view.getFailLabel().setText("Mot de passe incorrect !");
+							view.getFailLabel().setVisible(true);
+							view.getContentPane().repaint();
+						}
+					}else {
+						view.getFailLabel().setText("Cet utilisateur n'existe pas !");
+						view.getFailLabel().setVisible(true);
+						view.getContentPane().repaint();
+					}
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 			
 			

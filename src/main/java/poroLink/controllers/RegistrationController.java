@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 
 import javax.swing.JFrame;
 
+import poroLink.database.AppUserDAO;
 import poroLink.entities.AppUser;
 import poroLink.entities.Candidate;
 import poroLink.entities.Company;
@@ -62,10 +63,10 @@ public class RegistrationController extends BaseController{
 								if(view.getSiretText().getText().isEmpty() == false){
 									if(view.getSiretText().getText().length()==14){
 										Calendar currenttime = Calendar.getInstance();
-										AppUser user = new AppUser(view.getMailText().getText(),new String((view.getPwdText()).getPassword()),new Date((currenttime.getTime()).getTime()),new Date((currenttime.getTime()).getTime()),Role.CANDIDATE);
+										AppUser user = new AppUser(view.getMailText().getText(),new String((view.getPwdText()).getPassword()),new Date((currenttime.getTime()).getTime()),new Date((currenttime.getTime()).getTime()),Role.COMPANY);
 										Company company = new Company();
-										//AppUserDAO dao = new AppUserDAO();
-										//dao.insert(user);ViewsManager.getInstance().next(new ProfileCompanyController(frame));
+										AppUserDAO dao = new AppUserDAO();
+										dao.insert(user);ViewsManager.getInstance().next(new ProfileCompanyController(frame));
 									}else {
 										view.getFailLabel().setText("Le siret renseigné n'est pas valide !");
 										view.getFailLabel().setVisible(true);
@@ -79,10 +80,10 @@ public class RegistrationController extends BaseController{
 							}else {
 									if(view.getCandidateRadioButton().isSelected()){
 										Calendar currenttime = Calendar.getInstance();
-										AppUser user = new AppUser(view.getMailText().getText(),new String((view.getPwdText()).getPassword()),new Date((currenttime.getTime()).getTime()),new Date((currenttime.getTime()).getTime()),Role.COMPANY);
+										AppUser user = new AppUser(view.getMailText().getText(),new String((view.getPwdText()).getPassword()),new Date((currenttime.getTime()).getTime()),new Date((currenttime.getTime()).getTime()),Role.CANDIDATE);
 										Candidate candidate = new Candidate();
-										//AppUserDAO dao = new AppUserDAO();
-										//dao.insert(user);
+										AppUserDAO dao = new AppUserDAO();
+										dao.insert(user);
 										ViewsManager.getInstance().next(new ProfileCandidateController(frame));
 									}else {
 										view.getFailLabel().setText("Vous devez sélectionner un rôle !");
@@ -97,7 +98,7 @@ public class RegistrationController extends BaseController{
 						}
 					} else {
 						view.getFailLabel().setText("Le mot de passe doit contenir au moins une minuscule, une majuscule,\n"
-													+ " un caractère spécial et doit faire 8 caractères minimum.");
+													+ " un chiffre, un caractère spécial et doit faire 8 caractères minimum.");
 						view.getFailLabel().setVisible(true);
 						view.getContentPane().repaint();
 					}
