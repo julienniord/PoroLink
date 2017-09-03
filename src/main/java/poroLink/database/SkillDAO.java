@@ -19,6 +19,8 @@ public class SkillDAO extends BaseDAO{
 	public static final String TABLE = "Skill";
 	public static final String ID = "skill_id";
 	public static final String NAME = "skill_name";
+	public static final String OWN = "skill_name";
+	public static final String NEED = "skill_name";
 
 
 	public SkillDAO() {

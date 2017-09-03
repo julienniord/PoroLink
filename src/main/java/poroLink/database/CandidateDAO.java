@@ -50,7 +50,7 @@ public class CandidateDAO extends BaseDAO {
 			candidate.setTransport(rs.getString(TRANSPORT));
 			candidate.setPresentation(rs.getString(PRESENTATION));
 			candidate.setLinks(rs.getString(LINKS));
-			candidate.setCertificates(rs.getString(CERTIFICATES));
+			//candidate.setCertificates(rs.getString(CERTIFICATES));
 			candidate.setCertificate_in_progress(rs.getString(CERTIFICATES_IN_PROGRESS));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

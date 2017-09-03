@@ -14,7 +14,7 @@ public class Candidate extends AppUser {
     private String transport;
     private String presentation;
     private String links;
-    private String certificates;
+    private List<String> certificates;
     private String certificate_in_progress;
     private List<Skill> skills;
 	
@@ -147,14 +147,14 @@ public class Candidate extends AppUser {
 	/**
 	 * @return the certificates
 	 */
-	public String getCertificates() {
+	public List<String> getCertificates() {
 		return certificates;
 	}
 
 	/**
 	 * @param certificates the certificates to set
 	 */
-	public void setCertificates(String certificates) {
+	public void setCertificates(List<String> certificates) {
 		this.certificates = certificates;
 	}
 

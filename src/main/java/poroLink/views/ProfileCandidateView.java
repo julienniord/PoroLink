@@ -27,6 +27,7 @@ import javax.swing.Box;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.Dimension;
 import javax.swing.border.LineBorder;
 
@@ -36,17 +37,35 @@ import java.awt.Panel;
 import javax.swing.JList;
 import javax.swing.AbstractListModel;
 import javax.swing.JFormattedTextField;
+import javax.swing.JTable;
 
 public class ProfileCandidateView extends BaseView{
-
-
-	private JTextField txtListeDeComptences;
-	private JList skillList;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField textFieldName;
+	private JTextField textFieldLinkWebSite;
+	private JTextField textFieldPhone;
+	private JTextField textFieldAddress;
+	private JTextField textFieldLinkLinkedin;
+	private JButton editSkillList;
+	private JButton editTxtCertificates;
+	private JLabel lblNewLabel_2;
+	private JLabel lblNewLabel_1;
+	private JPanel panel_1;
+	private JPanel panelBlock;
+	private JTextArea txtrDescription;
+	private JButton editTxtAddress;
+	private JButton editTxtLinkLinkedin;
+	private JButton editTxtPhone;
+	private JButton edittxtLinkWebSite;
+	private JButton editTxtName;
+	private JPanel panel_2;
+	private JLabel lblNewLabel;
+	private JPanel panel_3;
+	private JTextField txtCertificatesInProgress;
+	private JTable tableCertificates;
+	private JTable tableSkill;
+	private JButton editDescription;
+	private JLabel lblListeDesComptences;
+	private JLabel lblNiveau;
 
 	/**
 	 * @return the contentPane
@@ -64,46 +83,11 @@ public class ProfileCandidateView extends BaseView{
 	}
 
 
-
-
-
-	/**
-	 * @return the txtListeDeComptences
-	 */
-	public JTextField getTxtListeDeComptences() {
-		return txtListeDeComptences;
-	}
-
-
-	/**
-	 * @param txtListeDeComptences the txtListeDeComptences to set
-	 */
-	public void setTxtListeDeComptences(JTextField txtListeDeComptences) {
-		this.txtListeDeComptences = txtListeDeComptences;
-	}
-
-
-	/**
-	 * @return the skillList
-	 */
-	public JList getSkillList() {
-		return skillList;
-	}
-
-
-	/**
-	 * @param skillList the skillList to set
-	 */
-	public void setSkillList(JList skillList) {
-		this.skillList = skillList;
-	}
-
-
 	/**
 	 * @return the textField
 	 */
 	public JTextField getTextField() {
-		return textField;
+		return textFieldName;
 	}
 
 
@@ -111,7 +95,7 @@ public class ProfileCandidateView extends BaseView{
 	 * @param textField the textField to set
 	 */
 	public void setTextField(JTextField textField) {
-		this.textField = textField;
+		this.textFieldName = textField;
 	}
 
 
@@ -119,7 +103,7 @@ public class ProfileCandidateView extends BaseView{
 	 * @return the textField_1
 	 */
 	public JTextField getTextField_1() {
-		return textField_1;
+		return textFieldLinkWebSite;
 	}
 
 
@@ -127,7 +111,7 @@ public class ProfileCandidateView extends BaseView{
 	 * @param textField_1 the textField_1 to set
 	 */
 	public void setTextField_1(JTextField textField_1) {
-		this.textField_1 = textField_1;
+		this.textFieldLinkWebSite = textField_1;
 	}
 
 
@@ -135,7 +119,7 @@ public class ProfileCandidateView extends BaseView{
 	 * @return the textField_2
 	 */
 	public JTextField getTextField_2() {
-		return textField_2;
+		return textFieldPhone;
 	}
 
 
@@ -143,7 +127,7 @@ public class ProfileCandidateView extends BaseView{
 	 * @param textField_2 the textField_2 to set
 	 */
 	public void setTextField_2(JTextField textField_2) {
-		this.textField_2 = textField_2;
+		this.textFieldPhone = textField_2;
 	}
 
 
@@ -151,7 +135,7 @@ public class ProfileCandidateView extends BaseView{
 	 * @return the textField_3
 	 */
 	public JTextField getTextField_3() {
-		return textField_3;
+		return textFieldAddress;
 	}
 
 
@@ -159,7 +143,7 @@ public class ProfileCandidateView extends BaseView{
 	 * @param textField_3 the textField_3 to set
 	 */
 	public void setTextField_3(JTextField textField_3) {
-		this.textField_3 = textField_3;
+		this.textFieldAddress = textField_3;
 	}
 
 
@@ -167,7 +151,7 @@ public class ProfileCandidateView extends BaseView{
 	 * @return the textField_4
 	 */
 	public JTextField getTextField_4() {
-		return textField_4;
+		return textFieldLinkLinkedin;
 	}
 
 
@@ -175,7 +159,7 @@ public class ProfileCandidateView extends BaseView{
 	 * @param textField_4 the textField_4 to set
 	 */
 	public void setTextField_4(JTextField textField_4) {
-		this.textField_4 = textField_4;
+		this.textFieldLinkLinkedin = textField_4;
 	}
 
 
@@ -185,300 +169,567 @@ public class ProfileCandidateView extends BaseView{
 		super.contentPane = panel;
 		
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{32, 205, 38, 42, 36, 0};
-		gbl_contentPane.rowHeights = new int[]{80, 260, 37, 109, 109, 0};
-		gbl_contentPane.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.columnWidths = new int[]{20, 262, 157, 105, 36, 46, 20, 0};
+		gbl_contentPane.rowHeights = new int[]{152, 49, 101, 56, 56, 112, 50, 0};
+		gbl_contentPane.columnWeights = new double[]{0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_contentPane);
 		
-		JPanel panel_3 = new JPanel();
+		panel_3 = new JPanel();
 		GridBagConstraints gbc_panel_3 = new GridBagConstraints();
 		gbc_panel_3.fill = GridBagConstraints.BOTH;
-		gbc_panel_3.gridwidth = 5;
+		gbc_panel_3.gridwidth = 7;
 		gbc_panel_3.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_3.gridx = 0;
 		gbc_panel_3.gridy = 0;
 		panel.add(panel_3, gbc_panel_3);
+		panel_3.setBackground(new Color(245, 243, 245, 150));
 		GridBagLayout gbl_panel_3 = new GridBagLayout();
-		gbl_panel_3.columnWidths = new int[]{32, 205, 67, 38, 36, 42, 195, 36, 0};
+		gbl_panel_3.columnWidths = new int[]{32, 205, 67, 38, 36, 42, 198, 11, 0};
 		gbl_panel_3.rowHeights = new int[]{80, 0};
-		gbl_panel_3.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
-		gbl_panel_3.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		gbl_panel_3.columnWeights = new double[]{0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_3.rowWeights = new double[]{1.0, Double.MIN_VALUE};
 		panel_3.setLayout(gbl_panel_3);
 		
-		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel = new JLabel("");
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-		gbc_lblNewLabel.gridwidth = 2;
-		gbc_lblNewLabel.insets = new Insets(0, 0, 0, 5);
-		gbc_lblNewLabel.gridx = 0;
-		gbc_lblNewLabel.gridy = 0;
 		panel_3.add(lblNewLabel, gbc_lblNewLabel);
 		lblNewLabel.setBorder(new LineBorder(new Color(51, 102, 153), 1, true));
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Minet\\Downloads\\20864450_10214162450926257_2019830956_n.png"));
 		
-		JPanel panel_2 = new JPanel();
+		panel_2 = new JPanel();
 		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
 		gbc_panel_2.fill = GridBagConstraints.BOTH;
 		gbc_panel_2.gridwidth = 6;
 		gbc_panel_2.insets = new Insets(0, 0, 0, 5);
-		gbc_panel_2.gridx = 2;
+		gbc_panel_2.gridx = 1;
 		gbc_panel_2.gridy = 0;
 		panel_3.add(panel_2, gbc_panel_2);
 		panel_2.setBackground(new Color(245, 243, 245, 150));
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
-		gbl_panel_2.columnWidths = new int[]{267, 71, 39, 71, 267, 0};
-		gbl_panel_2.rowHeights = new int[]{46, 26, 40, 23, 41, 0};
-		gbl_panel_2.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_2.columnWidths = new int[]{139, 100, 27, 62, 137, 0};
+		gbl_panel_2.rowHeights = new int[]{34, 26, 29, 21, 41, 0};
+		gbl_panel_2.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		gbl_panel_2.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_2.setLayout(gbl_panel_2);
 		
-		textField = new JTextField();
-		textField.setText("Nom Entreprise");
-		textField.setForeground(Color.BLACK);
-		textField.setEditable(false);
-		textField.setColumns(10);
-		textField.setBackground(Color.WHITE);
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.insets = new Insets(0, 0, 5, 5);
-		gbc_textField.gridx = 0;
-		gbc_textField.gridy = 0;
-		panel_2.add(textField, gbc_textField);
+		textFieldName = new JTextField();
+		textFieldName.setEditable(false);
+		textFieldName.setText("Nom Entreprise");
+		textFieldName.setForeground(Color.BLACK);
+		textFieldName.setColumns(10);
+		textFieldName.setBackground(Color.WHITE);
+		GridBagConstraints gbc_textFieldName = new GridBagConstraints();
+		gbc_textFieldName.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textFieldName.insets = new Insets(0, 0, 5, 5);
+		gbc_textFieldName.gridx = 0;
+		gbc_textFieldName.gridy = 0;
+		panel_2.add(textFieldName, gbc_textFieldName);
 		
-		JButton button = new JButton("Modifier");
-		button.setForeground(Color.WHITE);
-		button.setBackground(new Color(87, 108, 168));
-		GridBagConstraints gbc_button = new GridBagConstraints();
-		gbc_button.insets = new Insets(0, 0, 5, 5);
-		gbc_button.gridx = 1;
-		gbc_button.gridy = 0;
-		panel_2.add(button, gbc_button);
+		editTxtName = new JButton("Modifier");
+		editTxtName.setForeground(Color.WHITE);
+		editTxtName.setBackground(new Color(87, 108, 168));
+		GridBagConstraints gbc_editTxtName = new GridBagConstraints();
+		gbc_editTxtName.insets = new Insets(0, 0, 5, 5);
+		gbc_editTxtName.gridx = 1;
+		gbc_editTxtName.gridy = 0;
+		panel_2.add(editTxtName, gbc_editTxtName);
 		
-		JButton button_1 = new JButton("Modifier");
-		button_1.setForeground(Color.WHITE);
-		button_1.setBackground(new Color(87, 108, 168));
-		GridBagConstraints gbc_button_1 = new GridBagConstraints();
-		gbc_button_1.insets = new Insets(0, 0, 5, 5);
-		gbc_button_1.gridx = 3;
-		gbc_button_1.gridy = 0;
-		panel_2.add(button_1, gbc_button_1);
+		edittxtLinkWebSite = new JButton("Modifier");
+		edittxtLinkWebSite.setForeground(Color.WHITE);
+		edittxtLinkWebSite.setBackground(new Color(87, 108, 168));
+		GridBagConstraints gbc_edittxtLinkWebSite = new GridBagConstraints();
+		gbc_edittxtLinkWebSite.insets = new Insets(0, 0, 5, 5);
+		gbc_edittxtLinkWebSite.gridx = 3;
+		gbc_edittxtLinkWebSite.gridy = 0;
+		panel_2.add(edittxtLinkWebSite, gbc_edittxtLinkWebSite);
 		
-		textField_1 = new JTextField();
-		textField_1.setText("Lien site entreprise");
-		textField_1.setForeground(Color.BLACK);
-		textField_1.setEditable(false);
-		textField_1.setColumns(10);
-		textField_1.setBackground(Color.WHITE);
-		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_1.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_1.gridx = 4;
-		gbc_textField_1.gridy = 0;
-		panel_2.add(textField_1, gbc_textField_1);
+		textFieldLinkWebSite = new JTextField();
+		textFieldLinkWebSite.setEditable(false);
+		textFieldLinkWebSite.setText("Lien site entreprise");
+		textFieldLinkWebSite.setForeground(Color.BLACK);
+		textFieldLinkWebSite.setColumns(10);
+		textFieldLinkWebSite.setBackground(Color.WHITE);
+		GridBagConstraints gbc_textFieldLinkWebSite = new GridBagConstraints();
+		gbc_textFieldLinkWebSite.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textFieldLinkWebSite.insets = new Insets(0, 0, 5, 0);
+		gbc_textFieldLinkWebSite.gridx = 4;
+		gbc_textFieldLinkWebSite.gridy = 0;
+		panel_2.add(textFieldLinkWebSite, gbc_textFieldLinkWebSite);
 		
-		textField_2 = new JTextField();
-		textField_2.setText("T\u00E9l\u00E9phone");
-		textField_2.setForeground(Color.BLACK);
-		textField_2.setEditable(false);
-		textField_2.setColumns(10);
-		textField_2.setBackground(Color.WHITE);
-		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
-		gbc_textField_2.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_2.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_2.gridx = 0;
-		gbc_textField_2.gridy = 2;
-		panel_2.add(textField_2, gbc_textField_2);
+		textFieldPhone = new JTextField();
+		textFieldPhone.setEditable(false);
+		textFieldPhone.setText("T\u00E9l\u00E9phone");
+		textFieldPhone.setForeground(Color.BLACK);
+		textFieldPhone.setColumns(10);
+		textFieldPhone.setBackground(Color.WHITE);
+		GridBagConstraints gbc_textFieldPhone = new GridBagConstraints();
+		gbc_textFieldPhone.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textFieldPhone.insets = new Insets(0, 0, 5, 5);
+		gbc_textFieldPhone.gridx = 0;
+		gbc_textFieldPhone.gridy = 2;
+		panel_2.add(textFieldPhone, gbc_textFieldPhone);
 		
-		JButton button_4 = new JButton("Modifier");
-		button_4.setForeground(Color.WHITE);
-		button_4.setBackground(new Color(87, 108, 168));
-		GridBagConstraints gbc_button_4 = new GridBagConstraints();
-		gbc_button_4.insets = new Insets(0, 0, 5, 5);
-		gbc_button_4.gridx = 1;
-		gbc_button_4.gridy = 2;
-		panel_2.add(button_4, gbc_button_4);
+		editTxtPhone = new JButton("Modifier");
+		editTxtPhone.setForeground(Color.WHITE);
+		editTxtPhone.setBackground(new Color(87, 108, 168));
+		GridBagConstraints gbc_editTxtPhone = new GridBagConstraints();
+		gbc_editTxtPhone.insets = new Insets(0, 0, 5, 5);
+		gbc_editTxtPhone.gridx = 1;
+		gbc_editTxtPhone.gridy = 2;
+		panel_2.add(editTxtPhone, gbc_editTxtPhone);
 		
-		JButton button_6 = new JButton("Modifier");
-		button_6.setForeground(Color.WHITE);
-		button_6.setBackground(new Color(87, 108, 168));
-		GridBagConstraints gbc_button_6 = new GridBagConstraints();
-		gbc_button_6.insets = new Insets(0, 0, 5, 5);
-		gbc_button_6.gridx = 3;
-		gbc_button_6.gridy = 2;
-		panel_2.add(button_6, gbc_button_6);
+		editTxtLinkLinkedin = new JButton("Modifier");
+		editTxtLinkLinkedin.setForeground(Color.WHITE);
+		editTxtLinkLinkedin.setBackground(new Color(87, 108, 168));
+		GridBagConstraints gbc_editTxtLinkLinkedin = new GridBagConstraints();
+		gbc_editTxtLinkLinkedin.insets = new Insets(0, 0, 5, 5);
+		gbc_editTxtLinkLinkedin.gridx = 3;
+		gbc_editTxtLinkLinkedin.gridy = 2;
+		panel_2.add(editTxtLinkLinkedin, gbc_editTxtLinkLinkedin);
 		
-		textField_4 = new JTextField();
-		textField_4.setText("Lien linkedin");
-		textField_4.setForeground(Color.BLACK);
-		textField_4.setEditable(false);
-		textField_4.setColumns(10);
-		textField_4.setBackground(Color.WHITE);
-		GridBagConstraints gbc_textField_4 = new GridBagConstraints();
-		gbc_textField_4.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_4.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_4.gridx = 4;
-		gbc_textField_4.gridy = 2;
-		panel_2.add(textField_4, gbc_textField_4);
+		textFieldLinkLinkedin = new JTextField();
+		textFieldLinkLinkedin.setEditable(false);
+		textFieldLinkLinkedin.setText("Lien linkedin");
+		textFieldLinkLinkedin.setForeground(Color.BLACK);
+		textFieldLinkLinkedin.setColumns(10);
+		textFieldLinkLinkedin.setBackground(Color.WHITE);
+		GridBagConstraints gbc_textFieldLinkLinkedin = new GridBagConstraints();
+		gbc_textFieldLinkLinkedin.insets = new Insets(0, 0, 5, 0);
+		gbc_textFieldLinkLinkedin.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textFieldLinkLinkedin.gridx = 4;
+		gbc_textFieldLinkLinkedin.gridy = 2;
+		panel_2.add(textFieldLinkLinkedin, gbc_textFieldLinkLinkedin);
 		
-		textField_3 = new JTextField();
-		textField_3.setText("Adresse");
-		textField_3.setForeground(Color.BLACK);
-		textField_3.setEditable(false);
-		textField_3.setColumns(10);
-		textField_3.setBackground(Color.WHITE);
-		GridBagConstraints gbc_textField_3 = new GridBagConstraints();
-		gbc_textField_3.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_3.insets = new Insets(0, 0, 0, 5);
-		gbc_textField_3.gridx = 0;
-		gbc_textField_3.gridy = 4;
-		panel_2.add(textField_3, gbc_textField_3);
+		textFieldAddress = new JTextField();
+		textFieldAddress.setEditable(false);
+		textFieldAddress.setText("Adresse");
+		textFieldAddress.setForeground(Color.BLACK);
+		textFieldAddress.setColumns(10);
+		textFieldAddress.setBackground(Color.WHITE);
+		GridBagConstraints gbc_textFieldAddress = new GridBagConstraints();
+		gbc_textFieldAddress.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textFieldAddress.insets = new Insets(0, 0, 0, 5);
+		gbc_textFieldAddress.gridx = 0;
+		gbc_textFieldAddress.gridy = 4;
+		panel_2.add(textFieldAddress, gbc_textFieldAddress);
 		
-		JButton button_5 = new JButton("Modifier");
-		button_5.setForeground(Color.WHITE);
-		button_5.setBackground(new Color(87, 108, 168));
-		GridBagConstraints gbc_button_5 = new GridBagConstraints();
-		gbc_button_5.insets = new Insets(0, 0, 0, 5);
-		gbc_button_5.gridx = 1;
-		gbc_button_5.gridy = 4;
-		panel_2.add(button_5, gbc_button_5);
+		editTxtAddress = new JButton("Modifier");
+		editTxtAddress.setForeground(Color.WHITE);
+		editTxtAddress.setBackground(new Color(87, 108, 168));
+		GridBagConstraints gbc_editTxtAddress = new GridBagConstraints();
+		gbc_editTxtAddress.insets = new Insets(0, 0, 0, 5);
+		gbc_editTxtAddress.gridx = 1;
+		gbc_editTxtAddress.gridy = 4;
+		panel_2.add(editTxtAddress, gbc_editTxtAddress);
 		
-		JTextArea txtrDescription = new JTextArea();
+		editDescription = new JButton("Modifier");
+		GridBagConstraints gbc_editDescription = new GridBagConstraints();
+		gbc_editDescription.anchor = GridBagConstraints.SOUTHEAST;
+		gbc_editDescription.gridwidth = 2;
+		gbc_editDescription.insets = new Insets(0, 0, 5, 5);
+		editDescription.setBackground(new Color(87, 108, 168));
+		gbc_editDescription.gridx = 4;
+		gbc_editDescription.gridy = 1;
+		panel.add(editDescription, gbc_editDescription);
+		
+		txtrDescription = new JTextArea();
+		txtrDescription.setEditable(false);
 		txtrDescription.setBorder(new LineBorder(new Color(51, 102, 153), 1, true));
 		txtrDescription.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		txtrDescription.setText("Description");
 		GridBagConstraints gbc_txtrDescription = new GridBagConstraints();
-		gbc_txtrDescription.gridwidth = 4;
+		gbc_txtrDescription.gridheight = 2;
+		gbc_txtrDescription.gridwidth = 5;
 		gbc_txtrDescription.insets = new Insets(0, 0, 5, 5);
 		gbc_txtrDescription.fill = GridBagConstraints.BOTH;
 		gbc_txtrDescription.gridx = 1;
-		gbc_txtrDescription.gridy = 1;
+		gbc_txtrDescription.gridy = 2;
 		panel.add(txtrDescription, gbc_txtrDescription);
 		
-		JPanel panelBlock = new JPanel();
+		panelBlock = new JPanel();
 		panelBlock.setBorder(new LineBorder(new Color(51, 102, 153), 1, true));
 		GridBagConstraints gbc_panel = new GridBagConstraints();
 		gbc_panel.gridheight = 2;
-		gbc_panel.insets = new Insets(0, 0, 5, 5);
+		gbc_panel.insets = new Insets(0, 0, 0, 5);
 		gbc_panel.fill = GridBagConstraints.BOTH;
 		gbc_panel.gridx = 1;
-		gbc_panel.gridy = 3;
+		gbc_panel.gridy = 5;
 		panel.add(panelBlock, gbc_panel);
 		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[] {311, 0};
+		gbl_panel.columnWidths = new int[] {204, 88, 0};
 		gbl_panel.rowHeights = new int[] {3, 0, 0};
-		gbl_panel.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_panel.columnWeights = new double[]{1.0, 1.0, Double.MIN_VALUE};
 		gbl_panel.rowWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
 		panelBlock.setLayout(gbl_panel);
 		
-		txtListeDeComptences = new JTextField();
-		txtListeDeComptences.setEditable(false);
-		txtListeDeComptences.setBorder(new LineBorder(new Color(51, 102, 153), 1, true));
-		txtListeDeComptences.setText("Liste de comp\u00E9tences");
-		GridBagConstraints gbc_txtListeDeComptences = new GridBagConstraints();
-		gbc_txtListeDeComptences.insets = new Insets(0, 0, 5, 0);
-		gbc_txtListeDeComptences.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtListeDeComptences.gridx = 0;
-		gbc_txtListeDeComptences.gridy = 0;
-		panelBlock.add(txtListeDeComptences, gbc_txtListeDeComptences);
-		txtListeDeComptences.setColumns(10);
+		lblListeDesComptences = new JLabel("Liste des comp\u00E9tences");
+		GridBagConstraints gbc_lblListeDesComptences = new GridBagConstraints();
+		gbc_lblListeDesComptences.anchor = GridBagConstraints.WEST;
+		gbc_lblListeDesComptences.insets = new Insets(0, 0, 5, 5);
+		gbc_lblListeDesComptences.gridx = 0;
+		gbc_lblListeDesComptences.gridy = 0;
+		panelBlock.add(lblListeDesComptences, gbc_lblListeDesComptences);
 		
-		skillList = new JList();
-		skillList.setBorder(new LineBorder(new Color(51, 102, 153), 1, true));
-		skillList.setVisibleRowCount(7);
-		skillList.setModel(new AbstractListModel() {
-			String[] values = new String[] {"Comp\u00E9tence 1", "Comp\u00E9tence 2", "Comp\u00E9tence 3", "Comp\u00E9tence 4", "Comp\u00E9tence 5", "Comp\u00E9tence 6", "Comp\u00E9tence 7", ""};
-			public int getSize() {
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
-		skillList.setToolTipText("");
-		GridBagConstraints gbc_list = new GridBagConstraints();
-		gbc_list.fill = GridBagConstraints.BOTH;
-		gbc_list.gridx = 0;
-		gbc_list.gridy = 1;
-		panelBlock.add(skillList, gbc_list);
+		lblNiveau = new JLabel("Niveau");
+		GridBagConstraints gbc_lblNiveau = new GridBagConstraints();
+		gbc_lblNiveau.anchor = GridBagConstraints.WEST;
+		gbc_lblNiveau.insets = new Insets(0, 0, 5, 0);
+		gbc_lblNiveau.gridx = 1;
+		gbc_lblNiveau.gridy = 0;
+		panelBlock.add(lblNiveau, gbc_lblNiveau);
 		
-		JButton button_3 = new JButton("Modifi\u00E9");
-		GridBagConstraints gbc_button_3 = new GridBagConstraints();
-		gbc_button_3.insets = new Insets(0, 0, 5, 5);
-		gbc_button_3.gridx = 2;
-		gbc_button_3.gridy = 3;
-		panel.add(button_3, gbc_button_3);
+		tableSkill = new JTable();
+		tableSkill.setEnabled(false);
+		GridBagConstraints gbc_tableSkill = new GridBagConstraints();
+		gbc_tableSkill.gridwidth = 2;
+		gbc_tableSkill.fill = GridBagConstraints.BOTH;
+		gbc_tableSkill.gridx = 0;
+		gbc_tableSkill.gridy = 1;
+		panelBlock.add(tableSkill, gbc_tableSkill);
 		
-		JPanel panel_1 = new JPanel();
+		editSkillList = new JButton("Modifier");
+		GridBagConstraints gbc_editSkillList = new GridBagConstraints();
+		gbc_editSkillList.anchor = GridBagConstraints.NORTHWEST;
+		editSkillList.setBackground(new Color(87, 108, 168));
+		gbc_editSkillList.insets = new Insets(0, 0, 5, 5);
+		gbc_editSkillList.gridx = 2;
+		gbc_editSkillList.gridy = 5;
+		panel.add(editSkillList, gbc_editSkillList);
+		
+		panel_1 = new JPanel();
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
+		gbc_panel_1.gridwidth = 3;
+		gbc_panel_1.insets = new Insets(0, 0, 0, 5);
 		gbc_panel_1.gridheight = 2;
-		gbc_panel_1.insets = new Insets(0, 0, 5, 5);
 		gbc_panel_1.fill = GridBagConstraints.BOTH;
 		gbc_panel_1.gridx = 3;
-		gbc_panel_1.gridy = 3;
+		gbc_panel_1.gridy = 5;
 		panel.add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[]{125, 140, 0};
-		gbl_panel_1.rowHeights = new int[]{33, 51, 0, 55, 0};
+		gbl_panel_1.rowHeights = new int[]{33, 36, 19, 55, 0};
 		gbl_panel_1.columnWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
 		gbl_panel_1.rowWeights = new double[]{0.0, 1.0, 0.0, 1.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
-		JLabel lblNewLabel_1 = new JLabel("Dipl\u00F4me en cours");
+		lblNewLabel_1 = new JLabel("Dipl\u00F4me en cours");
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_1.gridx = 0;
 		gbc_lblNewLabel_1.gridy = 0;
 		panel_1.add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
-		JList list_1 = new JList();
-		list_1.setModel(new AbstractListModel() {
-			String[] values = new String[] {"Concepteur logiciel"};
-			public int getSize() {
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
-		GridBagConstraints gbc_list_1 = new GridBagConstraints();
-		gbc_list_1.gridwidth = 2;
-		gbc_list_1.insets = new Insets(0, 0, 5, 0);
-		gbc_list_1.fill = GridBagConstraints.BOTH;
-		gbc_list_1.gridx = 0;
-		gbc_list_1.gridy = 1;
-		panel_1.add(list_1, gbc_list_1);
+		editTxtCertificates = new JButton("Modifier");
+		editTxtCertificates.setForeground(Color.WHITE);
+		editTxtCertificates.setBackground(new Color(87, 108, 168));
+		GridBagConstraints gbc_editTxtCertificates = new GridBagConstraints();
+		gbc_editTxtCertificates.anchor = GridBagConstraints.EAST;
+		gbc_editTxtCertificates.insets = new Insets(0, 0, 5, 0);
+		gbc_editTxtCertificates.gridx = 1;
+		gbc_editTxtCertificates.gridy = 0;
+		panel_1.add(editTxtCertificates, gbc_editTxtCertificates);
 		
-		JLabel lblNewLabel_2 = new JLabel("Dipl\u00F4mes");
+		txtCertificatesInProgress = new JTextField();
+		txtCertificatesInProgress.setEditable(false);
+		txtCertificatesInProgress.setMargin(new Insets(0, 0, 0, 0));
+		GridBagConstraints gbc_txtCertificatesInProgress = new GridBagConstraints();
+		gbc_txtCertificatesInProgress.gridwidth = 2;
+		gbc_txtCertificatesInProgress.insets = new Insets(0, 0, 5, 0);
+		gbc_txtCertificatesInProgress.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtCertificatesInProgress.gridx = 0;
+		gbc_txtCertificatesInProgress.gridy = 1;
+		panel_1.add(txtCertificatesInProgress, gbc_txtCertificatesInProgress);
+		txtCertificatesInProgress.setColumns(10);
+		
+		lblNewLabel_2 = new JLabel("Dipl\u00F4mes");
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_2.gridx = 0;
 		gbc_lblNewLabel_2.gridy = 2;
 		panel_1.add(lblNewLabel_2, gbc_lblNewLabel_2);
 		
-		JList list_2 = new JList();
-		list_2.setModel(new AbstractListModel() {
-			String[] values = new String[] {"BAC", "Licence de glandouille", "BAFA"};
-			public int getSize() {
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
-		GridBagConstraints gbc_list_2 = new GridBagConstraints();
-		gbc_list_2.gridwidth = 2;
-		gbc_list_2.insets = new Insets(0, 0, 0, 5);
-		gbc_list_2.fill = GridBagConstraints.BOTH;
-		gbc_list_2.gridx = 0;
-		gbc_list_2.gridy = 3;
-		panel_1.add(list_2, gbc_list_2);
-		
-		JButton button_2 = new JButton("Modifi\u00E9");
-		GridBagConstraints gbc_button_2 = new GridBagConstraints();
-		gbc_button_2.insets = new Insets(0, 0, 5, 0);
-		gbc_button_2.gridx = 4;
-		gbc_button_2.gridy = 3;
-		panel.add(button_2, gbc_button_2);
+		tableCertificates = new JTable();
+		tableCertificates.setEnabled(false);
+		GridBagConstraints gbc_tableCertificates = new GridBagConstraints();
+		gbc_tableCertificates.gridwidth = 2;
+		gbc_tableCertificates.insets = new Insets(0, 0, 0, 5);
+		gbc_tableCertificates.fill = GridBagConstraints.BOTH;
+		gbc_tableCertificates.gridx = 0;
+		gbc_tableCertificates.gridy = 3;
+		panel_1.add(tableCertificates, gbc_tableCertificates);
+	}
+
+
+	/**
+	 * @return the textFieldName
+	 */
+	public JTextField getTextFieldName() {
+		return textFieldName;
+	}
+
+
+	/**
+	 * @param textFieldName the textFieldName to set
+	 */
+	public void setTextFieldName(JTextField textFieldName) {
+		this.textFieldName = textFieldName;
+	}
+
+
+	/**
+	 * @return the textFieldLinkWebSite
+	 */
+	public JTextField getTextFieldLinkWebSite() {
+		return textFieldLinkWebSite;
+	}
+
+
+	/**
+	 * @param textFieldLinkWebSite the textFieldLinkWebSite to set
+	 */
+	public void setTextFieldLinkWebSite(JTextField textFieldLinkWebSite) {
+		this.textFieldLinkWebSite = textFieldLinkWebSite;
+	}
+
+
+	/**
+	 * @return the textFieldPhone
+	 */
+	public JTextField getTextFieldPhone() {
+		return textFieldPhone;
+	}
+
+
+	/**
+	 * @param textFieldPhone the textFieldPhone to set
+	 */
+	public void setTextFieldPhone(JTextField textFieldPhone) {
+		this.textFieldPhone = textFieldPhone;
+	}
+
+
+	/**
+	 * @return the textFieldAddress
+	 */
+	public JTextField getTextFieldAddress() {
+		return textFieldAddress;
+	}
+
+
+	/**
+	 * @param textFieldAddress the textFieldAddress to set
+	 */
+	public void setTextFieldAddress(JTextField textFieldAddress) {
+		this.textFieldAddress = textFieldAddress;
+	}
+
+
+	/**
+	 * @return the textFieldLinkLinkedin
+	 */
+	public JTextField getTextFieldLinkLinkedin() {
+		return textFieldLinkLinkedin;
+	}
+
+
+	/**
+	 * @param textFieldLinkLinkedin the textFieldLinkLinkedin to set
+	 */
+	public void setTextFieldLinkLinkedin(JTextField textFieldLinkLinkedin) {
+		this.textFieldLinkLinkedin = textFieldLinkLinkedin;
+	}
+
+
+	/**
+	 * @return the editSkillList
+	 */
+	public JButton getEditSkillList() {
+		return editSkillList;
+	}
+
+
+	/**
+	 * @param editSkillList the editSkillList to set
+	 */
+	public void setEditSkillList(JButton editSkillList) {
+		this.editSkillList = editSkillList;
+	}
+
+
+	/**
+	 * @return the editTxtCertificates
+	 */
+	public JButton getEditTxtCertificates() {
+		return editTxtCertificates;
+	}
+
+
+	/**
+	 * @param editTxtCertificates the editTxtCertificates to set
+	 */
+	public void setEditTxtCertificates(JButton editTxtCertificates) {
+		this.editTxtCertificates = editTxtCertificates;
+	}
+
+
+	/**
+	 * @return the txtrDescription
+	 */
+	public JTextArea getTxtrDescription() {
+		return txtrDescription;
+	}
+
+
+	/**
+	 * @param txtrDescription the txtrDescription to set
+	 */
+	public void setTxtrDescription(JTextArea txtrDescription) {
+		this.txtrDescription = txtrDescription;
+	}
+
+
+	/**
+	 * @return the editTxtAddress
+	 */
+	public JButton getEditTxtAddress() {
+		return editTxtAddress;
+	}
+
+
+	/**
+	 * @param editTxtAddress the editTxtAddress to set
+	 */
+	public void setEditTxtAddress(JButton editTxtAddress) {
+		this.editTxtAddress = editTxtAddress;
+	}
+
+
+	/**
+	 * @return the editTxtLinkLinkedin
+	 */
+	public JButton getEditTxtLinkLinkedin() {
+		return editTxtLinkLinkedin;
+	}
+
+
+	/**
+	 * @param editTxtLinkLinkedin the editTxtLinkLinkedin to set
+	 */
+	public void setEditTxtLinkLinkedin(JButton editTxtLinkLinkedin) {
+		this.editTxtLinkLinkedin = editTxtLinkLinkedin;
+	}
+
+
+	/**
+	 * @return the editTxtPhone
+	 */
+	public JButton getEditTxtPhone() {
+		return editTxtPhone;
+	}
+
+
+	/**
+	 * @param editTxtPhone the editTxtPhone to set
+	 */
+	public void setEditTxtPhone(JButton editTxtPhone) {
+		this.editTxtPhone = editTxtPhone;
+	}
+
+
+	/**
+	 * @return the edittxtLinkWebSite
+	 */
+	public JButton getEdittxtLinkWebSite() {
+		return edittxtLinkWebSite;
+	}
+
+
+	/**
+	 * @param edittxtLinkWebSite the edittxtLinkWebSite to set
+	 */
+	public void setEdittxtLinkWebSite(JButton edittxtLinkWebSite) {
+		this.edittxtLinkWebSite = edittxtLinkWebSite;
+	}
+
+
+	/**
+	 * @return the editTxtName
+	 */
+	public JButton getEditTxtName() {
+		return editTxtName;
+	}
+
+
+	/**
+	 * @param editTxtName the editTxtName to set
+	 */
+	public void setEditTxtName(JButton editTxtName) {
+		this.editTxtName = editTxtName;
+	}
+
+
+	/**
+	 * @return the txtCertificatesInProgress
+	 */
+	public JTextField getTxtCertificatesInProgress() {
+		return txtCertificatesInProgress;
+	}
+
+
+	/**
+	 * @param txtCertificatesInProgress the txtCertificatesInProgress to set
+	 */
+	public void setTxtCertificatesInProgress(JTextField txtCertificatesInProgress) {
+		this.txtCertificatesInProgress = txtCertificatesInProgress;
+	}
+
+
+	/**
+	 * @return the tableCertificates
+	 */
+	public JTable getTableCertificates() {
+		return tableCertificates;
+	}
+
+
+	/**
+	 * @param tableCertificates the tableCertificates to set
+	 */
+	public void setTableCertificates(JTable tableCertificates) {
+		this.tableCertificates = tableCertificates;
+	}
+
+
+	/**
+	 * @return the tableSkill
+	 */
+	public JTable getTableSkill() {
+		return tableSkill;
+	}
+
+
+	/**
+	 * @param tableSkill the tableSkill to set
+	 */
+	public void setTableSkill(JTable tableSkill) {
+		this.tableSkill = tableSkill;
+	}
+
+
+	/**
+	 * @return the editDescription
+	 */
+	public JButton getEditDescription() {
+		return editDescription;
+	}
+
+
+	/**
+	 * @param editDescription the editDescription to set
+	 */
+	public void setEditDescription(JButton editDescription) {
+		this.editDescription = editDescription;
 	}
 
 }

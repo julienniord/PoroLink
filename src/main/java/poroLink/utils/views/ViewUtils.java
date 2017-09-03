@@ -104,16 +104,38 @@ public class ViewUtils {
 
 	}
 	
+	public static void showTable (BaseView view, JTable jTable, ArrayList arrayList) {
+		
+		DefaultTableModel model = new DefaultTableModel(); 	
+		model.addColumn(" ");
+		for (int i = 0 ; i <= arrayList.size() - 1; i++) {
+			model.addRow(new Object[]{arrayList.get(i)});
+			
+			}
+		jTable.setModel(model);
+
+	}
+	
+	
 	public static void editTable (BaseView view, JButton jButton, JTable jTable) {
 		
 		jButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//jList1 = new JList(model);
-				
+				// TODO Auto-generated method stub
+				if (jTable.isEnabled() == true) {
+
+					jButton.setText("Modifier");
+					jTable.setEnabled(false);
+				} else {
+					jButton.setText("Valider");
+					jTable.setEnabled(true);
+				}
+				view.getContentPane().repaint();
 
 			}
 		});
+
 
 		
 	}
