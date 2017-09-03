@@ -74,6 +74,7 @@ public class ProfileCompanyController extends BaseController{
 		poste1.setPresentation("Bla bla bla, bla bla bla, bli bla bli" + "/n" + "bla bli bla blo bla bli");
 		poste1.setSkills(skills1);
 		poste2.setPresentation("Je désire trouver une jeune femme blonde a forte poitrine pour le travail");
+		poste2.setSkills(skills2);
 		ArrayList<Post> post = new ArrayList<Post>();
 		post.add(poste1);
 		post.add(poste2);
@@ -88,15 +89,16 @@ public class ProfileCompanyController extends BaseController{
 		
 		Company company1 = new Company("Ma comp");
 		company1.setPosts(post);
-		ViewUtils.Edit(view, view.getEditAddress(), view.getTxtAddress());
-		ViewUtils.Edit(view, view.getEditName(), view.getTxtNomEntreprise());
-		ViewUtils.Edit(view, view.getEditLinkWebSite(), view.getTxtLienSiteEntreprise());
-		ViewUtils.Edit(view, view.getEditPhone(), view.getTxtTlphone());
-		ViewUtils.Edit(view, view.getEditDescription(), view.getTxtrDescription());
-		ViewUtils.Edit(view, view.getEditLinkedinLink(), view.getTxtLienLinkedin());
-		ViewUtils.Edit(view, view.getEditPost(), view.getTxtRecruteurCoordonnee());
-		ViewUtils.Edit(view, view.getEditPost(), view.getTxtDescriptionPost());
-		ViewUtils.ShowPost(view, view.getComboBox(), view.getTxtDescriptionPost(), view.getTxtRecruteurCoordonnee() );
+		ViewUtils.editText(view, view.getEditAddress(), view.getTxtAddress());
+		ViewUtils.editText(view, view.getEditName(), view.getTxtNomEntreprise());
+		ViewUtils.editText(view, view.getEditLinkWebSite(), view.getTxtLienSiteEntreprise());
+		ViewUtils.editText(view, view.getEditPhone(), view.getTxtTlphone());
+		ViewUtils.editText(view, view.getEditDescription(), view.getTxtrDescription());
+		ViewUtils.editText(view, view.getEditLinkedinLink(), view.getTxtLienLinkedin());
+		ViewUtils.editText(view, view.getEditPost(), view.getTxtRecruteurCoordonnee());
+		ViewUtils.editText(view, view.getEditPost(), view.getTxtDescriptionPost());
+		ViewUtils.showPost(view, view.getComboBox(), view.getTxtDescriptionPost(), view.getTxtRecruteurCoordonnee(), view.getTable());
+		ViewUtils.editTable(view, view.getEditSkillList(), view.getTable());
 		view.getComboBox().setRenderer(new DefaultListCellRenderer() {
 			public Component getListCellRendererComponent(JList<?> list, Object value,
 					int index, boolean isSelected, boolean cellHasFocus) {

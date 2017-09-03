@@ -6,15 +6,24 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Scanner;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.text.JTextComponent;
 import javax.swing.text.View;
+
+import com.mysql.fabric.xmlrpc.base.Array;
 
 import poroLink.entities.Post;
 import poroLink.views.BaseView;
@@ -51,7 +60,7 @@ public class ViewUtils {
 		jFrame.setBounds(screenMiddleWidth, screenMiddleHeight, frameWidth, frameHeight);
 	}
 	
-	public static void Edit(BaseView view, JButton JButton, JTextComponent JTextComponent) {
+	public static void editText(BaseView view, JButton JButton, JTextComponent JTextComponent) {
 
 		JButton.addActionListener(new ActionListener() {
 			@Override
@@ -72,20 +81,63 @@ public class ViewUtils {
 
 	}
 
-	public static void ShowPost(BaseView view, JComboBox JComboBox, JTextArea JTextArea, JTextArea JTextArea2) {
+	public static void showPost(BaseView view, JComboBox jComboBox, JTextArea jTextArea, JTextArea jTextArea2, JTable jTable) {
 
-		JComboBox.addActionListener(new ActionListener() {
+		jComboBox.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) { 
+				Post post = (Post) jComboBox.getSelectedItem();
+				jTextArea.setText(post.getPresentation());
+				jTextArea2.setText(post.getFirstname_agent() + post.getLastname_agent() + "\n" + post.getMail_agent());
+				view.getContentPane().repaint();
+				DefaultTableModel model = new DefaultTableModel(); 	
+				model.addColumn("Compétences");
+				model.addColumn("Niveau");
+				for (int i = 0 ; i <= post.getSkills().size() - 1; i++) {
+					model.addRow(new Object[]{post.getSkills().get(i).getSkill_name(), post.getSkills().get(i).getNeeds()});
+					
+					}
+				jTable.setModel(model);
+
+			}
+		});
+
+	}
+	
+	public static void showTable (BaseView view, JTable jTable, ArrayList arrayList) {
+		
+		DefaultTableModel model = new DefaultTableModel(); 	
+		model.addColumn(" ");
+		for (int i = 0 ; i <= arrayList.size() - 1; i++) {
+			model.addRow(new Object[]{arrayList.get(i)});
+			
+			}
+		jTable.setModel(model);
+
+	}
+	
+	
+	public static void editTable (BaseView view, JButton jButton, JTable jTable) {
+		
+		jButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if (jTable.isEnabled() == true) {
 
-				Post post = (Post) JComboBox.getSelectedItem();
-				JTextArea.setText(post.getPresentation());
-				JTextArea2.setText(post.getFirstname_agent() + post.getLastname_agent() + "\n" + post.getMail_agent());
+					jButton.setText("Modifier");
+					jTable.setEnabled(false);
+				} else {
+					jButton.setText("Valider");
+					jTable.setEnabled(true);
+				}
 				view.getContentPane().repaint();
 
 			}
 		});
 
+
+		
 	}
 	
 }

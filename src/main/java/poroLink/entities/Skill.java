@@ -91,3 +91,4 @@ public class Skill extends BaseEntity{
 
 
 }
+

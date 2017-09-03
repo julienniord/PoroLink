@@ -45,13 +45,13 @@ public class Company extends AppUser {
 		this.company_name = company_name;
 	}
 	/**
-	 * @return the adress
+	 * @return the address
 	 */
 	public String getAddress() {
 		return address;
 	}
 	/**
-	 * @param adress the adress to set
+	 * @param adress the address to set
 	 */
 	public void setAddress(String adress) {
 		this.address = adress;
