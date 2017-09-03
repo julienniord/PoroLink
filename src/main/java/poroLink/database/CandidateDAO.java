@@ -74,7 +74,8 @@ public class CandidateDAO extends BaseDAO {
 		result += "'" + candidate.getPresentation() + "',";
 		result += "'" + candidate.getLinks() + "',";
 		result += "'" + candidate.getCertificates() + "',";
-		result += "'" + candidate.getCertificate_in_progress() + "'";
+		result += "'" + candidate.getCertificate_in_progress() + "',";
+		result += "'" + candidate.getId() + "'";
 		
 
 		return result;
@@ -90,6 +91,7 @@ public class CandidateDAO extends BaseDAO {
 		result += PHONE + " = '" + candidate.getPhone() + "',";
 		result += BIRTHDATE + " = '" + candidate.getBirthdate() + "',";
 		result += TRANSPORT + " = '" + candidate.getTransport() + "',";
+		result += PRESENTATION + " = '" + candidate.getPresentation() + "',";
 		result += LINKS + " = '" + candidate.getLinks() + "',";
 		result += CERTIFICATES + " = '" + candidate.getCertificates() + "',";
 		result += CERTIFICATES_IN_PROGRESS + " = '" + candidate.getCertificate_in_progress() + "'";

@@ -9,6 +9,8 @@ import java.util.regex.Pattern;
 import javax.swing.JFrame;
 
 import poroLink.database.AppUserDAO;
+import poroLink.database.CandidateDAO;
+import poroLink.database.CompanyDAO;
 import poroLink.entities.AppUser;
 import poroLink.entities.Candidate;
 import poroLink.entities.Company;
@@ -65,8 +67,12 @@ public class RegistrationController extends BaseController{
 										Calendar currenttime = Calendar.getInstance();
 										AppUser user = new AppUser(view.getMailText().getText(),new String((view.getPwdText()).getPassword()),new Date((currenttime.getTime()).getTime()),new Date((currenttime.getTime()).getTime()),Role.COMPANY);
 										Company company = new Company();
-										AppUserDAO dao = new AppUserDAO();
-										dao.insert(user);ViewsManager.getInstance().next(new ProfileCompanyController(frame));
+										AppUserDAO daoUser = new AppUserDAO();
+										CompanyDAO daoCompany = new CompanyDAO();
+										daoUser.insert(user);
+										company.setId(user.getId());
+										daoCompany.insert(company);
+										ViewsManager.getInstance().next(new ProfileCompanyController(frame));
 									}else {
 										view.getFailLabel().setText("Le siret renseigné n'est pas valide !");
 										view.getFailLabel().setVisible(true);
@@ -83,7 +89,10 @@ public class RegistrationController extends BaseController{
 										AppUser user = new AppUser(view.getMailText().getText(),new String((view.getPwdText()).getPassword()),new Date((currenttime.getTime()).getTime()),new Date((currenttime.getTime()).getTime()),Role.CANDIDATE);
 										Candidate candidate = new Candidate();
 										AppUserDAO dao = new AppUserDAO();
+										CandidateDAO daoCandidate = new CandidateDAO();
 										dao.insert(user);
+										candidate.setId(user.getId());
+										daoCandidate.insert(candidate);
 										ViewsManager.getInstance().next(new ProfileCandidateController(frame));
 									}else {
 										view.getFailLabel().setText("Vous devez sélectionner un rôle !");
