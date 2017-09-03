@@ -1,5 +1,5 @@
 /**
- * 
+ * coucou
  */
 package poroLink.database;
 
@@ -161,7 +161,6 @@ public abstract class BaseDAO implements IDAOBase{
 	 */
 	@Override
 	public int update(BaseEntity item) {
-		
 		return executeRequestUpdate("UPDATE " + table + " SET " + parseUpdate(item) + " WHERE " + id + " = " + item.getId());
 		
 	}

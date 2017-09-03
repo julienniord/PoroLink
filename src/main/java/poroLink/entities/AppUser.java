@@ -20,6 +20,20 @@ public /**abstract*/ class AppUser extends BaseEntity {
     	
     }
     
+    
+    
+
+	public AppUser(String mail, String password, Date created_at, Date updated_at, int role_appuser) {
+		super();
+		this.mail = mail;
+		this.password = password;
+		this.created_at = created_at;
+		this.updated_at = updated_at;
+		this.role_appuser = role_appuser;
+	}
+
+
+
 
 	/**
 	 * @return the mail

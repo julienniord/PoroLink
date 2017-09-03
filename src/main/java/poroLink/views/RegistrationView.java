@@ -161,39 +161,41 @@ public class RegistrationView  extends BaseView{
 		super.contentPane = panel;
 		
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{30};
-		gbl_contentPane.rowHeights = new int[]{30};
+		gbl_contentPane.rowWeights = new double[]{1.0, 1.0, 1.0};
+		gbl_contentPane.columnWeights = new double[]{1.0, 1.0, 1.0};
+		gbl_contentPane.columnWidths = new int[]{0, 30, 0};
+		gbl_contentPane.rowHeights = new int[]{0, 30, 0};
 		panel.setLayout(gbl_contentPane);
 		
 		panelBlock = new JPanel();
 		panelBlock.setOpaque(false);
 		GridBagConstraints gbc_panelBlock = new GridBagConstraints();
+		gbc_panelBlock.insets = new Insets(0, 0, 5, 5);
 		gbc_panelBlock.fill = GridBagConstraints.BOTH;
-		gbc_panelBlock.gridx = 0;
-		gbc_panelBlock.gridy = 0;
+		gbc_panelBlock.gridx = 1;
+		gbc_panelBlock.gridy = 1;
 		panel.add(panelBlock, gbc_panelBlock);
 		GridBagLayout gbl_panelBlock = new GridBagLayout();
-		gbl_panelBlock.columnWidths = new int[]{30, 30, 65, 0};
+		gbl_panelBlock.columnWidths = new int[]{0, 30, 0, 0};
 		gbl_panelBlock.rowHeights = new int[]{30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30};
-		gbl_panelBlock.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_panelBlock.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+		gbl_panelBlock.columnWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_panelBlock.rowWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
 		panelBlock.setLayout(gbl_panelBlock);
 		
 		registrationPanel = new JPanel();
 		GridBagConstraints gbc_registrationPanel = new GridBagConstraints();
 		gbc_registrationPanel.fill = GridBagConstraints.BOTH;
 		gbc_registrationPanel.gridheight = 9;
-		gbc_registrationPanel.gridwidth = 3;
-		gbc_registrationPanel.insets = new Insets(0, 0, 5, 0);
-		gbc_registrationPanel.gridx = 0;
+		gbc_registrationPanel.insets = new Insets(0, 0, 5, 5);
+		gbc_registrationPanel.gridx = 1;
 		gbc_registrationPanel.gridy = 0;
 		panelBlock.add(registrationPanel, gbc_registrationPanel);
 		registrationPanel.setBackground(new java.awt.Color(245, 243, 245, 150));
 		GridBagLayout gbl_registrationPanel = new GridBagLayout();
 		gbl_registrationPanel.columnWidths = new int[]{0, 213, 160, 30};
 		gbl_registrationPanel.rowHeights = new int[]{30, 30, 30, 30, 30, 30, 30, 30, 30};
-		gbl_registrationPanel.columnWeights = new double[]{0.0, 1.0, 1.0, 0.0};
-		gbl_registrationPanel.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+		gbl_registrationPanel.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0};
+		gbl_registrationPanel.rowWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0};
 		registrationPanel.setLayout(gbl_registrationPanel);
 		
 		failAlert = new JTextArea();
@@ -310,8 +312,8 @@ public class RegistrationView  extends BaseView{
 		
 		btnRegistration = new JButton();
 		GridBagConstraints gbc_btnRegistration = new GridBagConstraints();
-		gbc_btnRegistration.gridwidth = 3;
-		gbc_btnRegistration.gridx = 0;
+		gbc_btnRegistration.insets = new Insets(0, 0, 0, 5);
+		gbc_btnRegistration.gridx = 1;
 		gbc_btnRegistration.gridy = 10;
 		panelBlock.add(btnRegistration, gbc_btnRegistration);
 		btnRegistration.setIcon(new ImageIcon("Pictures/registrationButton.png"));

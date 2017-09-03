@@ -5,8 +5,6 @@ package poroLink.database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
-
 import poroLink.entities.Skill;
 import poroLink.entities.base.BaseEntity;
 
@@ -27,7 +25,6 @@ public class SkillDAO extends BaseDAO{
 		super(TABLE, ID);
 		// TODO Auto-generated constructor stub
 	}
-
 	
 	/* (non-Javadoc)
 	 * @see poroLink.database.IDAOBase#parse(java.sql.ResultSet)
