@@ -38,21 +38,21 @@ public class ConnectionController extends BaseController {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				AppUserDAO dao = new AppUserDAO();
-				ResultSet rs = dao.executeRequest("SELECT * FROM AppUser WHERE mail = '" + view.getMailText().getText() + "'");
-				
-				if (rs != null) {
-					if (view.getMailText().getText()==rs.getString(MAIL) && new String((view.getPwd()).getPassword()).equals(rs.getString(PASSWORD))){
+//				AppUserDAO dao = new AppUserDAO();
+//				ResultSet rs = dao.executeRequest("SELECT * FROM AppUser WHERE mail = '" + view.getMailText().getText() + "'");
+//				
+//				if (rs != null) {
+//					if (view.getMailText().getText()==rs.getString(MAIL) && new String((view.getPwd()).getPassword()).equals(rs.getString(PASSWORD))){
 						ViewsManager.getInstance().next(new HomeController(frame));
-					}else {
-						view.getFailLabel().setText("Informations incorrectes !");
-						view.getFailLabel().setVisible(true);
-					}
-				}else {
-					view.getFailLabel().setText("Cet utilisateur n'existe pas !");
-					view.getFailLabel().setVisible(true);
-				}
-				
+//					}else {
+//						view.getFailLabel().setText("Informations incorrectes !");
+//						view.getFailLabel().setVisible(true);
+//					}
+//				}else {
+//					view.getFailLabel().setText("Cet utilisateur n'existe pas !");
+//					view.getFailLabel().setVisible(true);
+//				}
+//				
 			}
 			
 			

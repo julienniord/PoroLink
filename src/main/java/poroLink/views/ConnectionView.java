@@ -4,8 +4,6 @@ package poroLink.views;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import poroLink.utils.views.ViewUtils;
-
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
@@ -39,6 +37,8 @@ public class ConnectionView  extends BaseView {
 	private JLabel failLabel;
 	private JPanel panelBlock;
 	private JPanel panelBlok;
+	private JLabel lblBienvenueSur;
+	private JLabel logoBienvenue;
 	
 
 
@@ -188,24 +188,41 @@ public class ConnectionView  extends BaseView {
 		panel.add(panelBlok, gbc_panel);
 		GridBagLayout gbl_panelBlok = new GridBagLayout();
 		gbl_panelBlok.columnWidths = new int[]{0, 13, 0, 0};
-		gbl_panelBlok.rowHeights = new int[]{0, 30, 61, 0};
+		gbl_panelBlok.rowHeights = new int[]{0, 0, 30, 61, 0};
 		gbl_panelBlok.columnWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
-		gbl_panelBlok.rowWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_panelBlok.rowWeights = new double[]{0.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
 		panelBlok.setLayout(gbl_panelBlok);
+		
+		lblBienvenueSur = new JLabel("Bienvenue sur");
+		lblBienvenueSur.setFont(new Font("Arial", Font.PLAIN, 30));
+		lblBienvenueSur.setForeground(new java.awt.Color(245,243,245));
+		GridBagConstraints gbc_lblBienvenueSur = new GridBagConstraints();
+		gbc_lblBienvenueSur.insets = new Insets(0, 0, 5, 5);
+		gbc_lblBienvenueSur.gridx = 1;
+		gbc_lblBienvenueSur.gridy = 0;
+		panelBlok.add(lblBienvenueSur, gbc_lblBienvenueSur);
+		
+		logoBienvenue = new JLabel("");
+		logoBienvenue.setIcon(new ImageIcon("Pictures/logoBienvenue.png"));
+		GridBagConstraints gbc_logoBienvenue = new GridBagConstraints();
+		gbc_logoBienvenue.insets = new Insets(0, 0, 5, 5);
+		gbc_logoBienvenue.gridx = 1;
+		gbc_logoBienvenue.gridy = 1;
+		panelBlok.add(logoBienvenue, gbc_logoBienvenue);
 		
 		JPanel connectionPanel = new JPanel();
 		GridBagConstraints gbc_connectionPanel = new GridBagConstraints();
 		gbc_connectionPanel.fill = GridBagConstraints.BOTH;
 		gbc_connectionPanel.insets = new Insets(0, 0, 5, 5);
 		gbc_connectionPanel.gridx = 1;
-		gbc_connectionPanel.gridy = 1;
+		gbc_connectionPanel.gridy = 2;
 		panelBlok.add(connectionPanel, gbc_connectionPanel);
 		connectionPanel.setBackground(new java.awt.Color(245, 243, 245, 150));
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
-		gbl_panel_2.columnWidths = new int[]{30, 55, 30, 30};
-		gbl_panel_2.rowHeights = new int[]{30, 30, 30, 30, 30, 30, 30, 0, 30, 30};
+		gbl_panel_2.columnWidths = new int[]{30, 55, 132, 30};
+		gbl_panel_2.rowHeights = new int[]{30, 30, 30, 30, 30, 30, 30, 0, 30};
 		gbl_panel_2.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0};
-		gbl_panel_2.rowWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_2.rowWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
 		connectionPanel.setLayout(gbl_panel_2);
 		
 		failLabel = new JLabel("Informations non valides !");
@@ -213,10 +230,9 @@ public class ConnectionView  extends BaseView {
 		failLabel.setForeground(Color.RED);
 		failLabel.setVisible(false);
 		GridBagConstraints gbc_FailLabel = new GridBagConstraints();
-		gbc_FailLabel.gridheight = 2;
 		gbc_FailLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_FailLabel.gridx = 1;
-		gbc_FailLabel.gridy = 0;
+		gbc_FailLabel.gridy = 1;
 		gbc_FailLabel.gridwidth = 2;
 		connectionPanel.add(failLabel, gbc_FailLabel);
 		
@@ -285,7 +301,7 @@ public class ConnectionView  extends BaseView {
 		GridBagConstraints gbc_btnRegistration = new GridBagConstraints();
 		gbc_btnRegistration.insets = new Insets(0, 0, 0, 5);
 		gbc_btnRegistration.gridx = 1;
-		gbc_btnRegistration.gridy = 2;
+		gbc_btnRegistration.gridy = 3;
 		panelBlok.add(btnRegistration, gbc_btnRegistration);
 		btnRegistration.setIcon(new ImageIcon("Pictures/registrationButton.png"));
 		btnRegistration.setBorder(null);
