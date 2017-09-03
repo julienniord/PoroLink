@@ -10,7 +10,7 @@ public /**abstract*/ class AppUser extends BaseEntity {
     private String password;
     private Date created_at;
     private Date updated_at;
-    protected int role_appuser;
+    protected Role role_appuser;
 	
 	
     /**
@@ -20,6 +20,20 @@ public /**abstract*/ class AppUser extends BaseEntity {
     	
     }
     
+    
+    
+
+	public AppUser(String mail, String password, Date created_at, Date updated_at, Role role_appuser) {
+		super();
+		this.mail = mail;
+		this.password = password;
+		this.created_at = created_at;
+		this.updated_at = updated_at;
+		this.role_appuser = role_appuser;
+	}
+
+
+
 
 	/**
 	 * @return the mail
@@ -31,7 +45,7 @@ public /**abstract*/ class AppUser extends BaseEntity {
 	/**
 	 * @param mail the mail to set
 	 */
-	public void set(String mail) {
+	public void setMail(String mail) {
 		this.mail = mail;
 	}
 
@@ -80,14 +94,14 @@ public /**abstract*/ class AppUser extends BaseEntity {
 	/**
 	 * @return the role_appuser
 	 */
-	public int getRole_appuser() {
+	public Role getRole_appuser() {
 		return role_appuser;
 	}
 
 	/**
 	 * @param role_appuser the role_appuser to set
 	 */
-	public void setRole_appuser(int role_appuser) {
+	public void setRole_appuser(Role role_appuser) {
 		this.role_appuser = role_appuser;
 	}
 

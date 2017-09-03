@@ -18,19 +18,20 @@ import javax.swing.JComboBox;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class MatchingView extends BaseView {
 	private JPanel contentPane;
 	private JComboBox comboBoxPosts;
-	private JLabel lblHello;
+	private JLabel lblRecherche;
 	private JTextField textField;
-	private JButton btnValide;
+	private JButton btnMatch;
 	
 	/**
 	 * @return the btnValide
 	 */
 	public JButton getBtnValide() {
-		return btnValide;
+		return btnMatch;
 	}
 
 
@@ -38,7 +39,7 @@ public class MatchingView extends BaseView {
 	 * @param btnValide the btnValide to set
 	 */
 	public void setBtnValide(JButton btnValide) {
-		this.btnValide = btnValide;
+		this.btnMatch = btnValide;
 	}
 
 
@@ -94,7 +95,7 @@ public class MatchingView extends BaseView {
 	 * @return the lblHello
 	 */
 	public JLabel getLblHello() {
-		return lblHello;
+		return lblRecherche;
 	}
 
 
@@ -102,7 +103,7 @@ public class MatchingView extends BaseView {
 	 * @param lblHello the lblHello to set
 	 */
 	public void setLblHello(JLabel lblHello) {
-		this.lblHello = lblHello;
+		this.lblRecherche = lblHello;
 	}
 	
 	public MatchingView(JFrame frame)  {
@@ -112,46 +113,52 @@ public class MatchingView extends BaseView {
 
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 1.0, 0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0};
+		gridBagLayout.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{1.0, 1.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
 		getContentPane().setLayout(gridBagLayout);
 		
 		textField = new JTextField();
+		textField.setFont(new Font("Arial", Font.PLAIN, 18));
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.gridx = 4;
+		gbc_textField.gridx = 2;
 		gbc_textField.gridy = 1;
 		contentPane.add(textField, gbc_textField);
 		textField.setColumns(10);
 		textField.setText("dsd");
 		
-		lblHello = new JLabel();
-		GridBagConstraints gbc_lblHello = new GridBagConstraints();
-		gbc_lblHello.anchor = GridBagConstraints.EAST;
-		gbc_lblHello.insets = new Insets(0, 0, 5, 5);
-		gbc_lblHello.gridx = 3;
-		gbc_lblHello.gridy = 2;
-		contentPane.add(lblHello, gbc_lblHello);
-		lblHello.setText("eee");
+		lblRecherche = new JLabel();
+		lblRecherche.setFont(new Font("Arial", Font.PLAIN, 18));
+		lblRecherche.setText("Recherche pour le poste :");
+		lblRecherche.setForeground(new java.awt.Color(245,243,245));
+		GridBagConstraints gbc_lblRecherche = new GridBagConstraints();
+		gbc_lblRecherche.anchor = GridBagConstraints.EAST;
+		gbc_lblRecherche.insets = new Insets(0, 0, 5, 5);
+		gbc_lblRecherche.gridx = 1;
+		gbc_lblRecherche.gridy = 2;
+		contentPane.add(lblRecherche, gbc_lblRecherche);
 		
 		comboBoxPosts = new JComboBox();
+		comboBoxPosts.setFont(new Font("Arial", Font.PLAIN, 18));
 		GridBagConstraints gbc_comboBoxPosts = new GridBagConstraints();
 		gbc_comboBoxPosts.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxPosts.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxPosts.gridx = 4;
+		gbc_comboBoxPosts.gridx = 2;
 		gbc_comboBoxPosts.gridy = 2;
 		contentPane.add(comboBoxPosts, gbc_comboBoxPosts);
 		
-		btnValide = new JButton("Rechercher Les candidats");
-
-		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
-		gbc_btnNewButton.gridx = 5;
-		gbc_btnNewButton.gridy = 2;
-		contentPane.add(btnValide, gbc_btnNewButton);
+		btnMatch = new JButton("Match !");
+		btnMatch.setFont(new Font("Arial", Font.PLAIN, 18));
+		
+				GridBagConstraints gbc_btnMatch = new GridBagConstraints();
+				gbc_btnMatch.gridwidth = 3;
+				gbc_btnMatch.insets = new Insets(0, 0, 5, 5);
+				gbc_btnMatch.gridx = 1;
+				gbc_btnMatch.gridy = 3;
+				contentPane.add(btnMatch, gbc_btnMatch);
 		
 	}
 }

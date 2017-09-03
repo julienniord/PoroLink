@@ -14,9 +14,10 @@ import javax.swing.JButton;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 public class HomeView extends BaseView {
-	private JTextField textField;
 	private JButton btnValidate;
 	/**
 	 * @return the btnValidate
@@ -42,20 +43,6 @@ public class HomeView extends BaseView {
 	}
 
 	/**
-	 * @return the textField
-	 */
-	public JTextField getTextField() {
-		return textField;
-	}
-
-	/**
-	 * @param textField the textField to set
-	 */
-	public void setTextField(JTextField textField) {
-		this.textField = textField;
-	}
-
-	/**
 	 * @param menuBar the menuBar to set
 	 */
 	public void setMenuBar(MenuBar menuBar) {
@@ -71,10 +58,10 @@ public class HomeView extends BaseView {
 		super.contentPane = panel;
 
 		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_panel.columnWidths = new int[]{0, 0, 0, 0};
 		gbl_panel.rowHeights = new int[]{0, 0, 0, 0, 0, 0};
-		gbl_panel.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel.columnWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{0.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 
 		menuBar = new MenuBar();
@@ -85,20 +72,21 @@ public class HomeView extends BaseView {
 		gbc_menuBar.gridwidth = 10;
 		panel.add(menuBar.getContentPane(), gbc_menuBar);
 		
-		btnValidate = new JButton("RECHERCE");
+		btnValidate = new JButton("Recherche de candidats");
+		
+		
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon("Pictures/logoBienvenue.png"));
+		GridBagConstraints gbc_label = new GridBagConstraints();
+		gbc_label.insets = new Insets(0, 0, 5, 5);
+		gbc_label.gridx = 1;
+		gbc_label.gridy = 2;
+		panel.add(label, gbc_label);
 		
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-		gbc_btnNewButton.insets = new Insets(0, 0, 0, 5);
-		gbc_btnNewButton.gridx = 0;
-		gbc_btnNewButton.gridy = 4;
+		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
+		gbc_btnNewButton.gridx = 1;
+		gbc_btnNewButton.gridy = 3;
 		panel.add(btnValidate, gbc_btnNewButton);
-
-		textField = new JTextField();
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.gridx = 6;
-		gbc_textField.gridy = 4;
-		panel.add(textField, gbc_textField);
-		textField.setColumns(10);
 	}
 }

@@ -1,6 +1,5 @@
 package poroLink.entities;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import poroLink.entities.base.BaseEntity;
@@ -30,6 +29,13 @@ public class Post extends BaseEntity{
     /**
 	 * @return the post_id
 	 */
+
+
+
+
+	public Post() {
+		// TODO Auto-generated constructor stub
+	}
 
 
 
