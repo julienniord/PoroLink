@@ -19,6 +19,10 @@ import javax.swing.ImageIcon;
 
 public class HomeView extends BaseView {
 	private JButton btnValidate;
+	private MenuBar menuBar;
+	
+	
+	
 	/**
 	 * @return the btnValidate
 	 */
@@ -33,7 +37,6 @@ public class HomeView extends BaseView {
 		this.btnValidate = btnValidate;
 	}
 
-	private MenuBar menuBar;
 
 	/**
 	 * @return the menuBar
@@ -53,7 +56,7 @@ public class HomeView extends BaseView {
 	 * Create the frame.
 	 */
 	public HomeView(JFrame frame) {
-		super.pageName = "Home";
+		super.pageName = "Accueil";
 		JPanel panel = new JPanel();
 		super.contentPane = panel;
 

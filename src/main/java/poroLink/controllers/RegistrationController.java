@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import poroLink.entities.AppUser;
 import poroLink.entities.Candidate;
 import poroLink.entities.Company;
+import poroLink.entities.Role;
 import poroLink.managers.ViewsManager;
 //import poroLink.database.AppUserDAO;
 import poroLink.views.RegistrationView;
@@ -61,7 +62,7 @@ public class RegistrationController extends BaseController{
 								if(view.getSiretText().getText().isEmpty() == false){
 									if(view.getSiretText().getText().length()==14){
 										Calendar currenttime = Calendar.getInstance();
-										AppUser user = new AppUser(view.getMailText().getText(),new String((view.getPwdText()).getPassword()),new Date((currenttime.getTime()).getTime()),new Date((currenttime.getTime()).getTime()),2);
+										AppUser user = new AppUser(view.getMailText().getText(),new String((view.getPwdText()).getPassword()),new Date((currenttime.getTime()).getTime()),new Date((currenttime.getTime()).getTime()),Role.CANDIDATE);
 										Company company = new Company();
 										//AppUserDAO dao = new AppUserDAO();
 										//dao.insert(user);ViewsManager.getInstance().next(new ProfileCompanyController(frame));
@@ -78,7 +79,7 @@ public class RegistrationController extends BaseController{
 							}else {
 									if(view.getCandidateRadioButton().isSelected()){
 										Calendar currenttime = Calendar.getInstance();
-										AppUser user = new AppUser(view.getMailText().getText(),new String((view.getPwdText()).getPassword()),new Date((currenttime.getTime()).getTime()),new Date((currenttime.getTime()).getTime()),1);
+										AppUser user = new AppUser(view.getMailText().getText(),new String((view.getPwdText()).getPassword()),new Date((currenttime.getTime()).getTime()),new Date((currenttime.getTime()).getTime()),Role.COMPANY);
 										Candidate candidate = new Candidate();
 										//AppUserDAO dao = new AppUserDAO();
 										//dao.insert(user);

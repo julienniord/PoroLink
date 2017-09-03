@@ -29,13 +29,13 @@ public class LoginController extends BaseController {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				user.set(view.getLoginTextField().getText());
+				user.setMail(view.getLoginTextField().getText());
 				user.setPassword(new String(view.getPasswordField()
 						.getPassword()));
 
 				//if (user.getLogin().equals("toto")
 				//		&& user.getPassword().equals("pwd")) {
-					user.set("toto");
+					user.setMail("toto");
 					//user.setLastname("el");
 					ViewsManager.getInstance().next(new MatchingController(frame));
 				//}

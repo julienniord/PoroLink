@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import poroLink.entities.AppUser;
+import poroLink.entities.Role;
 import poroLink.entities.base.BaseEntity;
 
 /**
@@ -39,11 +40,11 @@ public class AppUserDAO extends BaseDAO {
 		
 		try {
 			appUser.setId(rs.getDouble(ID));
-			appUser.set(rs.getString(MAIL));
+			appUser.setMail(rs.getString(MAIL));
 			appUser.setPassword(rs.getString(PASSWORD));
 			appUser.setCreated_at(rs.getDate(CREATED_AT));
 			appUser.setUpdated_at(rs.getDate(UPDATED_AT));
-			appUser.set(rs.getString(ROLE_APPUSER));
+			appUser.setRole_appuser(Role.valueOf(rs.getString(ROLE_APPUSER)));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

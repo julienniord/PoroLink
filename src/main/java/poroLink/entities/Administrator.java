@@ -6,7 +6,7 @@ public class Administrator extends AppUser {
 	
     public Administrator() {
     	super();
-    	this.role_appuser=0;
+    	this.role_appuser=Role.ADMIN;
     }
 
 	/**
