@@ -1,12 +1,11 @@
 package poroLink.entities;
 
-
 import java.util.List;
 
 public class Company extends AppUser {
 
     private String company_name;
-    private String adress;
+    private String address;
     private String description;
     private String links;
     private String siret;
@@ -14,10 +13,25 @@ public class Company extends AppUser {
 	/**
      * Default constructor
      */
-    public Company(int id,String company_name) {
+    public Company(String company_name) {
     	this.role_appuser=2;
     	this.company_name=company_name;
     }
+    
+	public Company(String company_name, String address, String description, String links, String siret,
+			List<Post> posts) {
+		super();
+		this.company_name = company_name;
+		this.address = address;
+		this.description = description;
+		this.links = links;
+		this.siret = siret;
+		this.posts = posts;
+	}
+
+	public Company() {
+		// TODO Auto-generated constructor stub
+	}
 	/**
 	 * @return the company_name
 	 */
@@ -33,14 +47,14 @@ public class Company extends AppUser {
 	/**
 	 * @return the adress
 	 */
-	public String getAdress() {
-		return adress;
+	public String getAddress() {
+		return address;
 	}
 	/**
 	 * @param adress the adress to set
 	 */
-	public void setAdress(String adress) {
-		this.adress = adress;
+	public void setAddress(String adress) {
+		this.address = adress;
 	}
 	/**
 	 * @return the description

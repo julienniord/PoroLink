@@ -16,8 +16,13 @@ public class Candidate extends AppUser {
     private String links;
     private String certificates;
     private String certificate_in_progress;
+    private int purcentcompatibility;
     private List<Skill> skills;
 	
+    public Candidate() {
+
+    }
+    
     /**
      * Default constructor
      */
@@ -182,9 +187,31 @@ public class Candidate extends AppUser {
 		this.skills = skills1;
 	}
 
-    
+	/**
+	 * @return the purcentcompatibility
+	 */
+	public int getPurcentcompatibility() {
+		return purcentcompatibility;
+	}
 
-
-
-
+	/**
+	 * @param purcentcompatibility the purcentcompatibility to set
+	 */
+	public void setPurcentcompatibility(int purcentcompatibility) {
+		this.purcentcompatibility = purcentcompatibility;
+	}
+	
+	
+	    public Candidate FirstCandidate(List<Candidate> candidates) {
+	    	Candidate candidate = candidates.get(0);
+	    	int leporcentage = candidates.get(0).purcentcompatibility;
+	    	for(int i=0;i<candidates.size();i++) {
+				if(candidates.get(i).getPurcentcompatibility()>leporcentage) {
+					candidate = candidates.get(i);
+				}
+	    		//System.out.println(candidatlist.get(i).getPurcentcompatibility());
+			}
+	    	return candidate;
+	        
+	    }
 }

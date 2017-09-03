@@ -5,8 +5,6 @@ package poroLink.database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
-
 import poroLink.entities.Skill;
 import poroLink.entities.base.BaseEntity;
 
@@ -24,26 +22,6 @@ public class SkillDAO extends BaseDAO{
 	public SkillDAO() {
 		super(TABLE, ID);
 		// TODO Auto-generated constructor stub
-	}
-
-
-
-	@Override
-	public void delete(BaseEntity item) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public BaseEntity get(double id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<BaseEntity> get() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	
 	/* (non-Javadoc)

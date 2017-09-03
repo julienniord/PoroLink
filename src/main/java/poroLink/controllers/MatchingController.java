@@ -6,19 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JFrame;
-import javax.swing.event.ListSelectionEvent;
-
-
 import poroLink.views.customrenders.ListCellPostRender;
-import poroLink.views.customrenders.ListCellUserRender;
-import poroLink.entities.AppUser;
-import poroLink.entities.Candidate;
-import poroLink.entities.Company;
-import poroLink.entities.Skill;
+import poroLink.entities.*;
 import poroLink.entities.Post;
 import poroLink.managers.ViewsManager;
-import poroLink.views.HomeView;
-import poroLink.views.LoginView;
 import poroLink.views.MatchingView;
 
 public class MatchingController extends BaseController {
@@ -49,8 +40,6 @@ public class MatchingController extends BaseController {
 	@Override
 	public void initEvent() {
 		MatchingView view = (MatchingView) super.view;
-
-		
 		view.getBtnValide().addActionListener(new ActionListener() {
 			/*
 			
@@ -59,26 +48,15 @@ public class MatchingController extends BaseController {
 					ViewsManager.getInstance().next(new MatchingResultController(frame));
 			}
 			*/
-			
-			
 			public void actionPerformed(ActionEvent e) {
 				
 					post = ((Post)
-					((MatchingView) getView()).getComboBoxPosts().getSelectedItem());
-					((MatchingView) getView()).getLblHello()
-					.setText(
-							post.getPost_name()
-						); 
+					((MatchingView) getView()).getComboBoxPosts().getSelectedItem()); 
 					setupDatas();
-					((MatchingView)getView()).getTextField().setText(((Post) viewDatas.get("currentPost")).getPost_name());
+					
 					ViewsManager.getInstance().next(new MatchingResultController(frame));
 			}
-
-
-			
 		});
-		
-	
 	}
 
 	@Override
@@ -93,18 +71,6 @@ public class MatchingController extends BaseController {
 		}
 		((MatchingView) getView()).getComboBoxPosts().setRenderer(
 				new ListCellPostRender());
-		
-		// affichage dans la zone de texte des datas
-		
-		/*
-		.setText(
-				((User) this.viewDatas
-						.get(ViewsDatasTerms.CURRENT_USER))
-						.getLastname());
-		*/
-		
-		//
-		
 		
 	}
 	
@@ -144,7 +110,7 @@ public class MatchingController extends BaseController {
 
 
 
-		Company comp1 = new Company(3,"la comp1");
+		Company comp1 = new Company("la comp1");
 
 
 		Post j1 = new Post("le podte1");
