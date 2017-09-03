@@ -324,6 +324,7 @@ public class ProfileCandidateView extends BaseView{
 		panel_2.add(editTxtAddress, gbc_editTxtAddress);
 		
 		editDescription = new JButton("Modifier");
+		editDescription.setForeground(Color.WHITE);
 		GridBagConstraints gbc_editDescription = new GridBagConstraints();
 		gbc_editDescription.anchor = GridBagConstraints.SOUTHEAST;
 		gbc_editDescription.gridwidth = 2;
@@ -389,6 +390,7 @@ public class ProfileCandidateView extends BaseView{
 		panelBlock.add(tableSkill, gbc_tableSkill);
 		
 		editSkillList = new JButton("Modifier");
+		editSkillList.setForeground(Color.WHITE);
 		GridBagConstraints gbc_editSkillList = new GridBagConstraints();
 		gbc_editSkillList.anchor = GridBagConstraints.NORTHWEST;
 		editSkillList.setBackground(new Color(87, 108, 168));

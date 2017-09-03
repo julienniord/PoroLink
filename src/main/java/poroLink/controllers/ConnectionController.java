@@ -35,7 +35,7 @@ public class ConnectionController extends BaseController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//new ForgottenPwdController(frame);
-				ViewsManager.getInstance().next(new ProfileCandidateController(frame));
+				ViewsManager.getInstance().next(new ProfileCompanyController(frame));
 			}
 			
 			
