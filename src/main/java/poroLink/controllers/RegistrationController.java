@@ -19,6 +19,9 @@ import poroLink.managers.ViewsManager;
 //import poroLink.database.AppUserDAO;
 import poroLink.views.RegistrationView;
 
+// daoUser.getFromConnexion(view.getMailText().getText(),new String((view.getPwdText()).getPassword()));
+
+
 public class RegistrationController extends BaseController{
 	
 	private JFrame frame;
@@ -59,19 +62,16 @@ public class RegistrationController extends BaseController{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (Pattern.matches("^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)+$", view.getMailText().getText())){
-					if(Pattern.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", new String((view.getPwdText()).getPassword()))){
+					if(Pattern.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&!+=])(?=\\S+$).{8,}$", new String((view.getPwdText()).getPassword()))){
 						if(new String((view.getPwdText()).getPassword()).equals(new String((view.getValidPwdText()).getPassword()))){
 							if(view.getCompanyRadioButton().isSelected()){
 								if(view.getSiretText().getText().isEmpty() == false){
 									if(view.getSiretText().getText().length()==14){
 										Calendar currenttime = Calendar.getInstance();
-										AppUser user = new AppUser(view.getMailText().getText(),new String((view.getPwdText()).getPassword()),new Date((currenttime.getTime()).getTime()),new Date((currenttime.getTime()).getTime()),Role.COMPANY);
-										Company company = new Company();
 										AppUserDAO daoUser = new AppUserDAO();
+										Company company = null;// new Company(view.getMailText().getText(),new String((view.getPwdText()).getPassword()),new Date((currenttime.getTime()).getTime()),new Date((currenttime.getTime()).getTime()),Role.COMPANY);										
 										CompanyDAO daoCompany = new CompanyDAO();
-										daoUser.insert(user);
-										company.setId(user.getId());
-										daoCompany.insert(company);
+										daoUser.insert(company);
 										ViewsManager.getInstance().next(new ProfileCompanyController(frame));
 									}else {
 										view.getFailLabel().setText("Le siret renseigné n'est pas valide !");
@@ -86,7 +86,7 @@ public class RegistrationController extends BaseController{
 							}else {
 									if(view.getCandidateRadioButton().isSelected()){
 										Calendar currenttime = Calendar.getInstance();
-										AppUser user = new AppUser(view.getMailText().getText(),new String((view.getPwdText()).getPassword()),new Date((currenttime.getTime()).getTime()),new Date((currenttime.getTime()).getTime()),Role.CANDIDATE);
+										AppUser user = null;//new AppUser(view.getMailText().getText(),new String((view.getPwdText()).getPassword()),new Date((currenttime.getTime()).getTime()),new Date((currenttime.getTime()).getTime()),Role.CANDIDATE);
 										Candidate candidate = new Candidate();
 										AppUserDAO dao = new AppUserDAO();
 										CandidateDAO daoCandidate = new CandidateDAO();

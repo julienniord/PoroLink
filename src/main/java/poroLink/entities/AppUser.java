@@ -1,9 +1,10 @@
 package poroLink.entities;
-import java.sql.Date;
+
+import java.util.Date;
 
 import poroLink.entities.base.BaseEntity;
 
-public /**abstract*/ class AppUser extends BaseEntity {
+public abstract class AppUser extends BaseEntity {
 
 
     protected String mail;

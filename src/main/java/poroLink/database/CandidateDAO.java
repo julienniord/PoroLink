@@ -21,7 +21,6 @@ public class CandidateDAO extends BaseDAO {
 	
 	public static final String FIRSTNAME = "firstname";
 	public static final String LASTNAME = "lastname";
-	public static final String GENDER = "gender";
 	public static final String PHONE = "phone";
 	public static final String BIRTHDATE = "birthdate";
 	public static final String TRANSPORT = "transport";
@@ -37,7 +36,6 @@ public class CandidateDAO extends BaseDAO {
 
 	public CandidateDAO() {
 		super(TABLE, ID);
-		// TODO Auto-generated constructor stub
 	}
 
 	
@@ -51,7 +49,6 @@ public class CandidateDAO extends BaseDAO {
 		try {
 			candidate.setFirstname(rs.getString(FIRSTNAME));
 			candidate.setLastname(rs.getString(LASTNAME));
-			candidate.setGender(rs.getBoolean(GENDER));
 			candidate.setPhone(rs.getString(PHONE));
 			candidate.setBirthdate(rs.getDate(BIRTHDATE));
 			candidate.setTransport(rs.getString(TRANSPORT));
@@ -59,6 +56,9 @@ public class CandidateDAO extends BaseDAO {
 			candidate.setLinks(rs.getString(LINKS));
 			candidate.setCertificate_in_progress(rs.getString(CERTIFICATES_IN_PROGRESS));
 			candidate.setId(rs.getDouble(ID));
+			
+			loadMother(candidate);
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -66,6 +66,18 @@ public class CandidateDAO extends BaseDAO {
 		}
 		
 		return candidate;
+	}
+
+
+	private void loadMother(Candidate candidate) {
+		AppUserDAO appUserDAO = new AppUserDAO();
+		Candidate tmp =  (Candidate) appUserDAO.get(candidate.getId());
+		
+		candidate.setMail(tmp.getMail());
+		candidate.setRole_appuser(tmp.getRole_appuser());
+		candidate.setPassword(tmp.getPassword());
+		candidate.setCreated_at(tmp.getCreated_at());
+		candidate.setUpdated_at(tmp.getUpdated_at());
 	}
 	
 	@Override
@@ -75,13 +87,12 @@ public class CandidateDAO extends BaseDAO {
 
 		result += "'" + candidate.getFirstname() + "',";
 		result += "'" + candidate.getLastname() + "',";
-		result += "'" + candidate.getGender() + "',";
 		result += "'" + candidate.getPhone() + "',";
 		result += "'" + candidate.getBirthdate() + "',";
 		result += "'" + candidate.getTransport() + "',";
 		result += "'" + candidate.getPresentation() + "',";
 		result += "'" + candidate.getLinks() + "',";
-		result += "'" + candidate.getCertificate_in_progress() + "',";
+		result += "'" + candidate.getCertificate_in_progress() + "'";
 		
 		return result;
 	}
@@ -93,7 +104,6 @@ public class CandidateDAO extends BaseDAO {
 
 		result += FIRSTNAME + " = '" + candidate.getFirstname() + "',";
 		result += LASTNAME + " = '" + candidate.getLastname() + "',";
-		result += GENDER+ " = '" + candidate.getGender() + "',";
 		result += PHONE + " = '" + candidate.getPhone() + "',";
 		result += BIRTHDATE + " = '" + candidate.getBirthdate() + "',";
 		result += TRANSPORT + " = '" + candidate.getTransport() + "',";

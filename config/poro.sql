@@ -1,97 +1,120 @@
-CREATE TABLE IF NOT EXISTS administrator (
-  administrator_name varchar(100) DEFAULT NULL,
-  appuser_id int(11) NOT NULL,
-  PRIMARY KEY (appuser_id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-CREATE TABLE IF NOT EXISTS appuser (
-  appuser_id int(11) NOT NULL AUTO_INCREMENT,
-  role_appuser int(11) DEFAULT NULL,
-  mail varchar(255) NOT NULL,
-  password varchar(50) NOT NULL,
-  created_at datetime DEFAULT NULL,
-  updated_at datetime DEFAULT NULL,
-  PRIMARY KEY (appuser_id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-CREATE TABLE IF NOT EXISTS candidate (
-  gender tinyint(1) NOT NULL,
-  firstname varchar(255) DEFAULT NULL,
-  lastname varchar(255) DEFAULT NULL,
-  phone varchar(15) DEFAULT NULL,
-  birthdate date DEFAULT NULL,
-  transport varchar(25) DEFAULT NULL,
-  presentation text,
-  links varchar(255) DEFAULT NULL,
-  certificates varchar(255) DEFAULT NULL,
-  certificate_in_progress varchar(255) DEFAULT NULL,
-  appuser_id int(11) NOT NULL,
-  PRIMARY KEY (appuser_id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-CREATE TABLE IF NOT EXISTS company (
-  company_name varchar(255) NOT NULL,
-  adress varchar(255) DEFAULT NULL,
-  description text,
-  links varchar(150) DEFAULT NULL,
-  siret varchar(50) DEFAULT NULL,
-  appuser_id int(11) NOT NULL,
-  PRIMARY KEY (appuser_id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-CREATE TABLE IF NOT EXISTS need (
-  indice_priorite int(11) DEFAULT NULL,
-  post_id int(11) NOT NULL,
-  skill_id int(11) NOT NULL,
-  PRIMARY KEY (post_id,skill_id),
-  KEY FK_need_skill_id (skill_id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-CREATE TABLE IF NOT EXISTS own (
-  indice_masteries int(11) DEFAULT NULL,
-  skill_id int(11) NOT NULL,
-  appuser_id int(11) NOT NULL,
-  PRIMARY KEY (skill_id,appuser_id),
-  KEY FK_own_appuser_id (appuser_id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-CREATE TABLE IF NOT EXISTS post (
-  post_id int(11) NOT NULL AUTO_INCREMENT,
-  name varchar(100) NOT NULL,
-  presentation text,
-  created_at datetime DEFAULT NULL,
-  updated_at datetime DEFAULT NULL,
-  mail_agent varchar(100) DEFAULT NULL,
-  firstname_agent varchar(150) DEFAULT NULL,
-  lastname_agent varchar(150) NOT NULL,
-  appuser_id int(11) NOT NULL,
-  PRIMARY KEY (post_id),
-  KEY FK_post_appuser_id (appuser_id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-CREATE TABLE IF NOT EXISTS skill (
-  skill_id int(11) NOT NULL AUTO_INCREMENT,
-  skill_name varchar(255) DEFAULT NULL,
-  PRIMARY KEY (skill_id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+CREATE TABLE company(
+        company_name Varchar (255) NOT NULL ,
+        address      Varchar (255) ,
+        description  Text ,
+        links        Varchar (150) ,
+        siret        Varchar (50) ,
+        phone        Int ,
+        appuser_id   Int NOT NULL ,
+        PRIMARY KEY (appuser_id )
+)ENGINE=InnoDB;
 
 
-ALTER TABLE administrator
-  ADD CONSTRAINT FK_administrator_appuser_id FOREIGN KEY (appuser_id) REFERENCES appuser (appuser_id);
+CREATE TABLE candidate(
+        firstname               Varchar (255) ,
+        lastname                Varchar (255) ,
+        phone                   Varchar (15) ,
+        birthdate               Date ,
+        transport               Varchar (25) ,
+        presentation            Text ,
+        links                   Varchar (255) ,
+        certificates            Varchar (255) ,
+        certificate_in_progress Varchar (255) ,
+        appuser_id              Int NOT NULL ,
+        PRIMARY KEY (appuser_id )
+)ENGINE=InnoDB;
 
-ALTER TABLE candidate
-  ADD CONSTRAINT FK_candidate_appuser_id FOREIGN KEY (appuser_id) REFERENCES appuser (appuser_id);
 
-ALTER TABLE company
-  ADD CONSTRAINT FK_company_appuser_id FOREIGN KEY (appuser_id) REFERENCES appuser (appuser_id);
+CREATE TABLE post(
+        post_id         int (11) Auto_increment  NOT NULL ,
+        name            Varchar (100) NOT NULL ,
+        presentation    Text ,
+        created_at      Datetime ,
+        updated_at      Datetime ,
+        mail_agent      Varchar (100) ,
+        firstname_agent Varchar (150) ,
+        lastname_agent  Varchar (150) NOT NULL ,
+        appuser_id      Int NOT NULL ,
+        PRIMARY KEY (post_id )
+)ENGINE=InnoDB;
 
-ALTER TABLE need
-  ADD CONSTRAINT FK_need_post_id FOREIGN KEY (post_id) REFERENCES post (post_id),
-  ADD CONSTRAINT FK_need_skill_id FOREIGN KEY (skill_id) REFERENCES skill (skill_id);
 
-ALTER TABLE own
-  ADD CONSTRAINT FK_own_appuser_id FOREIGN KEY (appuser_id) REFERENCES appuser (appuser_id),
-  ADD CONSTRAINT FK_own_skill_id FOREIGN KEY (skill_id) REFERENCES skill (skill_id);
+CREATE TABLE skill(
+        skill_id   int (11) Auto_increment  NOT NULL ,
+        skill_name Varchar (255) ,
+        PRIMARY KEY (skill_id )
+)ENGINE=InnoDB;
 
-ALTER TABLE post
-  ADD CONSTRAINT FK_post_appuser_id FOREIGN KEY (appuser_id) REFERENCES appuser (appuser_id);
+
+CREATE TABLE appuser(
+        appuser_id   int (11) Auto_increment  NOT NULL ,
+        role_appuser Varchar (50) NOT NULL ,
+        mail         Varchar (255) NOT NULL ,
+        password     Varchar (50) NOT NULL ,
+        created_at   Datetime ,
+        updated_at   Datetime ,
+        PRIMARY KEY (appuser_id )
+)ENGINE=InnoDB;
+
+
+CREATE TABLE administrator(
+        administrator_name Varchar (100) ,
+        appuser_id         Int NOT NULL ,
+        PRIMARY KEY (appuser_id )
+)ENGINE=InnoDB;
+
+
+CREATE TABLE certificate(
+        id_certif   int (11) Auto_increment  NOT NULL ,
+        certificate Varchar (255) NOT NULL ,
+        PRIMARY KEY (id_certif )
+)ENGINE=InnoDB;
+
+
+CREATE TABLE need(
+        indice_priorite Int ,
+        post_id         Int NOT NULL ,
+        skill_id        Int NOT NULL ,
+        PRIMARY KEY (post_id ,skill_id )
+)ENGINE=InnoDB;
+
+
+CREATE TABLE own(
+        indice_masteries Int ,
+        skill_id         Int NOT NULL ,
+        appuser_id       Int NOT NULL ,
+        PRIMARY KEY (skill_id ,appuser_id )
+)ENGINE=InnoDB;
+
+
+CREATE TABLE graduate(
+        id_certif  Int NOT NULL ,
+        appuser_id Int NOT NULL ,
+        PRIMARY KEY (id_certif ,appuser_id )
+)ENGINE=InnoDB;
+
+
+
+ALTER TABLE company 
+	ADD CONSTRAINT FK_company_appuser_id FOREIGN KEY (appuser_id) REFERENCES appuser(appuser_id);
+
+ALTER TABLE candidate 
+	ADD CONSTRAINT FK_candidate_appuser_id FOREIGN KEY (appuser_id) REFERENCES appuser(appuser_id);
+
+ALTER TABLE post 
+	ADD CONSTRAINT FK_post_appuser_id FOREIGN KEY (appuser_id) REFERENCES appuser(appuser_id);
+
+ALTER TABLE administrator 
+	ADD CONSTRAINT FK_administrator_appuser_id FOREIGN KEY (appuser_id) REFERENCES appuser(appuser_id);
+
+ALTER TABLE need 
+	ADD CONSTRAINT FK_need_post_id FOREIGN KEY (post_id) REFERENCES post(post_id),
+	ADD CONSTRAINT FK_need_skill_id FOREIGN KEY (skill_id) REFERENCES skill(skill_id);
+
+ALTER TABLE own 
+	ADD CONSTRAINT FK_own_skill_id FOREIGN KEY (skill_id) REFERENCES skill(skill_id),
+	ADD CONSTRAINT FK_own_appuser_id FOREIGN KEY (appuser_id) REFERENCES appuser(appuser_id);
+
+ALTER TABLE graduate 
+	ADD CONSTRAINT FK_graduate_id_certif FOREIGN KEY (id_certif) REFERENCES certificate(id_certif),
+	ADD CONSTRAINT FK_graduate_appuser_id FOREIGN KEY (appuser_id) REFERENCES appuser(appuser_id);

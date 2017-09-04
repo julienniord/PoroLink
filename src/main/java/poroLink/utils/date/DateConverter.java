@@ -13,6 +13,15 @@ public class DateConverter {
 			return null;
 		}
 	}
+	
+	public static Date setMySqlDate(Date date) {
+		if (date != null) {
+			Date sdf = new Date((date.getTime()));
+			return sdf;
+		} else {
+			return null;
+		}
+	}
 
 	public static String getMySqlDatetime(Date date) {
 		if (date != null) {
