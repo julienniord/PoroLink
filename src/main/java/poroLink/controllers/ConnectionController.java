@@ -45,7 +45,7 @@ public class ConnectionController extends BaseController {
 				try {
 					if (rs.next()) {
 						if (view.getMailText().getText().equals(rs.getString(AppUserDAO.MAIL)) && new String((view.getPwd()).getPassword()).equals(rs.getString(AppUserDAO.PASSWORD))){
-							ViewsManager.getInstance().next(new HomeController(frame));
+							ViewsManager.getInstance().next(new ProfileCandidateController(frame));
 						}else {
 							view.getFailLabel().setText("Mot de passe incorrect !");
 							view.getFailLabel().setVisible(true);

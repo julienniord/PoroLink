@@ -195,7 +195,7 @@ public class ProfileCandidateView extends BaseView{
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		panel_3.add(lblNewLabel, gbc_lblNewLabel);
 		lblNewLabel.setBorder(new LineBorder(new Color(51, 102, 153), 1, true));
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Minet\\Downloads\\20864450_10214162450926257_2019830956_n.png"));
+		lblNewLabel.setIcon(new ImageIcon("Pictures/Candidate/1.png"));
 		
 		panel_2 = new JPanel();
 		GridBagConstraints gbc_panel_2 = new GridBagConstraints();

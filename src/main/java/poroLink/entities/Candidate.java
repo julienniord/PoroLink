@@ -37,8 +37,9 @@ public class Candidate extends AppUser {
 	/**
 	 * @return the gender
 	 */
-	public boolean isGender() {
-		return gender;
+	public String getGender() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	/**
@@ -215,4 +216,5 @@ public class Candidate extends AppUser {
 	    	return candidate;
 	        
 	    }
+
 }
