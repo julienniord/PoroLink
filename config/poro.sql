@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS appuser (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS candidate (
-  gender tinyint(1) NOT NULL,
+  gender tinyint(1),
   firstname varchar(255) DEFAULT NULL,
   lastname varchar(255) DEFAULT NULL,
   phone varchar(15) DEFAULT NULL,
