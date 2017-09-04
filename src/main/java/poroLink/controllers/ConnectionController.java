@@ -47,7 +47,7 @@ public class ConnectionController extends BaseController {
 //				
 //				if (rs != null) {
 //					if (view.getMailText().getText()==rs.getString(MAIL) && new String((view.getPwd()).getPassword()).equals(rs.getString(PASSWORD))){
-						ViewsManager.getInstance().next(new HomeController(frame));
+						ViewsManager.getInstance().next(new ProfileCompanyController(frame));
 //					}else {
 //						view.getFailLabel().setText("Informations incorrectes !");
 //						view.getFailLabel().setVisible(true);
