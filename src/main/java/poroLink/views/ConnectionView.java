@@ -167,7 +167,7 @@ public class ConnectionView  extends BaseView {
 	 */
 	public ConnectionView(JFrame frame) {
 
-		super.pageName = "Connection";
+		super.pageName = "Connexion";
 		JPanel panel = new JPanel();
 		super.contentPane = panel;
 		

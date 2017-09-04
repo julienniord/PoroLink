@@ -156,7 +156,7 @@ public class RegistrationView  extends BaseView{
 	 */
 	public RegistrationView(JFrame frame) {
 		
-		super.pageName = "Registration";
+		super.pageName = "Inscription";
 		JPanel panel = new JPanel();
 		super.contentPane = panel;
 		

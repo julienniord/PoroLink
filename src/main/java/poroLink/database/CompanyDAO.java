@@ -15,6 +15,7 @@ public class CompanyDAO extends BaseDAO{
 	public static final String LINKS = "links";
 	public static final String SIRET = "siret";
 	public static final String POSTS = "posts";
+	private static final String PHONE = "phone";
 
 
 	public CompanyDAO() {
@@ -37,6 +38,7 @@ public class CompanyDAO extends BaseDAO{
 			company.setDescription(rs.getString(DESCRIPTION));
 			company.setLinks(rs.getString(LINKS));
 			company.setSiret(rs.getString(SIRET));
+			company.setPhone(rs.getInt(PHONE));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -48,14 +50,15 @@ public class CompanyDAO extends BaseDAO{
 	
 	@Override
 	public String parseInsert(BaseEntity item) {
-		String result = "null,";
 		Company company = (Company) item;
 
-		result += "'" + company.getCompany_name() + "'";
-		result += "'" + company.getAddress() + "'";
-		result += "'" + company.getDescription() + "'";
-		result += "'" + company.getLinks() + "'";
-		result += "'" + company.getSiret() + "'";
+		String result = "'" + company.getCompany_name() + "',";
+		result += "'" + company.getAddress() + "',";
+		result += "'" + company.getDescription() + "',";
+		result += "'" + company.getLinks() + "',";
+		result += "'" + company.getSiret() + "',";
+		result += "'" + company.getId() + "',";
+		result += "'" + company.getPhone() + "'";
 		
 
 		return result;
@@ -71,6 +74,7 @@ public class CompanyDAO extends BaseDAO{
 		result += DESCRIPTION + " = '" + company.getDescription() + "'";
 		result += LINKS + " = '" + company.getLinks() + "'";
 		result += SIRET + " = '" + company.getSiret() + "'";
+		result += PHONE + " = '" + company.getPhone() + "'";
 		return result;
 	}
 

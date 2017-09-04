@@ -28,16 +28,17 @@ public class Candidate extends AppUser {
      */
     public Candidate(int id,String firstname,String lastname) {
     	super();
-    	this.role_appuser= Role.CANDIDATE;
+    	this.role_appuser = Role.CANDIDATE;
     	this.firstname=firstname;
     	this.lastname=lastname;
     }
-
+    
 	/**
 	 * @return the gender
 	 */
-	public boolean isGender() {
-		return gender;
+	public String getGender() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	/**
@@ -214,4 +215,5 @@ public class Candidate extends AppUser {
 	    	return candidate;
 	        
 	    }
+
 }

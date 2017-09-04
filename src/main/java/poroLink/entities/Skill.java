@@ -8,8 +8,8 @@ public class Skill extends BaseEntity{
 
 
 	 private String skill_name;
-	 private int needs;// == Candidate_Skill
-	 private int owns;// == Post_Skill
+	 private int needs;// == Post_Skill
+	 private int owns;// == Candidate_Skill
 	 private int purcentageneeds;
 	/**
      * Default constructor
