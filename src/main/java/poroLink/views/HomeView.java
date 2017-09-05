@@ -19,7 +19,7 @@ import javax.swing.ImageIcon;
 
 public class HomeView extends BaseView {
 	private JButton btnValidate;
-	private MenuBar menuBar;
+
 	
 	
 	
@@ -39,20 +39,6 @@ public class HomeView extends BaseView {
 
 
 	/**
-	 * @return the menuBar
-	 */
-	public MenuBar getMenuBar() {
-		return menuBar;
-	}
-
-	/**
-	 * @param menuBar the menuBar to set
-	 */
-	public void setMenuBar(MenuBar menuBar) {
-		this.menuBar = menuBar;
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public HomeView(JFrame frame) {
@@ -66,14 +52,6 @@ public class HomeView extends BaseView {
 		gbl_panel.columnWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
 		gbl_panel.rowWeights = new double[]{0.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
-
-		menuBar = new MenuBar();
-		GridBagConstraints gbc_menuBar = new GridBagConstraints();
-		gbc_menuBar.fill = GridBagConstraints.HORIZONTAL;
-		gbc_menuBar.gridx = 0;
-		gbc_menuBar.gridy = 0;
-		gbc_menuBar.gridwidth = 10;
-		panel.add(menuBar.getContentPane(), gbc_menuBar);
 		
 		btnValidate = new JButton("Recherche de candidats");
 		

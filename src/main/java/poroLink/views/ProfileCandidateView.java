@@ -66,6 +66,11 @@ public class ProfileCandidateView extends BaseView{
 	private JButton editDescription;
 	private JLabel lblListeDesComptences;
 	private JLabel lblNiveau;
+	private JPanel menuBar;
+	private JButton btnHome;
+	private JButton btnProfil;
+	private JButton btnListeDesUtilisateurs;
+	private JButton btnDeconnexion;
 
 	/**
 	 * @return the contentPane
@@ -170,9 +175,9 @@ public class ProfileCandidateView extends BaseView{
 		
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[]{20, 262, 157, 105, 36, 46, 20, 0};
-		gbl_contentPane.rowHeights = new int[]{152, 49, 101, 56, 56, 112, 50, 0};
-		gbl_contentPane.columnWeights = new double[]{0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_contentPane.rowHeights = new int[]{40, 152, 49, 101, 56, 56, 112, 50, 0};
+		gbl_contentPane.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_contentPane);
 		
 		panel_3 = new JPanel();
@@ -181,7 +186,7 @@ public class ProfileCandidateView extends BaseView{
 		gbc_panel_3.gridwidth = 7;
 		gbc_panel_3.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_3.gridx = 0;
-		gbc_panel_3.gridy = 0;
+		gbc_panel_3.gridy = 1;
 		panel.add(panel_3, gbc_panel_3);
 		panel_3.setBackground(new Color(245, 243, 245, 150));
 		GridBagLayout gbl_panel_3 = new GridBagLayout();
@@ -331,7 +336,7 @@ public class ProfileCandidateView extends BaseView{
 		gbc_editDescription.insets = new Insets(0, 0, 5, 5);
 		editDescription.setBackground(new Color(87, 108, 168));
 		gbc_editDescription.gridx = 4;
-		gbc_editDescription.gridy = 1;
+		gbc_editDescription.gridy = 2;
 		panel.add(editDescription, gbc_editDescription);
 		
 		txtrDescription = new JTextArea();
@@ -345,7 +350,7 @@ public class ProfileCandidateView extends BaseView{
 		gbc_txtrDescription.insets = new Insets(0, 0, 5, 5);
 		gbc_txtrDescription.fill = GridBagConstraints.BOTH;
 		gbc_txtrDescription.gridx = 1;
-		gbc_txtrDescription.gridy = 2;
+		gbc_txtrDescription.gridy = 3;
 		panel.add(txtrDescription, gbc_txtrDescription);
 		
 		panelBlock = new JPanel();
@@ -355,7 +360,7 @@ public class ProfileCandidateView extends BaseView{
 		gbc_panel.insets = new Insets(0, 0, 0, 5);
 		gbc_panel.fill = GridBagConstraints.BOTH;
 		gbc_panel.gridx = 1;
-		gbc_panel.gridy = 5;
+		gbc_panel.gridy = 6;
 		panel.add(panelBlock, gbc_panel);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[] {204, 88, 0};
@@ -396,7 +401,7 @@ public class ProfileCandidateView extends BaseView{
 		editSkillList.setBackground(new Color(87, 108, 168));
 		gbc_editSkillList.insets = new Insets(0, 0, 5, 5);
 		gbc_editSkillList.gridx = 2;
-		gbc_editSkillList.gridy = 5;
+		gbc_editSkillList.gridy = 6;
 		panel.add(editSkillList, gbc_editSkillList);
 		
 		panel_1 = new JPanel();
@@ -406,7 +411,7 @@ public class ProfileCandidateView extends BaseView{
 		gbc_panel_1.gridheight = 2;
 		gbc_panel_1.fill = GridBagConstraints.BOTH;
 		gbc_panel_1.gridx = 3;
-		gbc_panel_1.gridy = 5;
+		gbc_panel_1.gridy = 6;
 		panel.add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[]{125, 140, 0};

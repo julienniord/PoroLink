@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import poroLink.database.AppUserDAO;
 import poroLink.entities.AppUser;
 import poroLink.entities.Candidate;
+import poroLink.entities.Role;
 import poroLink.managers.ViewsManager;
 import poroLink.views.ConnectionView;
 //import porolink.database.AppUserDAO;
@@ -27,7 +28,7 @@ public class ConnectionController extends BaseController {
 		super.frame = frame;
 		user = new Candidate(666,"ludo","fagot");
 		super.view = new ConnectionView(this.frame);
-		
+		user.setRole_appuser(Role.CANDIDATE);
 	}
 	
 	@Override

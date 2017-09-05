@@ -28,8 +28,9 @@ public class HomeController extends BaseController {
 					ViewsManager.getInstance().next(new MatchingController(frame));
 			}
 		});
+		
 	}
-
+	
 	
 	@Override
 	public void initView() {
@@ -38,5 +39,9 @@ public class HomeController extends BaseController {
 		//((HomeView)getView()).getTextField().setText(((AppUser)this.viewDatas.get("currentUser")).getMail());
 		
 		
+	}
+	@Override
+	public void setupDatas() {
+		this.viewDatas.put("currentUser", this.viewDatas.get("currentUser"));
 	}
 }

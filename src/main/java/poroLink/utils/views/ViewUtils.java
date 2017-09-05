@@ -3,6 +3,9 @@ package poroLink.utils.views;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -25,7 +29,15 @@ import javax.swing.text.View;
 
 import com.mysql.fabric.xmlrpc.base.Array;
 
+import poroLink.controllers.HomeController;
+import poroLink.controllers.ListUserController;
+import poroLink.controllers.MatchingController;
+import poroLink.controllers.ProfileCandidateController;
+import poroLink.controllers.ProfileCompanyController;
+import poroLink.entities.AppUser;
 import poroLink.entities.Post;
+import poroLink.entities.Role;
+import poroLink.managers.ViewsManager;
 import poroLink.views.BaseView;
 import poroLink.views.ProfileCompanyView;
 
@@ -44,6 +56,67 @@ public class ViewUtils {
 		
 		contentPane.setBackground(new Color(28, 85, 136));
 		jFrame.setContentPane(contentPane);
+		JPanel menuBar = new JPanel();
+		GridBagConstraints gbc_menuBar = new GridBagConstraints();
+		gbc_menuBar.gridwidth = 7;
+		gbc_menuBar.insets = new Insets(0, 0, 5, 5);
+		gbc_menuBar.fill = GridBagConstraints.BOTH;
+		gbc_menuBar.gridx = 0;
+		gbc_menuBar.gridy = 0;
+		contentPane.add(menuBar, gbc_menuBar);
+		menuBar.setBackground(new Color(28, 85, 136));
+		GridBagLayout gbl_menuBar = new GridBagLayout();
+		gbl_menuBar.columnWidths = new int[]{0, 20, 0, 0, 0, 0,50, 0, 0, 0, 50, 0, 0, 50, 0, 0, 0,50, 0, 0, 20};
+		gbl_menuBar.rowHeights = new int[]{150, 0};
+		gbl_menuBar.columnWeights = new double[]{1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
+		gbl_menuBar.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		menuBar.setLayout(gbl_menuBar);
+		
+		JButton btnHome = new JButton("");
+		GridBagConstraints gbc_btnHome = new GridBagConstraints();
+		gbc_btnHome.insets = new Insets(0, 0, 0, 5);
+		gbc_btnHome.gridx = 0;
+		gbc_btnHome.gridy = 0;
+		btnHome.setIcon(new ImageIcon("Pictures/logomini.png"));
+		btnHome.setBackground(new Color(87, 108, 168));
+		btnHome.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ViewsManager.getInstance().next(new HomeController(jFrame));
+			}
+		});
+		menuBar.add(btnHome, gbc_btnHome);
+		
+		JButton btnProfil = new JButton("Profil");
+		btnProfil.setForeground(Color.WHITE);
+		GridBagConstraints gbc_btnProfil = new GridBagConstraints();
+		gbc_btnProfil.insets = new Insets(0, 0, 0, 5);
+		gbc_btnProfil.gridx = 2;
+		gbc_btnProfil.gridy = 0;
+		btnProfil.setBackground(new Color(87, 108, 168));
+		menuBar.add(btnProfil, gbc_btnProfil);
+		
+		
+		JButton btnListeDesUtilisateurs = new JButton("Liste des Utilisateurs");
+		btnListeDesUtilisateurs.setForeground(Color.WHITE);
+		GridBagConstraints gbc_btnListeDesUtilisateurs = new GridBagConstraints();
+		gbc_btnListeDesUtilisateurs.insets = new Insets(0, 0, 0, 5);
+		gbc_btnListeDesUtilisateurs.gridx = 11;
+		gbc_btnListeDesUtilisateurs.gridy = 0;
+		btnListeDesUtilisateurs.setBackground(new Color(87, 108, 168));
+		btnListeDesUtilisateurs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ViewsManager.getInstance().next(new ListUserController(jFrame));
+			}
+		});
+		menuBar.add(btnListeDesUtilisateurs, gbc_btnListeDesUtilisateurs);
+		
+		JButton btnDeconnexion = new JButton("D\u00E9connexion");
+		btnDeconnexion.setForeground(Color.WHITE);
+		GridBagConstraints gbc_btnDeconnexion = new GridBagConstraints();
+		gbc_btnDeconnexion.gridx = 19;
+		gbc_btnDeconnexion.gridy = 0;
+		btnDeconnexion.setBackground(new Color(87, 108, 168));
+		menuBar.add(btnDeconnexion, gbc_btnDeconnexion);
 	}
 
 	public static void configureFirstJFrame(JFrame jFrame){
@@ -138,6 +211,14 @@ public class ViewUtils {
 
 
 		
+	}
+	
+	public static void selectProfil (AppUser user, JFrame jFrame) {
+		if (user.getRole_appuser() == Role.CANDIDATE) {
+			ViewsManager.getInstance().next(new ProfileCandidateController(jFrame));
+		} else {
+			ViewsManager.getInstance().next(new ProfileCompanyController(jFrame));
+		}
 	}
 	
 }
