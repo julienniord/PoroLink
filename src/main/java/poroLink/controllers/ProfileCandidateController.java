@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 import poroLink.entities.Candidate;
+import poroLink.entities.Certificate;
 import poroLink.entities.Skill;
 import poroLink.utils.views.ViewUtils;
 import poroLink.views.ProfileCandidateView;
@@ -45,9 +46,10 @@ public class ProfileCandidateController extends BaseController {
 		skills1.add(git);
 		String bac = "BAC";
 		String licence = "Licence de Psychologie";
-		ArrayList<String> certificates = new ArrayList<>();
-		certificates.add(bac);
-		certificates.add(licence);
+		ArrayList<Certificate> certificates = new ArrayList<Certificate>();
+		//TODO update
+//		certificates.add(bac);
+//		certificates.add(licence);
 		user.setSkills(skills1);
 		user.setCertificates(certificates);
 		

@@ -69,8 +69,12 @@ public class RegistrationController extends BaseController{
 									if(view.getSiretText().getText().length()==14){
 										Calendar currenttime = Calendar.getInstance();
 										AppUserDAO daoUser = new AppUserDAO();
-										Company company = null;// new Company(view.getMailText().getText(),new String((view.getPwdText()).getPassword()),new Date((currenttime.getTime()).getTime()),new Date((currenttime.getTime()).getTime()),Role.COMPANY);										
-										CompanyDAO daoCompany = new CompanyDAO();
+										AppUser company = new Company();
+										company.setMail(view.getMailText().getText());
+										company.setPassword(new String((view.getPwdText()).getPassword()));
+										company.setCreated_at(currenttime.getTime());
+										company.setUpdated_at(currenttime.getTime());
+										company.setRole_appuser(Role.COMPANY);
 										daoUser.insert(company);
 										ViewsManager.getInstance().next(new ProfileCompanyController(frame));
 									}else {
@@ -86,13 +90,14 @@ public class RegistrationController extends BaseController{
 							}else {
 									if(view.getCandidateRadioButton().isSelected()){
 										Calendar currenttime = Calendar.getInstance();
-										AppUser user = null;//new AppUser(view.getMailText().getText(),new String((view.getPwdText()).getPassword()),new Date((currenttime.getTime()).getTime()),new Date((currenttime.getTime()).getTime()),Role.CANDIDATE);
-										Candidate candidate = new Candidate();
-										AppUserDAO dao = new AppUserDAO();
-										CandidateDAO daoCandidate = new CandidateDAO();
-										dao.insert(user);
-										candidate.setId(user.getId());
-										daoCandidate.insert(candidate);
+										AppUserDAO daoUser = new AppUserDAO();
+										AppUser candidate = new Candidate();
+										candidate.setMail(view.getMailText().getText());
+										candidate.setPassword(new String((view.getPwdText()).getPassword()));
+										candidate.setCreated_at(currenttime.getTime());
+										candidate.setUpdated_at(currenttime.getTime());
+										candidate.setRole_appuser(Role.CANDIDATE);
+										daoUser.insert(candidate);
 										ViewsManager.getInstance().next(new ProfileCandidateController(frame));
 									}else {
 										view.getFailLabel().setText("Vous devez sélectionner un rôle !");

@@ -13,6 +13,7 @@ import poroLink.entities.Candidate;
 import poroLink.entities.Company;
 import poroLink.entities.Role;
 import poroLink.entities.base.BaseEntity;
+import poroLink.utils.date.DateConverter;
 
 /**
  * @author Minet
@@ -65,8 +66,8 @@ public class AppUserDAO extends BaseDAO {
 		result += "'" + appUser.getRole_appuser() + "',";
 		result += "'" + appUser.getMail() + "',";
 		result += "'" + appUser.getPassword() + "',";
-		result += "'" + appUser.getCreated_at() + "',";
-		result += "'" + appUser.getUpdated_at() + "'";
+		result += "'" + DateConverter.setMySqlDate(appUser.getCreated_at()) + "',";
+		result += "'" + DateConverter.setMySqlDate(appUser.getUpdated_at()) + "'";
 
 		return result;
 	}
@@ -100,7 +101,6 @@ public class AppUserDAO extends BaseDAO {
 		}else {
 			return null;
 		}
-		
 	}
 
 	public AppUser getRealAppUser(Double id) {

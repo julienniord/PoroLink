@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import poroLink.database.AppUserDAO;
 import poroLink.entities.AppUser;
 import poroLink.entities.Candidate;
+import poroLink.entities.Role;
 import poroLink.managers.ViewsManager;
 import poroLink.views.ConnectionView;
 //import porolink.database.AppUserDAO;
@@ -45,7 +46,11 @@ public class ConnectionController extends BaseController {
 				try {
 					if (rs.next()) {
 						if (view.getMailText().getText().equals(rs.getString(AppUserDAO.MAIL)) && new String((view.getPwd()).getPassword()).equals(rs.getString(AppUserDAO.PASSWORD))){
-							ViewsManager.getInstance().next(new ProfileCandidateController(frame));
+							if (rs.getString(AppUserDAO.ROLE_APPUSER).equals("CANDIDATE")) {
+								ViewsManager.getInstance().next(new ProfileCandidateController(frame));
+							}else if (rs.getString(AppUserDAO.ROLE_APPUSER).equals("COMPANY")) {
+								ViewsManager.getInstance().next(new ProfileCompanyController(frame));
+							}
 						}else {
 							view.getFailLabel().setText("Mot de passe incorrect !");
 							view.getFailLabel().setVisible(true);

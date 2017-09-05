@@ -200,7 +200,6 @@ public class RegistrationView  extends BaseView{
 		
 		failAlert = new JTextArea();
 		failAlert.setFont(new Font("Arial", Font.PLAIN, 18));
-		failAlert.setForeground(Color.RED);
 		failAlert.setOpaque(false);
 		failAlert.setVisible(false);
 		failAlert.setEditable(false);

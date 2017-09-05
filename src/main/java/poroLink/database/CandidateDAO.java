@@ -9,8 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import poroLink.entities.Candidate;
+import poroLink.entities.Certificate;
 import poroLink.entities.Skill;
 import poroLink.entities.base.BaseEntity;
+import poroLink.utils.date.DateConverter;
 
 /**
  * @author Minet
@@ -32,6 +34,9 @@ public class CandidateDAO extends BaseDAO {
 	
 	public static final String CANDIDATE_SKILL = "skill";
 	public static final String ID_SKILL = "skill_id";
+
+	public static final String CANDIDATE_CERTIF = "certificate";
+	public static final String ID_CERTIF = "id_certif";
 
 
 	public CandidateDAO() {
@@ -82,17 +87,17 @@ public class CandidateDAO extends BaseDAO {
 	
 	@Override
 	public String parseInsert(BaseEntity item) {
-		String result = "null,";
 		Candidate candidate = (Candidate) item;
 
-		result += "'" + candidate.getFirstname() + "',";
+		String result = "'" + candidate.getFirstname() + "',";
 		result += "'" + candidate.getLastname() + "',";
 		result += "'" + candidate.getPhone() + "',";
-		result += "'" + candidate.getBirthdate() + "',";
+		result += "'" + DateConverter.setMySqlDate(candidate.getCreated_at()) + "',";
 		result += "'" + candidate.getTransport() + "',";
 		result += "'" + candidate.getPresentation() + "',";
 		result += "'" + candidate.getLinks() + "',";
-		result += "'" + candidate.getCertificate_in_progress() + "'";
+		result += "'" + candidate.getCertificate_in_progress() + "',";
+		result += "'" + candidate.getId() + "'";
 		
 		return result;
 	}
@@ -114,6 +119,45 @@ public class CandidateDAO extends BaseDAO {
 		
 		return result;
 	}
+	
+	public Candidate getCertificate(Candidate candidate) {
+		ResultSet rs = executeRequest("SELECT * FROM " + CANDIDATE_CERTIF
+				+ " WHERE " + ID + " = " + candidate.getId());
+		List<Double> certifsId = new ArrayList<Double>();
+		try {
+			while (rs.next()) {
+				certifsId.add(rs.getDouble(ID_CERTIF));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		BaseDAO CertificateDAO = new CertificateDAO();
+
+		for (Double id : certifsId) {
+			candidate.getCertificates().add((Certificate) CertificateDAO.get(id));
+		}
+
+		return candidate;
+	}
+
+	public int insertCertificates(Candidate candidate) {
+		int result = 0;
+		deleteCertificates(candidate);
+		for (Certificate certificate : candidate.getCertificates()) {
+			result += executeRequestUpdate("INSERT INTO " + CANDIDATE_CERTIF
+					+ " VALUES(" + candidate.getId() + "," + certificate.getId()
+					+ ")");
+		}
+		return result;
+	}
+
+	public int deleteCertificates(Candidate candidate) {
+		return executeRequestUpdate("DELETE FROM " + CANDIDATE_CERTIF + " WHERE "
+				+ ID + " = " + candidate.getId());
+	}
+	
+	
 	
 	public Candidate getSkills(Candidate candidate) {
 		ResultSet rs = executeRequest("SELECT * FROM " + CANDIDATE_SKILL

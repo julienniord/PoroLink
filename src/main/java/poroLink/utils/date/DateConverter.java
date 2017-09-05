@@ -1,6 +1,7 @@
 package poroLink.utils.date;
 
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.Date;
 
 public class DateConverter {
@@ -14,10 +15,10 @@ public class DateConverter {
 		}
 	}
 	
-	public static Date setMySqlDate(Date date) {
+	public static java.sql.Date setMySqlDate(Date date) {
 		if (date != null) {
-			Date sdf = new Date((date.getTime()));
-			return sdf;
+			Long s = date.getTime();
+			return new java.sql.Date(s);
 		} else {
 			return null;
 		}
