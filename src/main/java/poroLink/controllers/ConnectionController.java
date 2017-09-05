@@ -20,16 +20,13 @@ import poroLink.views.ConnectionView;
 
 public class ConnectionController extends BaseController {
 	
-	private AppUser user;
-	
 	private JFrame frame;
-	private ConnectionView view;
 	public ConnectionController(JFrame frame) {
 		super.frame = frame;
-		user = new Candidate(666,"ludo","fagot");
-		super.view = new ConnectionView(this.frame);
-		
+		super.view = new ConnectionView(frame);
 	}
+	
+	AppUserDAO dao = new AppUserDAO();
 	
 	@Override
 	public void initEvent() {
@@ -40,7 +37,9 @@ public class ConnectionController extends BaseController {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				AppUserDAO dao = new AppUserDAO();
+				
+				
+				
 				ResultSet rs = dao.executeRequest("SELECT * FROM AppUser WHERE mail = '" + view.getMailText().getText() + "'");
 				
 				try {
@@ -76,8 +75,6 @@ public class ConnectionController extends BaseController {
 			public void actionPerformed(ActionEvent e) {
 				view.getBtnRegistration().setContentAreaFilled(false);
 				ViewsManager.getInstance().next(new RegistrationController(frame));
-				//ViewsManager.getInstance().next(new MatchingController(frame));
-				user.setMail("toto");
 			}
 		});
 		
@@ -94,6 +91,7 @@ public class ConnectionController extends BaseController {
 	}
 	@Override
 	public void setupDatas() {
-		this.viewDatas.put("currentUser", user);
+		ConnectionView view = (ConnectionView) super.view;
+		this.viewDatas.put("currentUser", dao.getFromConnexion(view.getMailText().getText(), new String((view.getPwd()).getPassword())));
 	}
 }

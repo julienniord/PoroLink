@@ -33,37 +33,23 @@ public class ProfileCandidateController extends BaseController {
 	@Override
 	public void initEvent() {
 		
-		user = new Candidate();
-		view = (ProfileCandidateView) super.view;
-		Skill java = new Skill("java", 5, 0);
-		Skill c = new Skill("C", 3, 4);
-		Skill php = new Skill("PhP", 2, 0);
-		Skill sql = new Skill("SQL", 4, 2);
-		Skill git = new Skill("Git", 4, 3);
-		ArrayList<Skill> skills1 = new ArrayList<Skill>();
-		skills1.add(c);
-		skills1.add(sql);
-		skills1.add(git);
-		String bac = "BAC";
-		String licence = "Licence de Psychologie";
-		ArrayList<Certificate> certificates = new ArrayList<Certificate>();
-		//TODO update
-//		certificates.add(bac);
-//		certificates.add(licence);
-		user.setSkills(skills1);
-		user.setCertificates(certificates);
+
 		
 		DefaultTableModel model = new DefaultTableModel(); 	
 		model.addColumn("Compétences");
 		model.addColumn("Niveau");
-		for (int i = 0 ; i <= user.getSkills().size() - 1; i++) {
-			model.addRow(new Object[]{user.getSkills().get(i).getSkill_name(), user.getSkills().get(i).getOwns()});
-			
-			}
+		/*for (int i = 0 ; i <= user.getSkills().size() - 1; i++) {
+			model.addRow(
+					new Object[]{(
+							(Candidate) this.viewDatas.get("currentUser")).getSkills().get(i).getSkill_name(), 
+							((Candidate) this.viewDatas.get("currentUser")).getSkills().get(i).getOwns()
+							});
+		}
 		view.getTableSkill().setModel(model);
 
 		
 		ViewUtils.showTable(view, view.getTableCertificates(), certificates);
+		
 		ViewUtils.editText(view, view.getEditTxtAddress(), view.getTextFieldAddress());
 		ViewUtils.editText(view, view.getEditTxtName(), view.getTextFieldName());
 		ViewUtils.editText(view, view.getEdittxtLinkWebSite(), view.getTextFieldLinkWebSite());
@@ -73,6 +59,10 @@ public class ProfileCandidateController extends BaseController {
 		ViewUtils.editTable(view, view.getEditSkillList(), view.getTableSkill());
 		ViewUtils.editTable(view, view.getEditTxtCertificates(), view.getTableCertificates());
 		ViewUtils.editText(view, view.getEditTxtCertificates(), view.getTxtCertificatesInProgress());
-		
+		*/
+	}
+	
+	public void setupDatas() {
+		this.viewDatas.put("currentUser",this.viewDatas.get("currentUser"));
 	}
 }

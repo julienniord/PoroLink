@@ -124,7 +124,7 @@ public class AppUserDAO extends BaseDAO {
 	public AppUser getFromConnexion(String login, String password) {
 		AppUser user = null;
 		
-		ResultSet rs = executeRequest("SELECT * FROM "+ TABLE + " WHERE " + MAIL + " = " + login + " AND " + PASSWORD + " = " + password);
+		ResultSet rs = executeRequest("SELECT * FROM "+ TABLE + " WHERE " + MAIL + " = " + "'" + login + "'" + " AND " + PASSWORD + " = " + "'" + password + "'");
 		try {
 			if (rs.next()) {
 				user = getRealAppUser(rs.getDouble(ID));

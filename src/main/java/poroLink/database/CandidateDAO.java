@@ -29,7 +29,7 @@ public class CandidateDAO extends BaseDAO {
 	public static final String PRESENTATION = "presentation";
 	public static final String LINKS = "links";
 	public static final String CERTIFICATES = "cetificates";
-	public static final String CERTIFICATES_IN_PROGRESS = "certificates_in_progress";
+	public static final String CERTIFICATE_IN_PROGRESS = "certificate_in_progress";
 	public static final String ID = "appuser_id";
 	
 	public static final String CANDIDATE_SKILL = "skill";
@@ -59,7 +59,7 @@ public class CandidateDAO extends BaseDAO {
 			candidate.setTransport(rs.getString(TRANSPORT));
 			candidate.setPresentation(rs.getString(PRESENTATION));
 			candidate.setLinks(rs.getString(LINKS));
-			candidate.setCertificate_in_progress(rs.getString(CERTIFICATES_IN_PROGRESS));
+			candidate.setCertificate_in_progress(rs.getString(CERTIFICATE_IN_PROGRESS));
 			candidate.setId(rs.getDouble(ID));
 			
 			loadMother(candidate);
@@ -115,7 +115,7 @@ public class CandidateDAO extends BaseDAO {
 		result += PRESENTATION + " = '" + candidate.getPresentation() + "',";
 		result += LINKS + " = '" + candidate.getLinks() + "',";
 		result += CERTIFICATES + " = '" + candidate.getCertificates() + "',";
-		result += CERTIFICATES_IN_PROGRESS + " = '" + candidate.getCertificate_in_progress() + "'";
+		result += CERTIFICATE_IN_PROGRESS + " = '" + candidate.getCertificate_in_progress() + "'";
 		
 		return result;
 	}
