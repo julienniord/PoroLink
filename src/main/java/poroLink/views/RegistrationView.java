@@ -199,6 +199,7 @@ public class RegistrationView  extends BaseView{
 		registrationPanel.setLayout(gbl_registrationPanel);
 		
 		failAlert = new JTextArea();
+		failAlert.setForeground(Color.RED);
 		failAlert.setFont(new Font("Arial", Font.PLAIN, 18));
 		failAlert.setOpaque(false);
 		failAlert.setVisible(false);

@@ -50,8 +50,8 @@ CREATE TABLE appuser(
         role_appuser Varchar (50) NOT NULL ,
         mail         Varchar (255) NOT NULL ,
         password     Varchar (50) NOT NULL ,
-        created_at   Datetime ,
-        updated_at   Datetime ,
+        created_at   Datetime NOT NULL,
+        updated_at   Datetime NOT NULL,
         PRIMARY KEY (appuser_id )
 )ENGINE=InnoDB;
 
@@ -116,4 +116,3 @@ ALTER TABLE own
 ALTER TABLE graduate 
 	ADD CONSTRAINT FK_graduate_id_certif FOREIGN KEY (id_certif) REFERENCES certificate(id_certif),
 	ADD CONSTRAINT FK_graduate_appuser_id FOREIGN KEY (appuser_id) REFERENCES appuser(appuser_id);
-	

@@ -92,6 +92,17 @@ public class ConnectionController extends BaseController {
 	@Override
 	public void setupDatas() {
 		ConnectionView view = (ConnectionView) super.view;
-		this.viewDatas.put("currentUser", dao.getFromConnexion(view.getMailText().getText(), new String((view.getPwd()).getPassword())));
+		view.getBtnConnection().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AppUser user = dao.getFromConnexion(view.getMailText().getText(), new String((view.getPwd()).getPassword()));
+				viewDatas.put("currentUser", user);
+//				if(user.getMail()!="???") {
+//					viewDatas.put("currentUser", user);
+//				}else {
+//					view.getFailLabel().setText(text);
+//				}
+			}
+		});
 	}
 }

@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Candidate extends AppUser {
 
-    private boolean gender;
+
     private String firstname;
     private String lastname;
     private String phone;
@@ -33,21 +33,6 @@ public class Candidate extends AppUser {
     	this.lastname=lastname;
     }
 
-
-	/**
-	 * @return the gender
-	 */
-	public String getGender() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/**
-	 * @param gender the gender to set
-	 */
-	public void setGender(boolean gender) {
-		this.gender = gender;
-	}
 
 	/**
 	 * @return the firstname
