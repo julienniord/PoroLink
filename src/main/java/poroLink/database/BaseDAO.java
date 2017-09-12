@@ -1,6 +1,3 @@
-/**
- * coucou
- */
 package poroLink.database;
 
 import java.sql.PreparedStatement;
