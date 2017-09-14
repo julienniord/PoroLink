@@ -12,10 +12,10 @@ VALUES ("imie", "2 rue de la chaussée", "Ecole de la filière numérique propos
 INSERT INTO company (company_name, address, description, links, siret, appuser_id)
 VALUES ("tactfactory", "3 rue des champ de la paquerette", "Entreprise créatrice de Soft pour des clients. Vends les services de ses employés pour du développement ou de la formation", "tactfactory.fr", "12345678912345", 2);
 
-INSERT INTO candidate (firstname, lastname, phone, birthdate, transport, presentation, links, certificate_in_progress, appuser_id)
-VALUES ('Jean Louis', 'ON', '08 36 65 65 65', '2000-06-27', 'trotinette', 'Pere Noel de son état, il est trop stylé', 'JeanLouiOn.fr', 'Master Pro', 3);
-INSERT INTO candidate (firstname, lastname, phone, birthdate, transport, presentation, links, certificate_in_progress, appuser_id)
-VALUES ('Roger', 'Durand', '08 37 65 65 65', '2001-08-27', 'trotinette', 'J\'ai du style et je m\'épile', 'ROgerDurand.fr', 'BTS', 4);
+INSERT INTO candidate (firstname, lastname, phone, transport, presentation, links, certificate_in_progress, appuser_id)
+VALUES ('Jean Louis', 'ON', '08 36 65 65 65', 'trotinette', 'Pere Noel de son état, il est trop stylé', 'JeanLouiOn.fr', 'Master Pro', 3);
+INSERT INTO candidate (firstname, lastname, phone, transport, presentation, links, certificate_in_progress, appuser_id)
+VALUES ('Roger', 'Durand', '08 37 65 65 65', 'trotinette', 'J\'ai du style et je m\'épile', 'ROgerDurand.fr', 'BTS', 4);
 
 INSERT INTO skill (skill_id, skill_name) VALUES (1, 'Java');
 INSERT INTO skill (skill_id, skill_name) VALUES (2, 'PhP');

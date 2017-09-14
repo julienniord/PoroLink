@@ -9,25 +9,13 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
-import javax.swing.JList;
-import javax.swing.JMenuBar;
 import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.DefaultListCellRenderer;
-import javax.swing.border.LineBorder;
-
 import poroLink.entities.Post;
 
 import java.awt.Color;
-import java.awt.Component;
-
-import javax.swing.AbstractListModel;
-import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
 import java.awt.Dimension;
 import javax.swing.JScrollPane;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -292,7 +280,7 @@ public class ProfileCompanyView extends BaseView {
 	 *            the editLinkWebSite to set
 	 */
 	public void setEditLinkWebSite(JButton editLinkWebSite) {
-		editLinkWebSite = editLinkWebSite;
+		this.editLinkWebSite = editLinkWebSite;
 	}
 
 	/**
@@ -307,7 +295,7 @@ public class ProfileCompanyView extends BaseView {
 	 *            the editLinkedinLink to set
 	 */
 	public void setEditLinkedinLink(JButton editLinkedinLink) {
-		editLinkedinLink = editLinkedinLink;
+		this.editLinkedinLink = editLinkedinLink;
 	}
 
 	/**
@@ -322,7 +310,7 @@ public class ProfileCompanyView extends BaseView {
 	 *            the editName to set
 	 */
 	public void setEditName(JButton editName) {
-		editName = editName;
+		this.editName = editName;
 	}
 
 	/**
@@ -337,7 +325,7 @@ public class ProfileCompanyView extends BaseView {
 	 *            the editPhone to set
 	 */
 	public void setEditPhone(JButton editPhone) {
-		editPhone = editPhone;
+		this.editPhone = editPhone;
 	}
 
 	/**
@@ -352,7 +340,7 @@ public class ProfileCompanyView extends BaseView {
 	 *            the editAddress to set
 	 */
 	public void setEditAddress(JButton editAddress) {
-		editAddress = editAddress;
+		this.editAddress = editAddress;
 	}
 
 	/**
@@ -367,7 +355,7 @@ public class ProfileCompanyView extends BaseView {
 	 *            the editList to set
 	 */
 	public void setEditPost(JButton editPost) {
-		editPost = editPost;
+		this.editPost = editPost;
 	}
 
 	/**
@@ -382,7 +370,7 @@ public class ProfileCompanyView extends BaseView {
 	 *            the editDescription to set
 	 */
 	public void setEditDescription(JButton editDescription) {
-		editDescription = editDescription;
+		this.editDescription = editDescription;
 	}
 
 	/**
@@ -397,7 +385,7 @@ public class ProfileCompanyView extends BaseView {
 	 *            the editSkillList to set
 	 */
 	public void setEditSkillList(JButton editSkillList) {
-		editSkillList = editSkillList;
+		this.editSkillList = editSkillList;
 	}
 
 	/**

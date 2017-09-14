@@ -14,7 +14,6 @@ CREATE TABLE candidate(
         firstname               Varchar (255) ,
         lastname                Varchar (255) ,
         phone                   Varchar (15) ,
-        birthdate               Date ,
         transport               Varchar (25) ,
         presentation            Text ,
         links                   Varchar (255) ,

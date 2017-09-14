@@ -3,7 +3,6 @@
  */
 package poroLink.database;
 
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -131,8 +130,6 @@ public class AppUserDAO extends BaseDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-//			user= new Candidate();
-//			user.setMail("???");
 		}
 		
 		return user;

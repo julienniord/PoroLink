@@ -1,7 +1,5 @@
 package poroLink.entities;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Candidate extends AppUser {
@@ -10,7 +8,6 @@ public class Candidate extends AppUser {
     private String firstname;
     private String lastname;
     private String phone;
-    private Date birthdate;
     private String transport;
     private String presentation;
     private String links;
@@ -74,20 +71,6 @@ public class Candidate extends AppUser {
 	 */
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-
-	/**
-	 * @return the birthdate
-	 */
-	public Date getBirthdate() {
-		return birthdate;
-	}
-
-	/**
-	 * @param birthdate the birthdate to set
-	 */
-	public void setBirthdate(Date birthdate) {
-		this.birthdate = birthdate;
 	}
 
 	/**
@@ -189,7 +172,7 @@ public class Candidate extends AppUser {
 	}
 	
 	
-	    public Candidate FirstCandidate(List<Candidate> candidates) {
+	    public Candidate firstCandidate(List<Candidate> candidates) {
 	    	Candidate candidate = candidates.get(0);
 	    	int leporcentage = candidates.get(0).purcentcompatibility;
 	    	for(int i=0;i<candidates.size();i++) {

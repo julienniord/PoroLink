@@ -11,20 +11,16 @@ import poroLink.views.MatchingResultView;
 public class MatchingResultController extends BaseController {
 	
 	private JFrame frame;
-	private  MatchingResultView view;
-
-	//public TreeMap<Integer,Integer> tmCandidate = new TreeMap<>();
-	//List<String> list = new ArrayList<String>();
-	//private ArrayList<Candidate> candidatlist;
 	
+
 	public  MatchingResultController(JFrame frame){
 		super();
 		super.frame = frame;
 		super.view = new MatchingResultView(this.frame);
 	}
 	
-	List<Candidate> candidatlist = new ArrayList<Candidate>();
-	Candidate candidat = new Candidate();
+	private List<Candidate> candidatlist = new ArrayList<Candidate>();
+	private Candidate candidat = new Candidate();
 
 	/**
 	 * @return the candidat
@@ -47,32 +43,19 @@ public class MatchingResultController extends BaseController {
 		this.candidatlist = candidatlist;
 	}
 
-	private Object getTmCandidate;
-	
-	
-
 	@Override
 	public void initEvent() {
-		view = (MatchingResultView) super.view;
-		/*
-		view.getBtnValidate().addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-					//ViewsManager.getInstance().next(new MatchingResultController(frame));	
-			}
-		});
-		*/
 	}
 
 	
 	@Override
 	public void initView() {
-		//((MatchingResultView)getView()).getTextField().setText(((Post)this.viewDatas.get("currentPost")).getPost_name());	
-		((MatchingResultView)getView()).getLblRsultatDeLa().setText("R\u00E9sultat de la recherche pour le poste : " + ((Post)this.viewDatas.get("currentPost")).getPost_name());
+		//((MatchingResultView)getView()).getTextField().setText(((Post)this.viewDatas.get(CURRENTPOST)).getPost_name());	
+		((MatchingResultView)getView()).getLblRsultatDeLa().setText("Resultat de la recherche pour le poste : " + ((Post)this.viewDatas.get(CURRENTPOST)).getPost_name());
 		
 		//affichage des skills
-		for(int i=0;i<((Post) this.viewDatas.get("currentPost")).getSkills().size();i++) {
-			((MatchingResultView)getView()).getTextAreaSkills().setText(((MatchingResultView)getView()).getTextAreaSkills().getText()+ "\n" +((Post)this.viewDatas.get("currentPost")).getSkills().get(i).getSkill_name() + " niveau "+ ((Post)this.viewDatas.get("currentPost")).getSkills().get(i).getNeeds());
+		for(int i=0;i<((Post) this.viewDatas.get(CURRENTPOST)).getSkills().size();i++) {
+			((MatchingResultView)getView()).getTextAreaSkills().setText(((MatchingResultView)getView()).getTextAreaSkills().getText()+ "\n" +((Post)this.viewDatas.get(CURRENTPOST)).getSkills().get(i).getSkill_name() + " niveau "+ ((Post)this.viewDatas.get(CURRENTPOST)).getSkills().get(i).getNeeds());
 		}
 		// recherche des besoins en pourcentage
 		//setpurcentageneeds();
@@ -92,9 +75,9 @@ public class MatchingResultController extends BaseController {
 		//return StudentName1.compareTo(StudentName2);
 		//Collections.sort(candidatlist, getPurcentcompatibility());
 		//candidatlist.sort(null);
-		System.out.println(candidat.FirstCandidate(candidatlist).getFirstname());
-		candidatlist.remove(candidat.FirstCandidate(candidatlist));
-		System.out.println(candidat.FirstCandidate(candidatlist).getFirstname());
+		System.out.println(candidat.firstCandidate(candidatlist).getFirstname());
+		candidatlist.remove(candidat.firstCandidate(candidatlist));
+		System.out.println(candidat.firstCandidate(candidatlist).getFirstname());
 		/*
 		for(int i=0;i<candidatlist.size();i++) {
 			System.out.println(candidatlist.get(i).getPurcentcompatibility());
@@ -109,15 +92,15 @@ public class MatchingResultController extends BaseController {
 		
 		for(int i=0;i<candidate.getSkills().size();i++) {
 			purcentagecomatibility=0;
-			for(int j=0;j<((Post) this.viewDatas.get("currentPost")).getSkills().size();j++) {
+			for(int j=0;j<((Post) this.viewDatas.get(CURRENTPOST)).getSkills().size();j++) {
 				sommebesoin=0;
-				for(int k=0;k<((Post) this.viewDatas.get("currentPost")).getSkills().size();k++) {
-						sommebesoin+=((Post)this.viewDatas.get("currentPost")).getSkills().get(k).getNeeds();	
+				for(int k=0;k<((Post) this.viewDatas.get(CURRENTPOST)).getSkills().size();k++) {
+						sommebesoin+=((Post)this.viewDatas.get(CURRENTPOST)).getSkills().get(k).getNeeds();	
 				}
 				
-				purcentagebesoin=((Post)this.viewDatas.get("currentPost")).getSkills().get(j).getNeeds()*(100/sommebesoin);
+				purcentagebesoin=((Post)this.viewDatas.get(CURRENTPOST)).getSkills().get(j).getNeeds()*(100/sommebesoin);
 				
-				if(candidate.getSkills().get(i).getId()==((Post) this.viewDatas.get("currentPost")).getSkills().get(j).getId()) {
+				if(candidate.getSkills().get(i).getId()==((Post) this.viewDatas.get(CURRENTPOST)).getSkills().get(j).getId()) {
 							
 					switch (candidate.getSkills().get(i).getOwns()) {
 					case 1:
@@ -161,10 +144,10 @@ public class MatchingResultController extends BaseController {
 		Skill s1 = new Skill("JAVA",0,5);
 		Skill s2 = new Skill("C",0,5);
 		Skill s3 = new Skill("C++",0,5);
-		Skill s4 = new Skill("html",0,5);
-		Skill s5 = new Skill("css",0,5);
+		new Skill("html",0,5);
+		new Skill("css",0,5);
 		Skill s6 = new Skill("css",0,5);
-		Skill s7 = new Skill("C",0,1);
+		new Skill("C",0,1);
 		
 		skills1.add(s1);
 		skills1.add(s2);

@@ -24,7 +24,6 @@ public class CandidateDAO extends BaseDAO {
 	public static final String FIRSTNAME = "firstname";
 	public static final String LASTNAME = "lastname";
 	public static final String PHONE = "phone";
-	public static final String BIRTHDATE = "birthdate";
 	public static final String TRANSPORT = "transport";
 	public static final String PRESENTATION = "presentation";
 	public static final String LINKS = "links";
@@ -55,7 +54,6 @@ public class CandidateDAO extends BaseDAO {
 			candidate.setFirstname(rs.getString(FIRSTNAME));
 			candidate.setLastname(rs.getString(LASTNAME));
 			candidate.setPhone(rs.getString(PHONE));
-			candidate.setBirthdate(rs.getDate(BIRTHDATE));
 			candidate.setTransport(rs.getString(TRANSPORT));
 			candidate.setPresentation(rs.getString(PRESENTATION));
 			candidate.setLinks(rs.getString(LINKS));
@@ -65,7 +63,6 @@ public class CandidateDAO extends BaseDAO {
 			loadMother(candidate);
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			candidate = null;
 		}
@@ -110,7 +107,6 @@ public class CandidateDAO extends BaseDAO {
 		result += FIRSTNAME + " = '" + candidate.getFirstname() + "',";
 		result += LASTNAME + " = '" + candidate.getLastname() + "',";
 		result += PHONE + " = '" + candidate.getPhone() + "',";
-		result += BIRTHDATE + " = '" + candidate.getBirthdate() + "',";
 		result += TRANSPORT + " = '" + candidate.getTransport() + "',";
 		result += PRESENTATION + " = '" + candidate.getPresentation() + "',";
 		result += LINKS + " = '" + candidate.getLinks() + "',";
