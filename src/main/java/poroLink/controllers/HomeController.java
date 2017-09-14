@@ -14,6 +14,7 @@ import poroLink.views.MatchingView;
 public class HomeController extends BaseController {
 
 	public HomeController(JFrame frame){
+		super();
 		super.frame = frame;
 		super.view = new HomeView(this.frame);
 	}

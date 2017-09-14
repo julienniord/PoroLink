@@ -8,7 +8,6 @@ import javax.swing.JFrame;
 
 import poroLink.controllers.BaseController;
 import poroLink.controllers.ConnectionController;
-import poroLink.controllers.LoginController;
 import poroLink.utils.views.ViewUtils;
 import poroLink.views.LoginView;
 

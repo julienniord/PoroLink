@@ -1,6 +1,5 @@
 package poroLink.controllers;
 
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
@@ -12,7 +11,6 @@ import javax.swing.JFrame;
 import poroLink.database.AppUserDAO;
 import poroLink.managers.ViewsManager;
 import poroLink.views.ForgottenPwdView;
-import poroLink.views.HomeView;
 
 public class ForgottenPwdController extends BaseController {
 
@@ -20,7 +18,7 @@ public class ForgottenPwdController extends BaseController {
 	private ForgottenPwdView view;
 
 	public ForgottenPwdController(JFrame frame) {
-		
+		super();
 		super.frame = frame;
 		super.view = new ForgottenPwdView(this.frame);
 		

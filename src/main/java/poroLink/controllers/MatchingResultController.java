@@ -18,6 +18,7 @@ public class MatchingResultController extends BaseController {
 	//private ArrayList<Candidate> candidatlist;
 	
 	public  MatchingResultController(JFrame frame){
+		super();
 		super.frame = frame;
 		super.view = new MatchingResultView(this.frame);
 	}
@@ -73,7 +74,7 @@ public class MatchingResultController extends BaseController {
 		for(int i=0;i<((Post) this.viewDatas.get("currentPost")).getSkills().size();i++) {
 			((MatchingResultView)getView()).getTextAreaSkills().setText(((MatchingResultView)getView()).getTextAreaSkills().getText()+ "\n" +((Post)this.viewDatas.get("currentPost")).getSkills().get(i).getSkill_name() + " niveau "+ ((Post)this.viewDatas.get("currentPost")).getSkills().get(i).getNeeds());
 		}
-		// recher des besoins en pourcentage
+		// recherche des besoins en pourcentage
 		//setpurcentageneeds();
 		
 		
@@ -83,7 +84,7 @@ public class MatchingResultController extends BaseController {
 				((MatchingResultView)getView()).getTextAreaCanditate().setText(((MatchingResultView)getView()).getTextAreaCanditate().getText()+ "\n" +(postulant.getFirstname()+" compétences : "+ postulant.getSkills().get(i).getSkill_name()+ " niveau" +postulant.getSkills().get(i).getOwns()));
 				
 			}
-			// recherche des pourcentage des canditats
+			// recherche des pourcentages des canditats
 				
 			candidatlist.add(compatibilite(postulant));
 			

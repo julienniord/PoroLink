@@ -11,14 +11,12 @@ import javax.swing.JFrame;
 
 import poroLink.database.AppUserDAO;
 import poroLink.entities.AppUser;
-import poroLink.entities.Candidate;
-import poroLink.entities.Role;
 import poroLink.managers.ViewsManager;
 import poroLink.views.ConnectionView;
-//import porolink.database.AppUserDAO;
 
 
 public class ConnectionController extends BaseController {
+	
 	
 	private JFrame frame;
 	public ConnectionController(JFrame frame) {
@@ -96,12 +94,7 @@ public class ConnectionController extends BaseController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				AppUser user = dao.getFromConnexion(view.getMailText().getText(), new String((view.getPwd()).getPassword()));
-				viewDatas.put("currentUser", user);
-//				if(user.getMail()!="???") {
-//					viewDatas.put("currentUser", user);
-//				}else {
-//					view.getFailLabel().setText(text);
-//				}
+				viewDatas.put(CURRENTUSER, user);
 			}
 		});
 	}

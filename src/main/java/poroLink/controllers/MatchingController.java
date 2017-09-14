@@ -7,8 +7,11 @@ import java.util.List;
 
 import javax.swing.JFrame;
 import poroLink.views.customrenders.ListCellPostRender;
-import poroLink.entities.*;
+import poroLink.entities.Candidate;
+import poroLink.entities.Company;
+//import poroLink.entities.*;
 import poroLink.entities.Post;
+import poroLink.entities.Skill;
 import poroLink.managers.ViewsManager;
 import poroLink.views.MatchingView;
 
@@ -31,6 +34,7 @@ public class MatchingController extends BaseController {
 	}
 
 	public MatchingController(JFrame frame){
+		super();
 		super.frame = frame;
 		super.view = new MatchingView(this.frame);
 		

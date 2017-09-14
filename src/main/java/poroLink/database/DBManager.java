@@ -80,14 +80,12 @@ public class DBManager {
 				}
 			}
 		} catch (SQLException e) {
-
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;
 	}
 
-	public void createDB(String path, String file) {
+	private void createDB(String path, String file) {
 		Statement stmt;
 
 		try {
@@ -116,12 +114,11 @@ public class DBManager {
 			}
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
-	public void delateDB () {
+	public void deleteDB () {
 		Statement stmt;
 		try {
 			stmt = creaCon.createStatement();
@@ -152,17 +149,11 @@ public class DBManager {
 	}
 
 	public void connect(String serverAddress, String port, String dbName, String login, String password) {
-		dbName = dbName;
+		this.dbName = dbName;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection("jdbc:mysql://" + serverAddress + ":" + port + "/" + dbName, login,
 					password);
-			// Statement stmt = con.createStatement();
-			// ResultSet rs = stmt.executeQuery("select * from emp");
-			// while (rs.next())
-			// System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " +
-			// rs.getString(3));
-			// con.close();
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
@@ -172,12 +163,6 @@ public class DBManager {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			creaCon = DriverManager.getConnection("jdbc:mysql://" + serverAddress + ":" + port + "/", login, password);
-			// Statement stmt = con.createStatement();
-			// ResultSet rs = stmt.executeQuery("select * from emp");
-			// while (rs.next())
-			// System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " +
-			// rs.getString(3));
-			// con.close();
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}

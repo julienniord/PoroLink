@@ -15,6 +15,7 @@ import poroLink.views.MatchingView;
 public class ListUserController extends BaseController {
 
 	public ListUserController(JFrame frame){
+		super();
 		super.frame = frame;
 		super.view = new ListUserView(this.frame);
 	}
