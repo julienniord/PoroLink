@@ -8,6 +8,7 @@ import java.util.List;
 import poroLink.entities.Company;
 import poroLink.entities.Post;
 import poroLink.entities.base.BaseEntity;
+import poroLink.utils.views.ViewUtils;
 
 public class CompanyDAO extends BaseDAO{
 	
@@ -31,8 +32,11 @@ public class CompanyDAO extends BaseDAO{
 	}
 
 	
-	/* (non-Javadoc)
-	 * @see poroLink.database.IDAOBase#parse(java.sql.ResultSet)
+	/**
+	 * This function transform the ResultSet to Object. 
+	 * AppUser appUser = new Candidate(); => creation of an candidate because 
+	 * AppUser is abstract. But the function just set the parameter of an AppUser so 
+	 * the type of the object is not important at this moment.
 	 */
 	@Override
 	public BaseEntity parseResultSetToObject(ResultSet rs) {
@@ -58,6 +62,10 @@ public class CompanyDAO extends BaseDAO{
 		return company;
 	}
 	
+	/**
+	 * Insert into the object the data of the class Company with the same id.
+	 * @param candidate
+	 */
 	public void loadMother(Company company) {
 		AppUserDAO appUserDAO = new AppUserDAO();
 		Company tmp =  (Company) appUserDAO.get(company.getId());
@@ -70,21 +78,29 @@ public class CompanyDAO extends BaseDAO{
 		company.setUpdated_at(tmp.getUpdated_at());
 	}
 	
+	/**
+	 * This function is used to transform an item to a String corresponding 
+	 * to the SQL request of the insert.
+	 */
 	@Override
 	public String parseInsert(BaseEntity item) {
 		Company company = (Company) item;
 
-		String result = "'" + company.getCompany_name() + "',";
-		result += "'" + company.getAddress() + "',";
-		result += "'" + company.getDescription() + "',";
-		result += "'" + company.getLinks() + "',";
-		result += "'" + company.getSiret() + "',";
-		result += "'" + company.getPhone() + "',";
+		String result = "'" + ViewUtils.SqlTest(company.getCompany_name()) + "',";
+		result += "'" + ViewUtils.SqlTest(company.getAddress()) + "',";
+		result += "'" + ViewUtils.SqlTest(company.getDescription()) + "',";
+		result += "'" + ViewUtils.SqlTest(company.getLinks()) + "',";
+		result += "'" + ViewUtils.SqlTest(company.getSiret()) + "',";
+		result += "'" + ViewUtils.SqlTest(String.valueOf(company.getPhone())) + "',";
 		result += "'" + company.getId() + "'";
 		
 		return result;
 	}
 
+	/**
+	 * This function is used to transform an item to a String corresponding 
+	 * to the SQL request of the insert.
+	 */
 	@Override
 	public String parseUpdate(BaseEntity item) {
 		String result = "";
@@ -99,7 +115,11 @@ public class CompanyDAO extends BaseDAO{
 		return result;
 	}
 	
-	
+	/**
+	 * Select the post of the Company and put them in a arrayList. 
+	 * @param candidate
+	 * @return
+	 */
 	public Company getPosts(Company company) {
 		ResultSet rs = executeRequest("SELECT * FROM " + COMPANY_POST
 				+ " WHERE " + ID + " = " + company.getId());
@@ -121,6 +141,11 @@ public class CompanyDAO extends BaseDAO{
 		return company;
 	}
 
+	/**
+	 * Insert the arrayList of post in the database.
+	 * @param candidate
+	 * @return
+	 */
 	public int insertPosts(Company company) {
 		int result = 0;
 		deletePosts(company);
@@ -132,6 +157,12 @@ public class CompanyDAO extends BaseDAO{
 		return result;
 	}
 
+	/**
+	 * Delete all posts
+	 *  of the database with id.
+	 * @param candidate
+	 * @return
+	 */
 	public int deletePosts(Company company) {
 		return executeRequestUpdate("DELETE FROM " + COMPANY_POST + " WHERE "
 				+ ID + " = " + company.getId());

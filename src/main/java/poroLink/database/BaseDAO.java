@@ -37,8 +37,9 @@ public abstract class BaseDAO implements IDAOBase{
 		this.id = id;
 	}
 
-	/* (non-Javadoc)
-	 * @see poroLink.database.IDAOBase#executeRequest(java.lang.String)
+	/**
+	 * this function opens a connection with the database and executes an SQL Request.
+	 * It used to the select request.
 	 */
 	@Override
 	public ResultSet executeRequest(String request) {
@@ -52,6 +53,10 @@ public abstract class BaseDAO implements IDAOBase{
 		return result;
 	}
 	
+	/**
+	 * This function opens a connection with the database and executes an SQL Request.
+	 * It used for update request.
+	 */
 	@Override
 	public int executeRequestUpdate(String request) {
 		int result = 0; 
@@ -64,10 +69,9 @@ public abstract class BaseDAO implements IDAOBase{
 		return result;
 
 	}
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see imiepoecjava2017.database.IDAOBase#executeRequest(java.lang.String)
+	/**
+	 * This function get the auto-generated id in the database and set it 
+	 * on the item enter as parameter. It used to insert request.
 	 */
 	@Override
 	public BaseEntity executePreparedStatement(BaseEntity item, String request) {
@@ -90,24 +94,24 @@ public abstract class BaseDAO implements IDAOBase{
 	}
 
 
-	/* (non-Javadoc)
-	 * @see poroLink.database.IDAOBase#deleteAll()
+	/**
+	 * This function is used to delete all the specific table
 	 */
 	@Override
 	public int deleteAll() {
 		return executeRequestUpdate("DELETE FROM " + table);
 	}
 
-	/* (non-Javadoc)
-	 * @see poroLink.database.IDAOBase#delete(poroLink.entities.base.BaseEntity)
+	/**
+	 * This function is used to delete by the id in a specific table. 
 	 */
 	@Override
 	public int delete(BaseEntity item) {
 		return executeRequestUpdate("DELETE FROM " + table + " WHERE " + id + "  = " + item.getId());	
 	}
 
-	/* (non-Javadoc)
-	 * @see poroLink.database.IDAOBase#get(double)
+	/**
+	 * This function select by id in the specific table on database. Return a item with the parseResultSetToObject.
 	 */
 	@Override
 	public BaseEntity get(double id) {
@@ -117,15 +121,15 @@ public abstract class BaseDAO implements IDAOBase{
 			rs.next();
 			entity = parseResultSetToObject(rs);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		return entity;
 	}
 
-	/* (non-Javadoc)
-	 * @see poroLink.database.IDAOBase#get()
+	/**
+	 * This function select all the table and put it in a Array list of item.
+	 * Return a item with the parseResultSetToObject.
 	 */
 	@Override
 	public List<BaseEntity> get() {
@@ -144,8 +148,8 @@ public abstract class BaseDAO implements IDAOBase{
 		return entities;
 	}
 
-	/* (non-Javadoc)
-	 * @see poroLink.database.IDAOBase#insert(poroLink.entities.base.BaseEntity)
+	/**
+	 * This function insert a item in the database.
 	 */
 	@Override
 	public BaseEntity insert(BaseEntity item) {
@@ -153,8 +157,8 @@ public abstract class BaseDAO implements IDAOBase{
 		
 	}
 
-	/* (non-Javadoc)
-	 * @see poroLink.database.IDAOBase#update(poroLink.entities.base.BaseEntity)
+	/**
+	 * This functon update and item in the database by the id.
 	 */
 	@Override
 	public int update(BaseEntity item) {
