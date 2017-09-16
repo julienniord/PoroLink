@@ -5,11 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
-import poroLink.entities.AppUser;
 import poroLink.managers.ViewsManager;
 import poroLink.views.HomeView;
-import poroLink.views.LoginView;
-import poroLink.views.MatchingView;
 
 public class HomeController extends BaseController {
 

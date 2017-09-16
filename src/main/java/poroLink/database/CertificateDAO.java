@@ -18,8 +18,11 @@ public class CertificateDAO extends BaseDAO{
 			// TODO Auto-generated constructor stub
 		}
 		
-		/* (non-Javadoc)
-		 * @see poroLink.database.IDAOBase#parse(java.sql.ResultSet)
+		/**
+		 * This function transform the ResultSet to Object. 
+		 * AppUser appUser = new Candidate(); => creation of an candidate because 
+		 * AppUser is abstract. But the function just set the parameter of an AppUser so 
+		 * the type of the object is not important at this moment.
 		 */
 		@Override
 		public BaseEntity parseResultSetToObject(ResultSet rs) {
@@ -37,6 +40,10 @@ public class CertificateDAO extends BaseDAO{
 			return certificate;
 		}
 		
+		/**
+		 * This function is used to transform an item to a String corresponding 
+		 * to the SQL request of the insert.
+		 */
 		@Override
 		public String parseInsert(BaseEntity item) {
 			String result = "null,";
@@ -48,6 +55,10 @@ public class CertificateDAO extends BaseDAO{
 			return result;
 		}
 
+		/**
+		 * This function is used to transform an item to a String corresponding 
+		 * to the SQL request of the insert.
+		 */
 		@Override
 		public String parseUpdate(BaseEntity item) {
 			String result = "";
