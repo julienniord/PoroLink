@@ -8,9 +8,13 @@ import javax.swing.JFrame;
 import poroLink.views.BaseView;
 
 public abstract class BaseController implements IBaseController {
+	protected static final String CURRENTUSER = "currentUser";
+	protected static final String CURRENTPOST = "currentPost";
 	protected JFrame frame;
 	protected BaseView view;
 	protected Map<String,Object> viewDatas = new HashMap<String, Object>();
+	
+
 
 	/**
 	 * @return the view

@@ -10,16 +10,17 @@ public class Company extends AppUser {
     private String links;
     private String siret;
     private List<Post> posts;
+	private int phone;
 	/**
      * Default constructor
      */
     public Company(String company_name) {
-    	this.role_appuser=2;
+    	this.role_appuser=Role.COMPANY;
     	this.company_name=company_name;
     }
     
 	public Company(String company_name, String address, String description, String links, String siret,
-			List<Post> posts) {
+			List<Post> posts, int phone) {
 		super();
 		this.company_name = company_name;
 		this.address = address;
@@ -27,6 +28,7 @@ public class Company extends AppUser {
 		this.links = links;
 		this.siret = siret;
 		this.posts = posts;
+		this.phone = phone;
 	}
 
 	public Company() {
@@ -105,7 +107,17 @@ public class Company extends AppUser {
 		this.posts = posts;
 	}
 
-    
+	public int getPhone() {
+		// TODO Auto-generated method stub
+		return phone;
+	}
+
+	/**
+	 * @param phone the phone to set
+	 */
+	public void setPhone(int phone) {
+		this.phone = phone;
+	}
 
 
 

@@ -1,6 +1,3 @@
-/**
- * coucou
- */
 package poroLink.database;
 
 import java.sql.PreparedStatement;
@@ -114,7 +111,7 @@ public abstract class BaseDAO implements IDAOBase{
 	 */
 	@Override
 	public BaseEntity get(double id) {
-		ResultSet rs = executeRequest("SELECT *  FROM " + table + "WHERE " + this.id + " = " + id);
+		ResultSet rs = executeRequest("SELECT *  FROM " + table + " WHERE " + this.id + " = '" + (int)id + "'");
 		BaseEntity entity = null;
 		try {
 			rs.next();

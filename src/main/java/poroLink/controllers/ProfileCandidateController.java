@@ -1,16 +1,11 @@
 package poroLink.controllers;
 
-import java.awt.EventQueue;
-import java.util.ArrayList;
-
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 import poroLink.entities.Candidate;
-import poroLink.entities.Skill;
 import poroLink.utils.views.ViewUtils;
 import poroLink.views.ProfileCandidateView;
-import poroLink.views.ProfileCompanyView;
 
 
 /**
@@ -19,10 +14,10 @@ import poroLink.views.ProfileCompanyView;
  */
 public class ProfileCandidateController extends BaseController {
 	private ProfileCandidateView view;
-	private Candidate user;
 	private JFrame frame;
 
 	public ProfileCandidateController(JFrame frame) {
+		super();
 		this.frame = frame;
 		super.frame = frame;
 		super.view = new ProfileCandidateView(this.frame);
@@ -31,46 +26,89 @@ public class ProfileCandidateController extends BaseController {
 
 	@Override
 	public void initEvent() {
-		
-		user = new Candidate();
 		view = (ProfileCandidateView) super.view;
-		Skill java = new Skill("java", 5, 0);
-		Skill c = new Skill("C", 3, 4);
-		Skill php = new Skill("PhP", 2, 0);
-		Skill sql = new Skill("SQL", 4, 2);
-		Skill git = new Skill("Git", 4, 3);
-		ArrayList<Skill> skills1 = new ArrayList<Skill>();
-		skills1.add(c);
-		skills1.add(sql);
-		skills1.add(git);
-		String bac = "BAC";
-		String licence = "Licence de Psychologie";
-		ArrayList<String> certificates = new ArrayList<>();
-		certificates.add(bac);
-		certificates.add(licence);
-		user.setSkills(skills1);
-		user.setCertificates(certificates);
+		
+
 		
 		DefaultTableModel model = new DefaultTableModel(); 	
 		model.addColumn("Compétences");
 		model.addColumn("Niveau");
-		for (int i = 0 ; i <= user.getSkills().size() - 1; i++) {
-			model.addRow(new Object[]{user.getSkills().get(i).getSkill_name(), user.getSkills().get(i).getOwns()});
-			
-			}
+		
+		/*for (int i = 0 ; i <= user.getSkills().size() - 1; i++) {
+			model.addRow(
+					new Object[]{(
+							(Candidate) this.viewDatas.get(CURRENTUSER)).getSkills().get(i).getSkill_name(), 
+							((Candidate) this.viewDatas.get(CURRENTUSER)).getSkills().get(i).getOwns()
+							});
+		}
 		view.getTableSkill().setModel(model);
 
 		
 		ViewUtils.showTable(view, view.getTableCertificates(), certificates);
-		ViewUtils.editText(view, view.getEditTxtAddress(), view.getTextFieldAddress());
+		*/
+		
+		if((((Candidate)this.viewDatas.get(CURRENTUSER)).getLastname()!=null) && (((Candidate)this.viewDatas.get(CURRENTUSER)).getFirstname()!=null)){
+			view.getTextFieldName().setText(((Candidate)this.viewDatas.get(CURRENTUSER)).getFirstname() + " " + ((Candidate)this.viewDatas.get(CURRENTUSER)).getLastname());
+			}else {
+				view.getTextFieldName().setText("Prénom nom");
+			}
 		ViewUtils.editText(view, view.getEditTxtName(), view.getTextFieldName());
+		
+		if((((Candidate)this.viewDatas.get(CURRENTUSER)).getLinks()!=null)){
+			view.getTextFieldLinkWebSite().setText(((Candidate)this.viewDatas.get(CURRENTUSER)).getLinks());
+			}else {
+				view.getTextFieldLinkWebSite().setText("Site Internet");
+			}
 		ViewUtils.editText(view, view.getEdittxtLinkWebSite(), view.getTextFieldLinkWebSite());
+		
+		if((((Candidate)this.viewDatas.get(CURRENTUSER)).getPhone()!=null)){
+			view.getTextFieldPhone().setText(((Candidate)this.viewDatas.get(CURRENTUSER)).getPhone());
+			}else {
+				view.getTextFieldPhone().setText("Telephone");
+			}
 		ViewUtils.editText(view, view.getEditTxtPhone(), view.getTextFieldPhone());
-		ViewUtils.editText(view, view.getEditDescription(), view.getTxtrDescription());
+		
+		if((((Candidate)this.viewDatas.get(CURRENTUSER)).getPresentation()!=null)){
+			view.getTxtrPresentation().setText(((Candidate)this.viewDatas.get(CURRENTUSER)).getPresentation());
+			}else {
+				view.getTxtrPresentation().setText("Presentation");
+			}
+		ViewUtils.editText(view, view.getEditPresentation(), view.getTxtrPresentation());
+		
+		if((((Candidate)this.viewDatas.get(CURRENTUSER)).getLinks()!=null)){
+			view.getTextFieldLinkLinkedin().setText(((Candidate)this.viewDatas.get(CURRENTUSER)).getLinks());
+			}else {
+				view.getTextFieldPhone().setText("Lien Linkedin");
+			}
 		ViewUtils.editText(view, view.getEditTxtLinkLinkedin(), view.getTextFieldLinkLinkedin());
+		/*
+		 TODO;
+		if((((Candidate)this.viewDatas.get(CURRENTUSER)).getPhone()!=null)){
+			view.getTextFieldPhone().setText(((Candidate)this.viewDatas.get(CURRENTUSER)).getPhone());
+			}else {
+				view.getTextFieldPhone().setText("Telephone");
+			}
 		ViewUtils.editTable(view, view.getEditSkillList(), view.getTableSkill());
+		*/
+		/*
+		 TODO
+		 
+		if((((Candidate)this.viewDatas.get(CURRENTUSER)).getPhone()!=null)){
+			view.getTextFieldPhone().setText(((Candidate)this.viewDatas.get(CURRENTUSER)).getPhone());
+			}else {
+				view.getTextFieldPhone().setText("Telephone");
+			}
 		ViewUtils.editTable(view, view.getEditTxtCertificates(), view.getTableCertificates());
+		*/
+		
+		if((((Candidate)this.viewDatas.get(CURRENTUSER)).getCertificate_in_progress()!=null)){
+			view.getTxtCertificatesInProgress().setText(((Candidate)this.viewDatas.get(CURRENTUSER)).getCertificate_in_progress());
+			}else {
+				view.getTextFieldPhone().setText("Diplome en cours");
+			}
 		ViewUtils.editText(view, view.getEditTxtCertificates(), view.getTxtCertificatesInProgress());
 		
 	}
+	
+
 }

@@ -2,7 +2,11 @@ package poroLink.database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import poroLink.entities.Company;
+import poroLink.entities.Post;
 import poroLink.entities.base.BaseEntity;
 
 public class CompanyDAO extends BaseDAO{
@@ -15,6 +19,10 @@ public class CompanyDAO extends BaseDAO{
 	public static final String LINKS = "links";
 	public static final String SIRET = "siret";
 	public static final String POSTS = "posts";
+	private static final String PHONE = "phone";
+	
+	public static final String COMPANY_POST = "post";
+	public static final String ID_POST = "post_id";
 
 
 	public CompanyDAO() {
@@ -37,6 +45,10 @@ public class CompanyDAO extends BaseDAO{
 			company.setDescription(rs.getString(DESCRIPTION));
 			company.setLinks(rs.getString(LINKS));
 			company.setSiret(rs.getString(SIRET));
+			company.setPhone(rs.getInt(PHONE));
+			
+			loadMother(company);
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -46,18 +58,30 @@ public class CompanyDAO extends BaseDAO{
 		return company;
 	}
 	
+	public void loadMother(Company company) {
+		AppUserDAO appUserDAO = new AppUserDAO();
+		Company tmp =  (Company) appUserDAO.get(company.getId());
+		
+		company.setId(tmp.getId());
+		company.setMail(tmp.getMail());
+		company.setRole_appuser(tmp.getRole_appuser());
+		company.setPassword(tmp.getPassword());
+		company.setCreated_at(tmp.getCreated_at());
+		company.setUpdated_at(tmp.getUpdated_at());
+	}
+	
 	@Override
 	public String parseInsert(BaseEntity item) {
-		String result = "null,";
 		Company company = (Company) item;
 
-		result += "'" + company.getCompany_name() + "'";
-		result += "'" + company.getAddress() + "'";
-		result += "'" + company.getDescription() + "'";
-		result += "'" + company.getLinks() + "'";
-		result += "'" + company.getSiret() + "'";
+		String result = "'" + company.getCompany_name() + "',";
+		result += "'" + company.getAddress() + "',";
+		result += "'" + company.getDescription() + "',";
+		result += "'" + company.getLinks() + "',";
+		result += "'" + company.getSiret() + "',";
+		result += "'" + company.getPhone() + "',";
+		result += "'" + company.getId() + "'";
 		
-
 		return result;
 	}
 
@@ -71,7 +95,46 @@ public class CompanyDAO extends BaseDAO{
 		result += DESCRIPTION + " = '" + company.getDescription() + "'";
 		result += LINKS + " = '" + company.getLinks() + "'";
 		result += SIRET + " = '" + company.getSiret() + "'";
+		result += PHONE + " = '" + company.getPhone() + "'";
 		return result;
+	}
+	
+	
+	public Company getPosts(Company company) {
+		ResultSet rs = executeRequest("SELECT * FROM " + COMPANY_POST
+				+ " WHERE " + ID + " = " + company.getId());
+		List<Double> postsId = new ArrayList<Double>();
+		try {
+			while (rs.next()) {
+				postsId.add(rs.getDouble(ID_POST));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		BaseDAO postDAO = new PostDAO();
+
+		for (Double id : postsId) {
+			company.getPosts().add((Post) postDAO.get(id));
+		}
+
+		return company;
+	}
+
+	public int insertPosts(Company company) {
+		int result = 0;
+		deletePosts(company);
+		for (Post post : company.getPosts()) {
+			result += executeRequestUpdate("INSERT INTO " + COMPANY_POST
+					+ " VALUES(" + company.getId() + "," + post.getId()
+					+ ")");
+		}
+		return result;
+	}
+
+	public int deletePosts(Company company) {
+		return executeRequestUpdate("DELETE FROM " + COMPANY_POST + " WHERE "
+				+ ID + " = " + company.getId());
 	}
 
 }

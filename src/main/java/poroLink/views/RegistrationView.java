@@ -156,7 +156,7 @@ public class RegistrationView  extends BaseView{
 	 */
 	public RegistrationView(JFrame frame) {
 		
-		super.pageName = "Registration";
+		super.pageName = "Inscription";
 		JPanel panel = new JPanel();
 		super.contentPane = panel;
 		
@@ -199,8 +199,8 @@ public class RegistrationView  extends BaseView{
 		registrationPanel.setLayout(gbl_registrationPanel);
 		
 		failAlert = new JTextArea();
-		failAlert.setFont(new Font("Arial", Font.PLAIN, 18));
 		failAlert.setForeground(Color.RED);
+		failAlert.setFont(new Font("Arial", Font.PLAIN, 18));
 		failAlert.setOpaque(false);
 		failAlert.setVisible(false);
 		failAlert.setEditable(false);

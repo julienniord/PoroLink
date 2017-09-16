@@ -20,9 +20,7 @@ public class PostDAO extends BaseDAO{
 
 
 	public PostDAO() {
-		
 		super(TABLE, ID);
-		// TODO Auto-generated constructor stub
 	}
 
 	
@@ -43,7 +41,6 @@ public class PostDAO extends BaseDAO{
 			post.setFirstname_agent(rs.getString(FIRSTNAME_AGENT));
 			post.setLastname_agent(rs.getString(LASTNAME_AGENT));
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			post = null;
 		}

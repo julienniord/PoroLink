@@ -11,10 +11,7 @@ import poroLink.views.usercontrols.MenuBar;
 
 import java.awt.Font;
 import java.awt.GridBagConstraints;
-import javax.swing.JButton;
 import java.awt.Insets;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
@@ -165,7 +162,7 @@ public class MatchingResultView extends BaseView {
 		gbc_lblemePlace.gridx = 1;
 		gbc_lblemePlace.gridy = 0;
 		panel_3.add(lblemePlace, gbc_lblemePlace);
-		lblemePlace.setIcon(new ImageIcon("D:\\Biblioth\u00E8ques\\Documents\\POEC\\Projet\\Eclipse\\PoroLink\\Pictures\\Candidate\\3.png"));
+		lblemePlace.setIcon(new ImageIcon("Pictures/Candidate/3.png"));
 		
 		lblerPlace = new JLabel("");
 		GridBagConstraints gbc_lblerPlace = new GridBagConstraints();
@@ -173,7 +170,7 @@ public class MatchingResultView extends BaseView {
 		gbc_lblerPlace.gridx = 3;
 		gbc_lblerPlace.gridy = 0;
 		panel_3.add(lblerPlace, gbc_lblerPlace);
-		lblerPlace.setIcon(new ImageIcon("D:\\Biblioth\u00E8ques\\Documents\\POEC\\Projet\\Eclipse\\PoroLink\\Pictures\\Candidate\\1.png"));
+		lblerPlace.setIcon(new ImageIcon("Pictures/Candidate/1.png"));
 		
 		lblemePlace_1 = new JLabel("");
 		GridBagConstraints gbc_lblemePlace_1 = new GridBagConstraints();
@@ -181,7 +178,7 @@ public class MatchingResultView extends BaseView {
 		gbc_lblemePlace_1.gridx = 5;
 		gbc_lblemePlace_1.gridy = 0;
 		panel_3.add(lblemePlace_1, gbc_lblemePlace_1);
-		lblemePlace_1.setIcon(new ImageIcon("D:\\Biblioth\u00E8ques\\Documents\\POEC\\Projet\\Eclipse\\PoroLink\\Pictures\\Candidate\\2.png"));
+		lblemePlace_1.setIcon(new ImageIcon("Pictures/Candidate/2.png"));
 		
 		lblCandidat2 = new JLabel("candidat2");
 		lblCandidat2.setFont(new Font("Arial", Font.PLAIN, 18));
@@ -231,7 +228,7 @@ public class MatchingResultView extends BaseView {
 		gbc_lblPodium.gridx = 0;
 		gbc_lblPodium.gridy = 0;
 		panel_1.add(lblPodium, gbc_lblPodium);
-		lblPodium.setIcon(new ImageIcon("D:\\Biblioth\u00E8ques\\Documents\\POEC\\Projet\\Eclipse\\PoroLink\\Pictures\\podium.png"));
+		lblPodium.setIcon(new ImageIcon("Pictures/podium.png"));
 		
 		lblSkillsDuPoste = new JLabel("Skills du poste");
 		lblSkillsDuPoste.setForeground(Color.WHITE);

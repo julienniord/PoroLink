@@ -1,20 +1,17 @@
 package poroLink.entities;
 
-import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Candidate extends AppUser {
 
-    private boolean gender;
+
     private String firstname;
     private String lastname;
     private String phone;
-    private Date birthdate;
     private String transport;
     private String presentation;
     private String links;
-    private List<String> certificates;
+    private List<Certificate> certificates;
     private String certificate_in_progress;
     private int purcentcompatibility;
     private List<Skill> skills;
@@ -28,28 +25,11 @@ public class Candidate extends AppUser {
      */
     public Candidate(int id,String firstname,String lastname) {
     	super();
-    	this.role_appuser=1;
+    	this.role_appuser=Role.CANDIDATE;
     	this.firstname=firstname;
     	this.lastname=lastname;
     }
 
-	public Candidate() {
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @return the gender
-	 */
-	public boolean isGender() {
-		return gender;
-	}
-
-	/**
-	 * @param gender the gender to set
-	 */
-	public void setGender(boolean gender) {
-		this.gender = gender;
-	}
 
 	/**
 	 * @return the firstname
@@ -91,20 +71,6 @@ public class Candidate extends AppUser {
 	 */
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-
-	/**
-	 * @return the birthdate
-	 */
-	public Date getBirthdate() {
-		return birthdate;
-	}
-
-	/**
-	 * @param birthdate the birthdate to set
-	 */
-	public void setBirthdate(Date birthdate) {
-		this.birthdate = birthdate;
 	}
 
 	/**
@@ -152,14 +118,14 @@ public class Candidate extends AppUser {
 	/**
 	 * @return the certificates
 	 */
-	public List<String> getCertificates() {
+	public List<Certificate> getCertificates() {
 		return certificates;
 	}
 
 	/**
 	 * @param certificates the certificates to set
 	 */
-	public void setCertificates(List<String> certificates) {
+	public void setCertificates(List<Certificate> certificates) {
 		this.certificates = certificates;
 	}
 
@@ -187,8 +153,8 @@ public class Candidate extends AppUser {
 	/**
 	 * @param skills1 the skills to set
 	 */
-	public void setSkills(List<Skill> skills1) {
-		this.skills = skills1;
+	public void setSkills(List<Skill> skills) {
+		this.skills = skills;
 	}
 
 	/**
@@ -206,7 +172,7 @@ public class Candidate extends AppUser {
 	}
 	
 	
-	    public Candidate FirstCandidate(List<Candidate> candidates) {
+	    public Candidate firstCandidate(List<Candidate> candidates) {
 	    	Candidate candidate = candidates.get(0);
 	    	int leporcentage = candidates.get(0).purcentcompatibility;
 	    	for(int i=0;i<candidates.size();i++) {
@@ -218,4 +184,5 @@ public class Candidate extends AppUser {
 	    	return candidate;
 	        
 	    }
+
 }

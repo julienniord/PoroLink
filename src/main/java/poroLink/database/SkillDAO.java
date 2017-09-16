@@ -45,6 +45,9 @@ public class SkillDAO extends BaseDAO{
 		return skill;
 	}
 	
+	/**
+	 * This function parse an item to a String in purpose of using it in an insert SQL query.
+	 */
 	@Override
 	public String parseInsert(BaseEntity item) {
 		String result = "null,";
@@ -56,6 +59,9 @@ public class SkillDAO extends BaseDAO{
 		return result;
 	}
 
+	/**
+	 * This function parse an item to a String and add it in a part of a update SQL query.
+	 */
 	@Override
 	public String parseUpdate(BaseEntity item) {
 		String result = "";
