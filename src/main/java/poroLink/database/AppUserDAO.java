@@ -3,6 +3,7 @@
  */
 package poroLink.database;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -13,6 +14,7 @@ import poroLink.entities.Company;
 import poroLink.entities.Role;
 import poroLink.entities.base.BaseEntity;
 import poroLink.utils.date.DateConverter;
+import poroLink.utils.views.ViewUtils;
 
 /**
  * @author Minet
@@ -29,13 +31,13 @@ public class AppUserDAO extends BaseDAO {
 
 	public AppUserDAO() {
 		super(TABLE, ID);
-		// TODO Auto-generated constructor stub
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see poroLink.database.IDAOBase#parse(java.sql.ResultSet)
+	/**
+	 * This function transform the ResultSet to Object. 
+	 * AppUser appUser = new Candidate(); => creation of an candidate because 
+	 * AppUser is abstract. But the function just set the parameter of an AppUser so 
+	 * the type of the object is not important at this moment.
 	 */
 	@Override
 	public BaseEntity parseResultSetToObject(ResultSet rs) {
@@ -50,41 +52,53 @@ public class AppUserDAO extends BaseDAO {
 			appUser.setRole_appuser(Role.valueOf(rs.getString(ROLE_APPUSER)));
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			appUser = null;
 		}
 
 		return appUser;
 	}
-
+	
+	/**
+	 * This function is used to transform an item to a String corresponding 
+	 * to the SQL request of the insert.
+	 */
 	@Override
 	public String parseInsert(BaseEntity item) {
 		String result = "null,";
 		AppUser appUser = (AppUser) item;
-		result += "'" + appUser.getRole_appuser() + "',";
-		result += "'" + appUser.getMail() + "',";
-		result += "'" + appUser.getPassword() + "',";
+		result += "'" + ViewUtils.SqlTest(appUser.getRole_appuser().toString()) + "',";
+		result += "'" + ViewUtils.SqlTest(appUser.getMail()) + "',";
+		result += "'" + ViewUtils.SqlTest(appUser.getPassword()) + "',";
 		result += "'" + DateConverter.setMySqlDate(appUser.getCreated_at()) + "',";
 		result += "'" + DateConverter.setMySqlDate(appUser.getUpdated_at()) + "'";
 
 		return result;
 	}
-
+	
+	/**
+	 * This function is used to transform an item to a String corresponding 
+	 * to the SQL request of the insert.
+	 */
 	@Override
 	public String parseUpdate(BaseEntity item) {
 		String result = "";
 		AppUser appUser = (AppUser) item;
 
-		result += MAIL + " = '" + appUser.getMail() + "',";
-		result += PASSWORD + " = '" + appUser.getPassword() + "',";
+		result += MAIL + " = '" + ViewUtils.SqlTest(appUser.getMail()) + "',";
+		result += PASSWORD + " = '" + ViewUtils.SqlTest(appUser.getPassword()) + "',";
 		result += CREATED_AT + " = '" + appUser.getCreated_at() + "',";
 		result += UPDATED_AT + " = '" + appUser.getUpdated_at() + "',";
-		result += ROLE_APPUSER + " = '" + appUser.getRole_appuser() + "'";
+		result += ROLE_APPUSER + " = '" + ViewUtils.SqlTest(appUser.getRole_appuser().toString()) + "'";
 
 		return result;
 	}
-
+	/*
+	 * (non-Javadoc)
+	 * @see poroLink.database.BaseDAO#insert(poroLink.entities.base.BaseEntity)
+	 * The specific part of this function serve to choose the dao corresponding to
+	 * the ROLE of the object.
+	 */
 	@Override
 	public BaseEntity insert(BaseEntity item) {
 		super.insert(item);
@@ -101,7 +115,13 @@ public class AppUserDAO extends BaseDAO {
 			return null;
 		}
 	}
-
+	
+	/**
+	 * this function return an specific AppUser (Candidate, company or administrator) 
+	 * with the id enter in parameter
+	 * @param id
+	 * @return
+	 */
 	public AppUser getRealAppUser(Double id) {
 		AppUser result = null;
 
@@ -120,6 +140,13 @@ public class AppUserDAO extends BaseDAO {
 		return result;
 	}
 	
+	/**
+	 * This function get the user in the database with the address mail and the password. 
+	 * It used on the connection page.
+	 * @param login
+	 * @param password
+	 * @return
+	 */
 	public AppUser getFromConnexion(String login, String password) {
 		AppUser user = null;
 		

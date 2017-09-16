@@ -13,6 +13,7 @@ import poroLink.entities.Certificate;
 import poroLink.entities.Skill;
 import poroLink.entities.base.BaseEntity;
 import poroLink.utils.date.DateConverter;
+import poroLink.utils.views.ViewUtils;
 
 /**
  * @author Minet
@@ -43,8 +44,11 @@ public class CandidateDAO extends BaseDAO {
 	}
 
 	
-	/* (non-Javadoc)
-	 * @see poroLink.database.IDAOBase#parse(java.sql.ResultSet)
+	/**
+	 * This function transform the ResultSet to Object. 
+	 * AppUser appUser = new Candidate(); => creation of an candidate because 
+	 * AppUser is abstract. But the function just set the parameter of an AppUser so 
+	 * the type of the object is not important at this moment.
 	 */
 	@Override
 	public BaseEntity parseResultSetToObject(ResultSet rs) {
@@ -63,6 +67,7 @@ public class CandidateDAO extends BaseDAO {
 			loadMother(candidate);
 			
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 			candidate = null;
 		}
@@ -70,7 +75,10 @@ public class CandidateDAO extends BaseDAO {
 		return candidate;
 	}
 
-
+	/**
+	 * Insert into the object the data of the class Candidate with the same id.
+	 * @param candidate
+	 */
 	private void loadMother(Candidate candidate) {
 		AppUserDAO appUserDAO = new AppUserDAO();
 		Candidate tmp =  (Candidate) appUserDAO.get(candidate.getId());
@@ -82,40 +90,53 @@ public class CandidateDAO extends BaseDAO {
 		candidate.setUpdated_at(tmp.getUpdated_at());
 	}
 	
+	/**
+	 * This function is used to transform an item to a String corresponding 
+	 * to the SQL request of the insert.
+	 */
 	@Override
 	public String parseInsert(BaseEntity item) {
 		Candidate candidate = (Candidate) item;
 
-		String result = "'" + candidate.getFirstname() + "',";
-		result += "'" + candidate.getLastname() + "',";
-		result += "'" + candidate.getPhone() + "',";
+		String result = "'" + ViewUtils.SqlTest(candidate.getFirstname()) + "',";
+		result += "'" + ViewUtils.SqlTest(candidate.getLastname()) + "',";
+		result += "'" + ViewUtils.SqlTest(candidate.getPhone()) + "',";
 		result += "'" + DateConverter.setMySqlDate(candidate.getCreated_at()) + "',";
-		result += "'" + candidate.getTransport() + "',";
-		result += "'" + candidate.getPresentation() + "',";
-		result += "'" + candidate.getLinks() + "',";
-		result += "'" + candidate.getCertificate_in_progress() + "',";
+		result += "'" + ViewUtils.SqlTest(candidate.getTransport()) + "',";
+		result += "'" + ViewUtils.SqlTest(candidate.getPresentation()) + "',";
+		result += "'" + ViewUtils.SqlTest(candidate.getLinks()) + "',";
+		result += "'" + ViewUtils.SqlTest(candidate.getCertificate_in_progress()) + "',";
 		result += "'" + candidate.getId() + "'";
 		
 		return result;
 	}
-
+	
+	/**
+	 * This function is used to transform an item to a String corresponding 
+	 * to the SQL request of the insert.
+	 */
 	@Override
 	public String parseUpdate(BaseEntity item) {
 		String result = "";
 		Candidate candidate = (Candidate) item;
 
-		result += FIRSTNAME + " = '" + candidate.getFirstname() + "',";
-		result += LASTNAME + " = '" + candidate.getLastname() + "',";
-		result += PHONE + " = '" + candidate.getPhone() + "',";
-		result += TRANSPORT + " = '" + candidate.getTransport() + "',";
-		result += PRESENTATION + " = '" + candidate.getPresentation() + "',";
-		result += LINKS + " = '" + candidate.getLinks() + "',";
+		result += FIRSTNAME + " = '" + ViewUtils.SqlTest(candidate.getFirstname()) + "',";
+		result += LASTNAME + " = '" + ViewUtils.SqlTest(candidate.getLastname()) + "',";
+		result += PHONE + " = '" + ViewUtils.SqlTest(candidate.getPhone()) + "',";
+		result += TRANSPORT + " = '" + ViewUtils.SqlTest(candidate.getTransport()) + "',";
+		result += PRESENTATION + " = '" + ViewUtils.SqlTest(candidate.getPresentation()) + "',";
+		result += LINKS + " = '" + ViewUtils.SqlTest(candidate.getLinks()) + "',";
 		result += CERTIFICATES + " = '" + candidate.getCertificates() + "',";
-		result += CERTIFICATE_IN_PROGRESS + " = '" + candidate.getCertificate_in_progress() + "'";
+		result += CERTIFICATE_IN_PROGRESS + " = '" + ViewUtils.SqlTest(candidate.getCertificate_in_progress()) + "'";
 		
 		return result;
 	}
 	
+	/**
+	 * Select the certificate of the Candidate and put them in a arrayList. 
+	 * @param candidate
+	 * @return
+	 */
 	public Candidate getCertificate(Candidate candidate) {
 		ResultSet rs = executeRequest("SELECT * FROM " + CANDIDATE_CERTIF
 				+ " WHERE " + ID + " = " + candidate.getId());
@@ -137,6 +158,11 @@ public class CandidateDAO extends BaseDAO {
 		return candidate;
 	}
 
+	/**
+	 * Insert the arrayList of certificates in the database.
+	 * @param candidate
+	 * @return
+	 */
 	public int insertCertificates(Candidate candidate) {
 		int result = 0;
 		deleteCertificates(candidate);
@@ -148,13 +174,22 @@ public class CandidateDAO extends BaseDAO {
 		return result;
 	}
 
+	/**
+	 * Delete all certificates of the database with id.
+	 * @param candidate
+	 * @return
+	 */
 	public int deleteCertificates(Candidate candidate) {
 		return executeRequestUpdate("DELETE FROM " + CANDIDATE_CERTIF + " WHERE "
 				+ ID + " = " + candidate.getId());
 	}
 	
 	
-	
+	/**
+	 * Select the skill of the Candidate and put them on a ArrayList
+	 * @param candidate
+	 * @return
+	 */
 	public Candidate getSkills(Candidate candidate) {
 		ResultSet rs = executeRequest("SELECT * FROM " + CANDIDATE_SKILL
 				+ " WHERE " + ID + " = " + candidate.getId());
@@ -176,6 +211,11 @@ public class CandidateDAO extends BaseDAO {
 		return candidate;
 	}
 
+	/**
+	 * Insert the arrayList of skill in the database.
+	 * @param candidate
+	 * @return
+	 */
 	public int insertSkills(Candidate candidate) {
 		int result = 0;
 		deleteSkills(candidate);
@@ -187,6 +227,11 @@ public class CandidateDAO extends BaseDAO {
 		return result;
 	}
 
+	/**
+	 * Delete all skills of the database with id.
+	 * @param candidate
+	 * @return
+	 */
 	public int deleteSkills(Candidate candidate) {
 		return executeRequestUpdate("DELETE FROM " + CANDIDATE_SKILL + " WHERE "
 				+ ID + " = " + candidate.getId());

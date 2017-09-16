@@ -1,33 +1,22 @@
 package poroLink.utils.views;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Scanner;
-
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.JTextComponent;
-import javax.swing.text.View;
-
-import com.mysql.fabric.xmlrpc.base.Array;
-
 import poroLink.entities.Post;
 import poroLink.views.BaseView;
-import poroLink.views.ProfileCompanyView;
 
 public class ViewUtils {
 
@@ -135,9 +124,12 @@ public class ViewUtils {
 
 			}
 		});
-
-
 		
 	}
 	
+	public static String SqlTest (String string) {
+		String result = (string == null ? "" : string);
+		return result;
+		
+	}
 }
