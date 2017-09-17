@@ -8,10 +8,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.ComboBoxModel;
+
+import java.awt.Component;
 import javax.swing.DefaultListCellRenderer;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.text.JTextComponent;
@@ -23,7 +22,6 @@ import poroLink.entities.AppUser;
 import poroLink.entities.Candidate;
 import poroLink.entities.Company;
 import poroLink.entities.Post;
-import poroLink.entities.Skill;
 import poroLink.utils.views.ViewUtils;
 import poroLink.views.ConnectionView;
 import poroLink.views.HomeView;
@@ -39,15 +37,11 @@ import poroLink.views.ProfileCompanyView;
  */
 public class ProfileCompanyController extends BaseController{
 	private ProfileCompanyView view;
-	private Company user;
 	private JFrame frame;
 
 	public ProfileCompanyController(JFrame frame) {
 		super.frame = frame;
 		super.view = new ProfileCompanyView(this.frame);
-		
-		
-		user = new Company("rrr");
 
 		/**
 		 * Launch the application.

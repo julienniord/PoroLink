@@ -16,7 +16,8 @@ public class Company extends AppUser {
 	/**
      * Default constructor
      */
-    public Company(String company_name) {
+    public Company(int id, String company_name) {
+    	super();
     	this.role_appuser=Role.COMPANY;
     	this.company_name=company_name;
     	this.posts = new ArrayList<Post>();
@@ -33,7 +34,7 @@ public class Company extends AppUser {
 		this.siret = siret;
 		this.posts = posts;
 		this.phone = phone;
-	}
+	}*/
 
 	public Company() {
 		super();

@@ -43,8 +43,7 @@ public class ConnectionController extends BaseController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				ResultSet rs = dao
-						.executeRequest("SELECT * FROM AppUser WHERE mail = '" + view.getMailText().getText() + "'");
+				ResultSet rs = dao.executeRequest("SELECT * FROM AppUser WHERE mail = '" + view.getMailText().getText() + "'");
 				try {
 					if (rs.next()) {
 						checkPassword(rs, view);

@@ -3,8 +3,6 @@ package poroLink.views;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import poroLink.utils.views.ViewUtils;
-
 import java.awt.GridBagLayout;
 import javax.swing.JTextArea;
 import java.awt.GridBagConstraints;
@@ -24,7 +22,6 @@ public class ForgottenPwdView extends BaseView {
 	private JTextField mailText;
 	private JButton btnValidate;
 	private JLabel failLabel;
-	private JPanel panel;
 	private JPanel panelBlock;
 
 	public JPanel getContentPane() {

@@ -11,7 +11,8 @@ public class Candidate extends AppUser {
     private String phone;
     private String transport;
     private String presentation;
-    private String links;
+    private String linkLinkedin;
+    private String linkGitHub;    
     private List<Certificate> certificates;
     private String certificate_in_progress;
     private int purcentcompatibility;
@@ -104,18 +105,20 @@ public class Candidate extends AppUser {
 		this.presentation = presentation;
 	}
 
-	/**
-	 * @return the links
-	 */
-	public String getLinks() {
-		return links;
+	public String getLinkLinkedin() {
+		return linkLinkedin;
 	}
 
-	/**
-	 * @param links the links to set
-	 */
-	public void setLinks(String links) {
-		this.links = links;
+	public void setLinkLinkedin(String linkLinkedin) {
+		this.linkLinkedin = linkLinkedin;
+	}
+
+	public String getLinkGitHub() {
+		return linkGitHub;
+	}
+
+	public void setLinkGitHub(String linkGitHub) {
+		this.linkGitHub = linkGitHub;
 	}
 
 	/**
