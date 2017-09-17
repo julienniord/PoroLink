@@ -135,16 +135,16 @@ public class AppUserDAO extends BaseDAO {
 	public AppUser getRealAppUser(Double id) {
 		AppUser result = null;
 
-		CandidateDAO candidateDAO = new CandidateDAO();
+		AppUserDAO appUserDAO = new AppUserDAO();
 
-		result = (Candidate) candidateDAO.get(id);
-		if (result == null) {
+		result = (AppUser) appUserDAO.get(id);
+		if (result.getRole_appuser() == Role.COMPANY) {
 			CompanyDAO companyDAO = new CompanyDAO();
 			result = (Company) companyDAO.get(id);
 		}
-		if (result == null) {
-			AdministratorDAO administratorDAO = new AdministratorDAO();
-			result = (Administrator) administratorDAO.get(id);
+		if (result.getRole_appuser() == Role.CANDIDATE) {
+			CandidateDAO candidateDAO = new CandidateDAO();
+			result = (Candidate) candidateDAO.get(id);
 		}
 
 		return result;

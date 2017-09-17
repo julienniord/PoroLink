@@ -1,6 +1,8 @@
 package poroLink.managers;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,5 +74,17 @@ public class ViewsManager {
 			}
 		});
 		return this;
+	}
+	
+	public void goHome () {
+		ViewsManager.getInstance().next(new HomeController(frame));
+	}
+	
+	public void goUserList () {
+		ViewsManager.getInstance().next(new ListUserController(frame));
+	}
+	
+	public void deconnection () {
+		ViewsManager.getInstance().next(new ConnectionController(frame));
 	}
 }

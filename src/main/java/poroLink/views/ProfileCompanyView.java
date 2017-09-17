@@ -18,6 +18,8 @@ import java.awt.Dimension;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import poroLink.views.usercontrols.MenuBar;
+
 
 public class ProfileCompanyView extends BaseView {
 
@@ -50,6 +52,7 @@ public class ProfileCompanyView extends BaseView {
 	private JTextArea txtRecruteurCoordonnee;
 	private JPanel panel_3;
 	private JTable table;
+	private MenuBar menuBar;
 
 	/**
 	 * @return the contentPane
@@ -396,23 +399,38 @@ public class ProfileCompanyView extends BaseView {
 	}
 
 	/**
-	 * @param txtrHfghgjPghjZpjfpzjf
-	 *            the txtrHfghgjPghjZpjfpzjf to set
+	 * 
+	 * @param txtRecruteurCoordonnee
 	 */
 	public void setTxtRecruteurCoordonnee(JTextArea txtRecruteurCoordonnee) {
 		this.txtRecruteurCoordonnee = txtRecruteurCoordonnee;
 	}
 
 	/**
-	 * Launch the application.
+	 * 
+	 * @return table
 	 */
-
 	public JTable getTable() {
 		return table;
 	}
 
 	public void setTable(JTable table) {
 		this.table = table;
+	}
+	
+
+	/**
+	 * @return the menuBar
+	 */
+	public MenuBar getMenuBar() {
+		return menuBar;
+	}
+
+	/**
+	 * @param menuBar the menuBar to set
+	 */
+	public void setMenuBar(MenuBar menuBar) {
+		this.menuBar = menuBar;
 	}
 
 	/**
@@ -425,19 +443,27 @@ public class ProfileCompanyView extends BaseView {
 		super.contentPane = panel;
 
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[] { 91, 83, 158, 265, 0 };
-		gbl_contentPane.rowHeights = new int[] { 0, 50, 291, 0 };
-		gbl_contentPane.columnWeights = new double[] { 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE };
-		gbl_contentPane.rowWeights = new double[] { 0.0, 1.0, 1.0, Double.MIN_VALUE };
+		gbl_contentPane.columnWidths = new int[] { 0, 91, 83, 158, 265, 0 };
+		gbl_contentPane.rowHeights = new int[] { 0, 0, 50, 291, 0 };
+		gbl_contentPane.columnWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE };
+		gbl_contentPane.rowWeights = new double[] { 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE };
 		panel.setLayout(gbl_contentPane);
 		;
-
+		
+		menuBar = new MenuBar();
+		GridBagConstraints gbc_menuBar = new GridBagConstraints();
+		gbc_menuBar.fill = GridBagConstraints.HORIZONTAL;
+		gbc_menuBar.gridx = 0;
+		gbc_menuBar.gridy = 0;
+		gbc_menuBar.gridwidth = 10;
+		panel.add(menuBar.getContentPane(), gbc_menuBar);
+		
 		lblNewLabel = new JLabel("");
 		lblNewLabel.setBorder(null);
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel.gridx = 1;
-		gbc_lblNewLabel.gridy = 0;
+		gbc_lblNewLabel.gridy = 1;
 		lblNewLabel.setIcon(new ImageIcon("Pictures/logoImie.png"));
 		panel.add(lblNewLabel, gbc_lblNewLabel);
 
@@ -448,7 +474,7 @@ public class ProfileCompanyView extends BaseView {
 		gbc_panel.insets = new Insets(0, 0, 5, 0);
 		gbc_panel.fill = GridBagConstraints.BOTH;
 		gbc_panel.gridx = 2;
-		gbc_panel.gridy = 0;
+		gbc_panel.gridy = 1;
 		panel.add(panelBlock, gbc_panel);
 		GridBagLayout gbl_panelBlock = new GridBagLayout();
 		gbl_panelBlock.columnWidths = new int[]{178, 71, 94, 71, 225, 0};
@@ -572,7 +598,7 @@ public class ProfileCompanyView extends BaseView {
 		gbc_panel_3.gridwidth = 4;
 		gbc_panel_3.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_3.gridx = 0;
-		gbc_panel_3.gridy = 1;
+		gbc_panel_3.gridy = 2;
 		panel.add(panel_3, gbc_panel_3);
 		GridBagLayout gbl_panel_3 = new GridBagLayout();
 		gbl_panel_3.columnWidths = new int[]{804, 0};
@@ -612,7 +638,7 @@ public class ProfileCompanyView extends BaseView {
 		gbc_panel_1.insets = new Insets(0, 0, 0, 5);
 		gbc_panel_1.fill = GridBagConstraints.BOTH;
 		gbc_panel_1.gridx = 0;
-		gbc_panel_1.gridy = 2;
+		gbc_panel_1.gridy = 3;
 		panel.add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[]{98, 127, 71, 0};
@@ -685,7 +711,7 @@ public class ProfileCompanyView extends BaseView {
 		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
 		gbc_panel_2.fill = GridBagConstraints.BOTH;
 		gbc_panel_2.gridx = 3;
-		gbc_panel_2.gridy = 2;
+		gbc_panel_2.gridy = 3;
 		panel.add(panel_2, gbc_panel_2);
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
 		gbl_panel_2.columnWidths = new int[]{98, 302, 71, 0};

@@ -35,24 +35,31 @@ public class ProfileCompanyController extends BaseController{
 
 	@Override
 	public void initEvent() {
-
-//		Company company = (Company) this.viewDatas.get(CURRENTUSER);
-//		
-//		for (int i = 0 ; i < company.getPosts().size(); i++) {
-//			view.getComboBox().addItem(company.getPosts().get(i)
+		
+		view = (ProfileCompanyView) super.view;
+		Company company = (Company) this.viewDatas.get(CURRENTUSER);
+		
+		
+		
+//		for (int i = 0 ; i < post.size(); i++) {
+//			view.getComboBox().addItem(post.get(i)
 //					);
 //		}
 //		view.getComboBox().setSelectedIndex(0);
-//		ViewUtils.editText(view, view.getEditAddress(), view.getTxtAddress());
-//		ViewUtils.editText(view, view.getEditName(), view.getTxtNomEntreprise());
-//		ViewUtils.editText(view, view.getEditLinkWebSite(), view.getTxtLienSiteEntreprise());
-//		ViewUtils.editText(view, view.getEditPhone(), view.getTxtTlphone());
-//		ViewUtils.editText(view, view.getEditDescription(), view.getTxtrDescription());
-//		ViewUtils.editText(view, view.getEditLinkedinLink(), view.getTxtLienLinkedin());
-//		ViewUtils.editText(view, view.getEditPost(), view.getTxtRecruteurCoordonnee());
-//		ViewUtils.editText(view, view.getEditPost(), view.getTxtDescriptionPost());
-//		ViewUtils.showPost(view, view.getComboBox(), view.getTxtDescriptionPost(), view.getTxtRecruteurCoordonnee(), view.getTable());
-//		ViewUtils.editTable(view, view.getEditSkillList(), view.getTable());
+//		
+//		
+//		Company company1 = new Company("Ma comp");
+//		company1.setPosts(post);
+		ViewUtils.editText(view, view.getEditAddress(), view.getTxtAddress());
+		ViewUtils.editText(view, view.getEditName(), view.getTxtNomEntreprise());
+		ViewUtils.editText(view, view.getEditLinkWebSite(), view.getTxtLienSiteEntreprise());
+		ViewUtils.editText(view, view.getEditPhone(), view.getTxtTlphone());
+		ViewUtils.editText(view, view.getEditDescription(), view.getTxtrDescription());
+		ViewUtils.editText(view, view.getEditLinkedinLink(), view.getTxtLienLinkedin());
+		ViewUtils.editText(view, view.getEditPost(), view.getTxtRecruteurCoordonnee());
+		ViewUtils.editText(view, view.getEditPost(), view.getTxtDescriptionPost());
+		ViewUtils.showPost(view, view.getComboBox(), view.getTxtDescriptionPost(), view.getTxtRecruteurCoordonnee(), view.getTable());
+		ViewUtils.editTable(view, view.getEditSkillList(), view.getTable());
 //		view.getComboBox().setRenderer(new DefaultListCellRenderer() {
 //			public Component getListCellRendererComponent(JList<?> list, Object value,
 //					int index, boolean isSelected, boolean cellHasFocus) {
@@ -63,6 +70,22 @@ public class ProfileCompanyController extends BaseController{
 //				return this;
 //			}
 //		});
+	}
+	
+	@Override
+	public void initView () {
+		Company company = (Company) this.viewDatas.get(CURRENTUSER);
+		((ProfileCompanyView) getView()).getMenuBar().getNavigationBar().setupEvents();
+
+		((ProfileCompanyView) getView())
+				.getMenuBar()
+				.getLblUserfirstname()
+				.setText(
+						company.getCompany_name());
+		((ProfileCompanyView) getView())
+				.getMenuBar()
+				.getLblUserlastname()
+				.setVisible(false);
 	}
 	
 
