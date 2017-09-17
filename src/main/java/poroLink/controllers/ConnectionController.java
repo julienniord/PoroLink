@@ -41,11 +41,14 @@ public class ConnectionController extends BaseController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				ResultSet rs = dao
-						.executeRequest("SELECT * FROM AppUser WHERE mail = '" + view.getMailText().getText() + "'");
+				ResultSet rs = dao.executeRequest("SELECT * FROM AppUser WHERE mail = '" + view.getMailText().getText() + "'");
 				try {
 					if (rs.next()) {
-						checkMail(rs, view);
+						checkPassword(rs, view);
+					} else {
+						view.getFailLabel().setText("Cet utilisateur n'existe pas !");
+						view.getFailLabel().setVisible(true);
+						view.getContentPane().repaint();
 					}
 				} catch (SQLException e1) {
 					e1.printStackTrace();
@@ -112,27 +115,6 @@ public class ConnectionController extends BaseController {
 
 	}
 
-	/**
-	 * This function check if the mail address enter by the current user
-	 * corresponding to a mail address in the database.
-	 * 
-	 * @param rs,
-	 *            this is the result of a SQL request who select the user with his
-	 *            mail and password
-	 * @param view
-	 *            Corresponding to the current view. Use to catch the password enter
-	 *            by the current user
-	 * @throws SQLException
-	 */
-	private void checkMail(ResultSet rs, ConnectionView view) throws SQLException {
-		if (view.getMailText().getText().equals(rs.getString(AppUserDAO.MAIL))) {
-			checkPassword(rs, view);
-		} else {
-			view.getFailLabel().setText("Cet utilisateur n'existe pas !");
-			view.getFailLabel().setVisible(true);
-			view.getContentPane().repaint();
-		}
-	}
 
 	@Override
 	public void setupDatas() {

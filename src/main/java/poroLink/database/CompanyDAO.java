@@ -28,7 +28,6 @@ public class CompanyDAO extends BaseDAO{
 
 	public CompanyDAO() {
 		super(TABLE, ID);
-		// TODO Auto-generated constructor stub
 	}
 
 	
@@ -43,13 +42,13 @@ public class CompanyDAO extends BaseDAO{
 		Company company = new Company();
 		
 		try {
-			company.setId(rs.getDouble(ID));
 			company.setCompany_name(rs.getString(NAME));
 			company.setAddress(rs.getString(ADDRESS));
 			company.setDescription(rs.getString(DESCRIPTION));
 			company.setLinks(rs.getString(LINKS));
 			company.setSiret(rs.getString(SIRET));
 			company.setPhone(rs.getInt(PHONE));
+			company.setId(rs.getDouble(ID));
 			
 			loadMother(company);
 			
@@ -70,7 +69,6 @@ public class CompanyDAO extends BaseDAO{
 		AppUserDAO appUserDAO = new AppUserDAO();
 		Company tmp =  (Company) appUserDAO.get(company.getId());
 		
-		company.setId(tmp.getId());
 		company.setMail(tmp.getMail());
 		company.setRole_appuser(tmp.getRole_appuser());
 		company.setPassword(tmp.getPassword());

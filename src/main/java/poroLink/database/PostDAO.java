@@ -3,6 +3,7 @@ package poroLink.database;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import poroLink.entities.Company;
 import poroLink.entities.Post;
 import poroLink.entities.base.BaseEntity;
 
@@ -78,5 +79,19 @@ public class PostDAO extends BaseDAO{
 		result += LASTNAME_AGENT + " = '" + post.getLastname_agent() + "'";
 		return result;
 	}
+	
+	/*
+	public void getPostsFromBase(Company company) {
+		ResultSet rs = executeRequest("SELECT * FROM " + TABLE + " WHERE " + ID + " = " + company.getId() + ";");
+		// Fetch each row from the result set
+		try {
+			while (rs.next()) {
+			  company.getPosts().add((Post) parseResultSetToObject(rs));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		};
+	}
+*/
 
 }

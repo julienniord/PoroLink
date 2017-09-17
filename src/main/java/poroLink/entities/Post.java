@@ -17,11 +17,25 @@ public class Post extends BaseEntity{
     private Date created_at;
     private Date updated_at;
     private List<Skill> Skills;
-	
-    /**
+    
+    
+
+	/**
      * Default constructor
      */
-
+	
+    public Post(String post_name, String presentation, String mail_agent, String firstname_agent, String lastname_agent,
+			Date created_at, Date updated_at) {
+		super();
+		this.post_name = post_name;
+		this.presentation = presentation;
+		this.mail_agent = mail_agent;
+		this.firstname_agent = firstname_agent;
+		this.lastname_agent = lastname_agent;
+		this.created_at = created_at;
+		this.updated_at = updated_at;
+	}   
+    
     
     public Post(String Name) {
     	this.setPost_name(Name);

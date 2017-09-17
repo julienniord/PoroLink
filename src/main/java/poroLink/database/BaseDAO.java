@@ -115,11 +115,13 @@ public abstract class BaseDAO implements IDAOBase{
 	 */
 	@Override
 	public BaseEntity get(double id) {
-		ResultSet rs = executeRequest("SELECT *  FROM " + table + " WHERE " + this.id + " = '" + (int)id + "'");
+		ResultSet rs = executeRequest("SELECT * FROM " + table + " WHERE " + this.id + " = " + id);
 		BaseEntity entity = null;
 		try {
-			rs.next();
-			entity = parseResultSetToObject(rs);
+			if(rs.next()) {
+				entity = parseResultSetToObject(rs);
+			}else
+				entity=null;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

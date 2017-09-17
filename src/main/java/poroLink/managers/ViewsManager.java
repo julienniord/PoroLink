@@ -8,13 +8,14 @@ import javax.swing.JFrame;
 
 import poroLink.controllers.BaseController;
 import poroLink.controllers.ConnectionController;
+import poroLink.utils.processExecution.ProcessManager;
 import poroLink.utils.views.ViewUtils;
-import poroLink.views.LoginView;
 
 public class ViewsManager {
 
 	private static ViewsManager instance = null;
-
+	private static ProcessManager process;
+	
 	protected ViewsManager() {
 		this.frame = new JFrame();
 		controllers = new ArrayList<BaseController>();
@@ -34,6 +35,7 @@ public class ViewsManager {
 	private BaseController currentController;
 
 	public void start(){
+		process = new ProcessManager(ProcessManager.WAMP);
 		ViewUtils.configureFirstJFrame(frame);
 		currentController = new ConnectionController(frame);
 		controllers.add(currentController);

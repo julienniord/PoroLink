@@ -16,7 +16,8 @@ CREATE TABLE candidate(
         phone                   Varchar (15) ,
         transport               Varchar (25) ,
         presentation            Text ,
-        links                   Varchar (255) ,
+        linkLinkedin            Varchar (255) ,
+        linkGitHub				Varchar (255) ,
         certificate_in_progress Varchar (255) ,
         appuser_id              Double NOT NULL ,
         PRIMARY KEY (appuser_id )

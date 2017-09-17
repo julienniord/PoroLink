@@ -48,7 +48,7 @@ public class ProfileCandidateController extends BaseController {
 		ImplementProfile(view.getTextFieldName(), candidat.getFirstname()+candidat.getLastname());
 		ViewUtils.editText(view, view.getEditTxtName(), view.getTextFieldName());
 
-		ImplementProfile(view.getTextFieldLinkWebSite(), candidat.getLinks());
+		ImplementProfile(view.getTextFieldLinkWebSite(), candidat.getLinkGitHub());
 		ViewUtils.editText(view, view.getEdittxtLinkWebSite(),
 		view.getTextFieldLinkWebSite());
 
@@ -63,7 +63,7 @@ public class ProfileCandidateController extends BaseController {
 		ViewUtils.editText(view, view.getEditTxtAddress(),
 		view.getTextFieldAddress());
 
-		ImplementProfile(view.getTextFieldLinkLinkedin(), candidat.getLinks());
+		ImplementProfile(view.getTextFieldLinkLinkedin(), candidat.getLinkLinkedin());
 		 ViewUtils.editText(view, view.getEditTxtLinkLinkedin() , view.getTextFieldLinkLinkedin());
 
 
@@ -73,7 +73,6 @@ public class ProfileCandidateController extends BaseController {
 		if (!string.equals("")) {
 			component.setText(string);
 		} else {
-			component.setText("BITE");
 		}
 	}
 }

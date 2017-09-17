@@ -8,21 +8,18 @@ import java.awt.GridBagLayout;
 
 import javax.swing.JTextField;
 
-import poroLink.utils.views.ViewUtils;
-import poroLink.views.usercontrols.MenuBar;
+import poroLink.entities.Post;
 
 import java.awt.GridBagConstraints;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 
 import java.awt.Insets;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.Font;
 
 public class MatchingView extends BaseView {
 	private JPanel contentPane;
-	private JComboBox comboBoxPosts;
+	private JComboBox<Post> comboBoxPosts;
 	private JLabel lblRecherche;
 	private JTextField textField;
 	private JButton btnMatch;
@@ -62,7 +59,7 @@ public class MatchingView extends BaseView {
 	/**
 	 * @return the comboBoxPosts
 	 */
-	public JComboBox getComboBoxPosts() {
+	public JComboBox<Post> getComboBoxPosts() {
 		return comboBoxPosts;
 	}
 
@@ -70,7 +67,7 @@ public class MatchingView extends BaseView {
 	/**
 	 * @param comboBoxPosts the comboBoxPosts to set
 	 */
-	public void setComboBoxPosts(JComboBox comboBoxPosts) {
+	public void setComboBoxPosts(JComboBox<Post> comboBoxPosts) {
 		this.comboBoxPosts = comboBoxPosts;
 	}
 
@@ -141,7 +138,7 @@ public class MatchingView extends BaseView {
 		gbc_lblRecherche.gridy = 2;
 		contentPane.add(lblRecherche, gbc_lblRecherche);
 		
-		comboBoxPosts = new JComboBox();
+		comboBoxPosts = new JComboBox<Post>();
 		comboBoxPosts.setFont(new Font("Arial", Font.PLAIN, 18));
 		GridBagConstraints gbc_comboBoxPosts = new GridBagConstraints();
 		gbc_comboBoxPosts.insets = new Insets(0, 0, 5, 5);

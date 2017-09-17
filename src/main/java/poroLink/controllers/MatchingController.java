@@ -114,7 +114,7 @@ public class MatchingController extends BaseController {
 
 
 
-		Company comp1 = new Company("la comp1");
+		//Company comp1 = new Company("la comp1");
 
 
 		Post j1 = new Post("le podte1");
@@ -128,7 +128,7 @@ public class MatchingController extends BaseController {
 		posts1.add(j1);
 		posts1.add(j2);
 		
-		comp1.setPosts(posts1);
+		//comp1.setPosts(posts1);
 		
 		/*
 		comp1.getPosts().add(j1);
@@ -136,7 +136,7 @@ public class MatchingController extends BaseController {
 		*/
 		//result.add(c1);
 		//result.add(c2);
-		result.add(comp1);
+		//result.add(comp1);
 
 		return result;
 	}
