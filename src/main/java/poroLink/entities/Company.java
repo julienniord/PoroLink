@@ -1,5 +1,6 @@
 package poroLink.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Company extends AppUser {
@@ -7,17 +8,11 @@ public class Company extends AppUser {
     private String company_name;
     private String address;
     private String description;
-    private String links;
     private String siret;
     private List<Post> posts;
-	private int phone;
-	
-
-	public Company() {
-		
-	}
-	
-	
+	private String phone;
+	private String linkLinkedin;
+	private String linkWebsite;
 	/**
      * Default constructor
      */
@@ -25,20 +20,27 @@ public class Company extends AppUser {
     	super();
     	this.role_appuser=Role.COMPANY;
     	this.company_name=company_name;
+    	this.posts = new ArrayList<Post>();
     }
     
-	/*public Company(String company_name, String address, String description, String links, String siret,
-			List<Post> posts, int phone) {
+	public Company(String company_name, String address, String description, String linkLinkedin, String linkWebsite, String siret,
+			List<Post> posts, String phone) {
 		super();
 		this.company_name = company_name;
 		this.address = address;
 		this.description = description;
-		this.links = links;
+		this.linkLinkedin = linkLinkedin;
+		this.linkWebsite = linkWebsite;
 		this.siret = siret;
 		this.posts = posts;
 		this.phone = phone;
 	}*/
 
+	public Company() {
+		super();
+		this.posts = new ArrayList<Post>();
+		this.role_appuser=Role.COMPANY;
+	}
 	/**
 	 * @return the company_name
 	 */
@@ -76,18 +78,6 @@ public class Company extends AppUser {
 		this.description = description;
 	}
 	/**
-	 * @return the links
-	 */
-	public String getLinks() {
-		return links;
-	}
-	/**
-	 * @param links the links to set
-	 */
-	public void setLinks(String links) {
-		this.links = links;
-	}
-	/**
 	 * @return the siret
 	 */
 	public String getSiret() {
@@ -112,18 +102,42 @@ public class Company extends AppUser {
 		this.posts = posts;
 	}
 
-	public int getPhone() {
+	public String getPhone() {
 		// TODO Auto-generated method stub
 		return phone;
 	}
 
 	/**
-	 * @param phone the phone to set
+	 * @param string the phone to set
 	 */
-	public void setPhone(int phone) {
-		this.phone = phone;
+	public void setPhone(String string) {
+		this.phone = string;
 	}
 
+	public String getLinkLinkedin() {
+		// TODO Auto-generated method stub
+		return linkLinkedin;
+	}
+
+	public String getLinkWebsite() {
+		// TODO Auto-generated method stub
+		return linkWebsite;
+	}
+
+	/**
+	 * @param linkLinkedin the linkLinkedin to set
+	 */
+	public void setLinkLinkedin(String linkLinkedin) {
+		this.linkLinkedin = linkLinkedin;
+	}
+
+	/**
+	 * @param linkWebsite the linkWebsite to set
+	 */
+	public void setLinkWebsite(String linkWebsite) {
+		this.linkWebsite = linkWebsite;
+	}
+	
 
 
 }

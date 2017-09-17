@@ -43,6 +43,7 @@ public abstract class BaseController implements IBaseController {
 		initView();
 		initEvent();
 		setupDatas();
+		onExit();
 		return this;
 	}
 
@@ -52,5 +53,10 @@ public abstract class BaseController implements IBaseController {
 
 	@Override
 	public void setupDatas() {
+	}
+	
+	@Override
+	public void onExit() {
+		
 	}
 }

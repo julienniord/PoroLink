@@ -2,22 +2,30 @@ package poroLink.database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import poroLink.entities.Company;
 import poroLink.entities.Post;
+import poroLink.entities.Skill;
 import poroLink.entities.base.BaseEntity;
 
 public class PostDAO extends BaseDAO{
 	
 	public static final String TABLE = "Post";
 	public static final String ID = "post_id";
-	public static final String NAME = "name";
+	public static final String NAME = "post_name";
 	public static final String PRESENTATION = "presentation";
 	public static final String CREATED_AT = "created_at";
 	public static final String UPDATED_AT = "updated_at";
 	public static final String MAIL_AGENT = "mail_agent";
 	public static final String FIRSTNAME_AGENT = "firstname_agent";
 	public static final String LASTNAME_AGENT = "lastname_agent";
+	
+	public static final String POST_SKILL = "skill";
+	public static final String NEED = "need";
+	public static final String PRIORITY = "indice_priorite";
+	public static final String ID_SKILL = "skill_id";
 
 
 	public PostDAO() {
@@ -80,18 +88,34 @@ public class PostDAO extends BaseDAO{
 		return result;
 	}
 	
-	/*
-	public void getPostsFromBase(Company company) {
-		ResultSet rs = executeRequest("SELECT * FROM " + TABLE + " WHERE " + ID + " = " + company.getId() + ";");
-		// Fetch each row from the result set
+	/**
+	 * Select the post of the Company and put them in a arrayList. 
+	 * @param candidate
+	 * @return
+	 */
+	public Post getSkills(Post post) {
+		ResultSet rs = executeRequest(
+				"SELECT " + POST_SKILL + " .*, " + NEED + "." + PRIORITY +
+				" FROM " + POST_SKILL + " LEFT JOIN " + NEED + 
+					" ON " + POST_SKILL + "." + ID_SKILL + " = " + NEED + "." + ID_SKILL + 
+					" WHERE " + NEED + "." + ID + " = " + post.getId());
+		List<Double> skillsId = new ArrayList<Double>();
 		try {
 			while (rs.next()) {
-			  company.getPosts().add((Post) parseResultSetToObject(rs));
+				skillsId.add(rs.getDouble(ID_SKILL));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		};
+		}
+
+		BaseDAO skillDAO = new SkillDAO();
+
+		for (Double id : skillsId) {
+			post.getSkills().add((Skill) skillDAO.get(id));
+		}
+
+		return post;
 	}
-*/
+
 
 }

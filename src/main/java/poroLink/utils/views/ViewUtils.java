@@ -5,7 +5,10 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -15,7 +18,10 @@ import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.JTextComponent;
+
+import poroLink.database.CompanyDAO;
 import poroLink.entities.Post;
+import poroLink.entities.base.BaseEntity;
 import poroLink.views.BaseView;
 
 public class ViewUtils {
@@ -56,7 +62,6 @@ public class ViewUtils {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				if (JTextComponent.isEditable() == true) {
-
 					JButton.setText("Modifier");
 					JTextComponent.setEditable(false);
 				} else {
@@ -83,7 +88,7 @@ public class ViewUtils {
 				model.addColumn("Compétences");
 				model.addColumn("Niveau");
 				for (int i = 0 ; i <= post.getSkills().size() - 1; i++) {
-					model.addRow(new Object[]{post.getSkills().get(i).getSkill_name(), post.getSkills().get(i).getNeeds()});
+					model.addRow(new Object[]{post.getSkills().get(i).getSkill_name(), post.getSkills().get(i).getNeed()});
 					
 					}
 				jTable.setModel(model);
@@ -93,12 +98,12 @@ public class ViewUtils {
 
 	}
 	
-	public static void showTable (BaseView view, JTable jTable, ArrayList arrayList) {
+	public static void showTable (BaseView view, JTable jTable, List List) {
 		
 		DefaultTableModel model = new DefaultTableModel(); 	
 		model.addColumn(" ");
-		for (int i = 0 ; i <= arrayList.size() - 1; i++) {
-			model.addRow(new Object[]{arrayList.get(i)});
+		for (int i = 0 ; i <= List.size() - 1; i++) {
+			model.addRow(new Object[]{List.get(i)});
 			
 			}
 		jTable.setModel(model);
@@ -113,7 +118,6 @@ public class ViewUtils {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				if (jTable.isEnabled() == true) {
-
 					jButton.setText("Modifier");
 					jTable.setEnabled(false);
 				} else {
@@ -123,6 +127,7 @@ public class ViewUtils {
 				view.getContentPane().repaint();
 
 			}
+
 		});
 		
 	}
