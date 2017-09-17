@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import poroLink.entities.AppUser;
 import poroLink.entities.Company;
 import poroLink.entities.Post;
 import poroLink.entities.base.BaseEntity;
@@ -68,7 +69,7 @@ public class CompanyDAO extends BaseDAO{
 	 */
 	public void loadMother(Company company) {
 		AppUserDAO appUserDAO = new AppUserDAO();
-		Company tmp =  (Company) appUserDAO.get(company.getId());
+		AppUser tmp =  (AppUser) appUserDAO.get(company.getId());
 		
 		company.setId(tmp.getId());
 		company.setMail(tmp.getMail());

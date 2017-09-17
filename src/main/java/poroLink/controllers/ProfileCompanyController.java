@@ -13,11 +13,14 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.text.JTextComponent;
 
+import poroLink.entities.AppUser;
+import poroLink.entities.Candidate;
 import poroLink.entities.Company;
 import poroLink.entities.Post;
 import poroLink.entities.Skill;
 import poroLink.utils.views.ViewUtils;
 import poroLink.views.HomeView;
+import poroLink.views.ProfileCandidateView;
 import poroLink.views.ProfileCompanyView;
 
 
@@ -46,6 +49,9 @@ public class ProfileCompanyController extends BaseController{
 	@Override
 	public void initEvent() {
 		
+		view = (ProfileCompanyView) super.view;
+		Company company = (Company) this.viewDatas.get(CURRENTUSER);
+		
 		
 		
 //		for (int i = 0 ; i < post.size(); i++) {
@@ -67,16 +73,32 @@ public class ProfileCompanyController extends BaseController{
 		ViewUtils.editText(view, view.getEditPost(), view.getTxtDescriptionPost());
 		ViewUtils.showPost(view, view.getComboBox(), view.getTxtDescriptionPost(), view.getTxtRecruteurCoordonnee(), view.getTable());
 		ViewUtils.editTable(view, view.getEditSkillList(), view.getTable());
-		view.getComboBox().setRenderer(new DefaultListCellRenderer() {
-			public Component getListCellRendererComponent(JList<?> list, Object value,
-					int index, boolean isSelected, boolean cellHasFocus) {
-				super.getListCellRendererComponent(list, value, index, isSelected,
-						cellHasFocus);
-				Post post = (Post) value;
-				setText(post.getPost_name());
-				return this;
-			}
-		});
+//		view.getComboBox().setRenderer(new DefaultListCellRenderer() {
+//			public Component getListCellRendererComponent(JList<?> list, Object value,
+//					int index, boolean isSelected, boolean cellHasFocus) {
+//				super.getListCellRendererComponent(list, value, index, isSelected,
+//						cellHasFocus);
+//				Post post = (Post) value;
+//				setText(post.getPost_name());
+//				return this;
+//			}
+//		});
+	}
+	
+	@Override
+	public void initView () {
+		Company company = (Company) this.viewDatas.get(CURRENTUSER);
+		((ProfileCompanyView) getView()).getMenuBar().getNavigationBar().setupEvents();
+
+		((ProfileCompanyView) getView())
+				.getMenuBar()
+				.getLblUserfirstname()
+				.setText(
+						company.getCompany_name());
+		((ProfileCompanyView) getView())
+				.getMenuBar()
+				.getLblUserlastname()
+				.setVisible(false);
 	}
 
 }

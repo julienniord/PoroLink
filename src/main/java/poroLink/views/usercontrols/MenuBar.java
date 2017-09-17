@@ -12,6 +12,7 @@ public class MenuBar extends BaseView {
 	private JLabel lblWelcome;
 	private JLabel lblUserlastname;
 	private JLabel lblUserfirstname;
+	private NavigationBar navigationBar;
 
 	/**
 	 * @return the lblWelcome
@@ -54,6 +55,21 @@ public class MenuBar extends BaseView {
 	public void setLblUserfirstname(JLabel lblUserfirstname) {
 		this.lblUserfirstname = lblUserfirstname;
 	}
+	
+
+	/**
+	 * @return the navigationBar
+	 */
+	public NavigationBar getNavigationBar() {
+		return navigationBar;
+	}
+
+	/**
+	 * @param navigationBar the navigationBar to set
+	 */
+	public void setNavigationBar(NavigationBar navigationBar) {
+		this.navigationBar = navigationBar;
+	}
 
 	/**
 	 * Create the frame.
@@ -62,6 +78,7 @@ public class MenuBar extends BaseView {
 		super.pageName = "MenuBar";
 		JPanel panel = new JPanel();
 		super.contentPane = panel;
+		panel.setBackground(new java.awt.Color(87, 108, 168));
 		panel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 
 		lblWelcome = new JLabel("Welcome");
@@ -72,5 +89,8 @@ public class MenuBar extends BaseView {
 
 		lblUserfirstname = new JLabel("UserFirstname");
 		panel.add(lblUserfirstname);
+		
+		navigationBar = new NavigationBar();
+		panel.add(navigationBar.getContentPane());
 	}
 }
