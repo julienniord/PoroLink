@@ -78,13 +78,16 @@ public class ViewsManager {
 	
 	public void goHome () {
 		ViewsManager.getInstance().next(new HomeController(frame));
+		currentController.onExit();
 	}
 	
 	public void goUserList () {
 		ViewsManager.getInstance().next(new ListUserController(frame));
+		currentController.onExit();
 	}
 	
 	public void deconnection () {
 		ViewsManager.getInstance().next(new ConnectionController(frame));
+		currentController.onExit();
 	}
 }
