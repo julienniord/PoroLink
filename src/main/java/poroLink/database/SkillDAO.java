@@ -13,12 +13,11 @@ import poroLink.entities.base.BaseEntity;
  *
  */
 public class SkillDAO extends BaseDAO{
-	//test jpp ta maman la pute
 	public static final String TABLE = "Skill";
 	public static final String ID = "skill_id";
 	public static final String NAME = "skill_name";
-	public static final String OWN = "skill_name";
-	public static final String NEED = "skill_name";
+	public static final String OWN = "indice_masteries";
+	public static final String NEED = "indice_priorite";
 
 
 	public SkillDAO() {
@@ -29,13 +28,31 @@ public class SkillDAO extends BaseDAO{
 	/* (non-Javadoc)
 	 * @see poroLink.database.IDAOBase#parse(java.sql.ResultSet)
 	 */
-	@Override
-	public BaseEntity parseResultSetToObject(ResultSet rs) {
+	
+	public BaseEntity parseResultSetToObjectForPost(ResultSet rs) {
 		Skill skill = new Skill();
 		
 		try {
 			skill.setId(rs.getDouble(ID));
 			skill.setSkill_name(rs.getString(NAME));
+			skill.setNeed(rs.getInt(NEED));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			skill = null;
+		}
+		
+		return skill;
+	}
+	
+	
+	public BaseEntity parseResultSetToObjectForCandidate(ResultSet rs) {
+		Skill skill = new Skill();
+		
+		try {
+			skill.setId(rs.getDouble(ID));
+			skill.setSkill_name(rs.getString(NAME));
+			skill.setOwn(rs.getInt(OWN));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -71,6 +88,12 @@ public class SkillDAO extends BaseDAO{
 		
 
 		return result;
+	}
+
+	@Override
+	public BaseEntity parseResultSetToObject(ResultSet rs) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

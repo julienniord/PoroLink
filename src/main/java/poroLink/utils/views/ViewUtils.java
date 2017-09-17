@@ -60,7 +60,6 @@ public class ViewUtils {
 		JButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				if (JTextComponent.isEditable() == true) {
 					JButton.setText("Modifier");
 					JTextComponent.setEditable(false);

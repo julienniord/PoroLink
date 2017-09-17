@@ -50,6 +50,7 @@ public class CompanyDAO extends BaseDAO{
 			company.setLinkWebsite(rs.getString(LINKWEBSITE));
 			company.setSiret(rs.getString(SIRET));
 			company.setPhone(rs.getString(PHONE));
+			company.setId(rs.getDouble(ID));
 			
 			loadMother(company);
 			
@@ -68,7 +69,7 @@ public class CompanyDAO extends BaseDAO{
 	 */
 	public void loadMother(Company company) {
 		AppUserDAO appUserDAO = new AppUserDAO();
-		AppUser tmp =  (AppUser) appUserDAO.get(company.getId());
+		Company tmp =  (Company) appUserDAO.get(company.getId());
 		
 		company.setMail(tmp.getMail());
 		company.setRole_appuser(tmp.getRole_appuser());

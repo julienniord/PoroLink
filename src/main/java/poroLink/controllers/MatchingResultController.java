@@ -55,7 +55,7 @@ public class MatchingResultController extends BaseController {
 		
 		//affichage des skills
 		for(int i=0;i<((Post) this.viewDatas.get(CURRENTPOST)).getSkills().size();i++) {
-			((MatchingResultView)getView()).getTextAreaSkills().setText(((MatchingResultView)getView()).getTextAreaSkills().getText()+ "\n" +((Post)this.viewDatas.get(CURRENTPOST)).getSkills().get(i).getSkill_name() + " niveau "+ ((Post)this.viewDatas.get(CURRENTPOST)).getSkills().get(i).getNeeds());
+			((MatchingResultView)getView()).getTextAreaSkills().setText(((MatchingResultView)getView()).getTextAreaSkills().getText()+ "\n" +((Post)this.viewDatas.get(CURRENTPOST)).getSkills().get(i).getSkill_name() + " niveau "+ ((Post)this.viewDatas.get(CURRENTPOST)).getSkills().get(i).getNeed());
 		}
 		// recherche des besoins en pourcentage
 		//setpurcentageneeds();
@@ -64,7 +64,7 @@ public class MatchingResultController extends BaseController {
 		// affichage des canditats
 		for (Candidate postulant : generateCandidate()) {
 			for(int i=0;i<postulant.getSkills().size();i++) {
-				((MatchingResultView)getView()).getTextAreaCanditate().setText(((MatchingResultView)getView()).getTextAreaCanditate().getText()+ "\n" +(postulant.getFirstname()+" compétences : "+ postulant.getSkills().get(i).getSkill_name()+ " niveau" +postulant.getSkills().get(i).getOwns()));
+				((MatchingResultView)getView()).getTextAreaCanditate().setText(((MatchingResultView)getView()).getTextAreaCanditate().getText()+ "\n" +(postulant.getFirstname()+" compétences : "+ postulant.getSkills().get(i).getSkill_name()+ " niveau" +postulant.getSkills().get(i).getOwn()));
 				
 			}
 			// recherche des pourcentages des canditats
@@ -95,14 +95,14 @@ public class MatchingResultController extends BaseController {
 			for(int j=0;j<((Post) this.viewDatas.get(CURRENTPOST)).getSkills().size();j++) {
 				sommebesoin=0;
 				for(int k=0;k<((Post) this.viewDatas.get(CURRENTPOST)).getSkills().size();k++) {
-						sommebesoin+=((Post)this.viewDatas.get(CURRENTPOST)).getSkills().get(k).getNeeds();	
+						sommebesoin+=((Post)this.viewDatas.get(CURRENTPOST)).getSkills().get(k).getNeed();	
 				}
 				
-				purcentagebesoin=((Post)this.viewDatas.get(CURRENTPOST)).getSkills().get(j).getNeeds()*(100/sommebesoin);
+				purcentagebesoin=((Post)this.viewDatas.get(CURRENTPOST)).getSkills().get(j).getNeed()*(100/sommebesoin);
 				
 				if(candidate.getSkills().get(i).getId()==((Post) this.viewDatas.get(CURRENTPOST)).getSkills().get(j).getId()) {
 							
-					switch (candidate.getSkills().get(i).getOwns()) {
+					switch (candidate.getSkills().get(i).getOwn()) {
 					case 1:
 						purcentagecomatibility+=purcentagebesoin*30/100;
 					break;

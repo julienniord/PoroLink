@@ -23,7 +23,7 @@ public class Company extends AppUser {
     	this.posts = new ArrayList<Post>();
     }
     
-	public Company(String company_name, String address, String description, String linkLinkedin, String linkWebsite, String siret,
+	/*public Company(String company_name, String address, String description, String linkLinkedin, String linkWebsite, String siret,
 			List<Post> posts, String phone) {
 		super();
 		this.company_name = company_name;
