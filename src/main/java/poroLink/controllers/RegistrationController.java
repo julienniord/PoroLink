@@ -124,7 +124,7 @@ public class RegistrationController extends BaseController{
 			isCompany();
 		}
 		else {
-			if(view.getCompanyRadioButton().isSelected()){
+			if(view.getCandidateRadioButton().isSelected()){
 			isCandidate();
 			}else {
 			view.getFailLabel().setText("Vous devez sélectionner un rôle !");

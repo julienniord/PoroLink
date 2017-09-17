@@ -41,8 +41,8 @@ public class AppUserDAO extends BaseDAO {
 	 */
 	@Override
 	public BaseEntity parseResultSetToObject(ResultSet rs) {
-		AppUser appUser = new Candidate();
-
+		AppUser appUser = new AppUser();
+		
 		try {
 			appUser.setId(rs.getDouble(ID));
 			appUser.setMail(rs.getString(MAIL));
@@ -108,7 +108,7 @@ public class AppUserDAO extends BaseDAO {
 		}else if (item instanceof Company) {
 			CompanyDAO companyDAO = new CompanyDAO();
 			return companyDAO.insert(item);
-		}else if (item instanceof Candidate) {
+		}else if (item instanceof Administrator) {
 			AdministratorDAO administratorDAO = new AdministratorDAO();
 			return administratorDAO.insert(item);
 		}else {
@@ -125,16 +125,16 @@ public class AppUserDAO extends BaseDAO {
 	public AppUser getRealAppUser(Double id) {
 		AppUser result = null;
 
-		CandidateDAO candidateDAO = new CandidateDAO();
+		AppUserDAO appUserDAO = new AppUserDAO();
 
-		result = (Candidate) candidateDAO.get(id);
-		if (result == null) {
+		result = (AppUser) appUserDAO.get(id);
+		if (result.getRole_appuser() == Role.COMPANY) {
 			CompanyDAO companyDAO = new CompanyDAO();
 			result = (Company) companyDAO.get(id);
 		}
-		if (result == null) {
-			AdministratorDAO administratorDAO = new AdministratorDAO();
-			result = (Administrator) administratorDAO.get(id);
+		if (result.getRole_appuser() == Role.CANDIDATE) {
+			CandidateDAO candidateDAO = new CandidateDAO();
+			result = (Candidate) candidateDAO.get(id);
 		}
 
 		return result;
