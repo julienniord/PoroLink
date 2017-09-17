@@ -1,42 +1,22 @@
 package poroLink.views;
 
 
-import java.awt.EventQueue;
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import java.awt.GridLayout;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
-import javax.swing.JMenuBar;
-import javax.swing.JSeparator;
 import javax.swing.JLabel;
-import java.awt.Point;
 import java.awt.Insets;
 import javax.swing.ImageIcon;
 import java.awt.Color;
-import java.awt.SystemColor;
-import java.awt.Rectangle;
-import java.awt.Component;
-import javax.swing.Box;
 import javax.swing.JTextArea;
-import javax.swing.JTextPane;
 import java.awt.Font;
-import java.awt.Frame;
-import java.awt.Dimension;
 import javax.swing.border.LineBorder;
 
 
 
-import java.awt.Panel;
-import javax.swing.JList;
-import javax.swing.AbstractListModel;
-import javax.swing.JFormattedTextField;
 import javax.swing.JTable;
 
 public class ProfileCandidateView extends BaseView{

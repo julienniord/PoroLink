@@ -5,15 +5,11 @@ import javax.swing.JPanel;
 
 import java.awt.GridBagLayout;
 
-import javax.swing.JTextField;
-
 import poroLink.views.usercontrols.MenuBar;
 
 import java.awt.GridBagConstraints;
 import javax.swing.JButton;
 import java.awt.Insets;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 

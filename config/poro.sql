@@ -4,7 +4,7 @@ CREATE TABLE company(
         description  Text ,
         links        Varchar (150) ,
         siret        Varchar (14) ,
-        phone        Int ,
+        phone        Varchar (15) ,
         appuser_id   Double NOT NULL ,
         PRIMARY KEY (appuser_id )
 )ENGINE=InnoDB;

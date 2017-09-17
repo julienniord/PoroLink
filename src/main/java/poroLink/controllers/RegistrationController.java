@@ -14,6 +14,7 @@ import poroLink.entities.AppUser;
 import poroLink.entities.Candidate;
 import poroLink.entities.Company;
 import poroLink.entities.Role;
+import poroLink.managers.ViewsManager;
 import poroLink.views.RegistrationView;
 
 
@@ -66,7 +67,7 @@ public class RegistrationController extends BaseController{
 				if (Pattern.matches("^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)+$", view.getMailText().getText())){
 					AppUserDAO dao = new AppUserDAO();
 					ResultSet rs = dao.executeRequest("SELECT * FROM AppUser WHERE mail = '" + view.getMailText().getText() + "'");
-				checkMail(rs);
+					checkMail(rs);
 				}else {
 					view.getFailLabel().setText("Veuillez entrez une adresse mail valide !");
 					view.getFailLabel().setVisible(true);
@@ -92,6 +93,7 @@ public class RegistrationController extends BaseController{
 				company.setUpdated_at(currenttime.getTime());
 				company.setRole_appuser(Role.COMPANY);
 				daoUser.insert(company);
+				ViewsManager.getInstance().next(new ConnectionController(frame));
 		}else {
 				view.getFailLabel().setText("Le siret renseigné n'est pas valide !");
 				view.getFailLabel().setVisible(true);
@@ -113,6 +115,7 @@ public class RegistrationController extends BaseController{
 		candidate.setUpdated_at(currenttime.getTime());
 		candidate.setRole_appuser(Role.CANDIDATE);
 		daoUser.insert(candidate);
+		ViewsManager.getInstance().next(new ConnectionController(frame));
 	}
 	
 	/**

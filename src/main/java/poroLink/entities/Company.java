@@ -11,15 +11,23 @@ public class Company extends AppUser {
     private String siret;
     private List<Post> posts;
 	private int phone;
+	
+
+	public Company() {
+		
+	}
+	
+	
 	/**
      * Default constructor
      */
-    public Company(String company_name) {
+    public Company(int id, String company_name) {
+    	super();
     	this.role_appuser=Role.COMPANY;
     	this.company_name=company_name;
     }
     
-	public Company(String company_name, String address, String description, String links, String siret,
+	/*public Company(String company_name, String address, String description, String links, String siret,
 			List<Post> posts, int phone) {
 		super();
 		this.company_name = company_name;
@@ -29,11 +37,8 @@ public class Company extends AppUser {
 		this.siret = siret;
 		this.posts = posts;
 		this.phone = phone;
-	}
+	}*/
 
-	public Company() {
-		// TODO Auto-generated constructor stub
-	}
 	/**
 	 * @return the company_name
 	 */

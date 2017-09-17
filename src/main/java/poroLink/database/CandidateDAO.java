@@ -27,7 +27,8 @@ public class CandidateDAO extends BaseDAO {
 	public static final String PHONE = "phone";
 	public static final String TRANSPORT = "transport";
 	public static final String PRESENTATION = "presentation";
-	public static final String LINKS = "links";
+	public static final String LINKLINKEDIN = "linkLinkedin";
+	public static final String LINKGITHUB = "linkGitHub";
 	public static final String CERTIFICATES = "cetificates";
 	public static final String CERTIFICATE_IN_PROGRESS = "certificate_in_progress";
 	public static final String ID = "appuser_id";
@@ -60,7 +61,8 @@ public class CandidateDAO extends BaseDAO {
 			candidate.setPhone(rs.getString(PHONE));
 			candidate.setTransport(rs.getString(TRANSPORT));
 			candidate.setPresentation(rs.getString(PRESENTATION));
-			candidate.setLinks(rs.getString(LINKS));
+			candidate.setLinkLinkedin(rs.getString(LINKLINKEDIN));
+			candidate.setLinkGitHub(rs.getString(LINKGITHUB));
 			candidate.setCertificate_in_progress(rs.getString(CERTIFICATE_IN_PROGRESS));
 			candidate.setId(rs.getDouble(ID));
 			
@@ -101,10 +103,10 @@ public class CandidateDAO extends BaseDAO {
 		String result = "'" + ViewUtils.SqlTest(candidate.getFirstname()) + "',";
 		result += "'" + ViewUtils.SqlTest(candidate.getLastname()) + "',";
 		result += "'" + ViewUtils.SqlTest(candidate.getPhone()) + "',";
-		result += "'" + DateConverter.setMySqlDate(candidate.getCreated_at()) + "',";
 		result += "'" + ViewUtils.SqlTest(candidate.getTransport()) + "',";
 		result += "'" + ViewUtils.SqlTest(candidate.getPresentation()) + "',";
-		result += "'" + ViewUtils.SqlTest(candidate.getLinks()) + "',";
+		result += "'" + ViewUtils.SqlTest(candidate.getLinkLinkedin()) + "',";
+		result += "'" + ViewUtils.SqlTest(candidate.getLinkGitHub()) + "',";
 		result += "'" + ViewUtils.SqlTest(candidate.getCertificate_in_progress()) + "',";
 		result += "'" + candidate.getId() + "'";
 		
@@ -125,7 +127,8 @@ public class CandidateDAO extends BaseDAO {
 		result += PHONE + " = '" + ViewUtils.SqlTest(candidate.getPhone()) + "',";
 		result += TRANSPORT + " = '" + ViewUtils.SqlTest(candidate.getTransport()) + "',";
 		result += PRESENTATION + " = '" + ViewUtils.SqlTest(candidate.getPresentation()) + "',";
-		result += LINKS + " = '" + ViewUtils.SqlTest(candidate.getLinks()) + "',";
+		result += LINKLINKEDIN + " = '" + ViewUtils.SqlTest(candidate.getLinkLinkedin()) + "',";
+		result += LINKGITHUB + " = '" + ViewUtils.SqlTest(candidate.getLinkGitHub()) + "',";
 		result += CERTIFICATES + " = '" + candidate.getCertificates() + "',";
 		result += CERTIFICATE_IN_PROGRESS + " = '" + ViewUtils.SqlTest(candidate.getCertificate_in_progress()) + "'";
 		

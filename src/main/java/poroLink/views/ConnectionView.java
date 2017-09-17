@@ -35,7 +35,6 @@ public class ConnectionView  extends BaseView {
 	private JButton btnRegistration;
 	private JLabel forgottenPwdLabel;
 	private JLabel failLabel;
-	private JPanel panelBlock;
 	private JPanel panelBlok;
 	private JLabel lblBienvenueSur;
 	private JLabel logoBienvenue;

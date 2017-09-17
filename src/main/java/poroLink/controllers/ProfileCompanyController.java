@@ -1,26 +1,14 @@
 package poroLink.controllers;
-import java.awt.Component;
-import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
-import javax.swing.ComboBoxModel;
+
+import java.awt.Component;
 import javax.swing.DefaultListCellRenderer;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JList;
-import javax.swing.text.JTextComponent;
-
-import poroLink.entities.AppUser;
-import poroLink.entities.Candidate;
+import poroLink.database.PostDAO;
 import poroLink.entities.Company;
 import poroLink.entities.Post;
-import poroLink.entities.Skill;
 import poroLink.utils.views.ViewUtils;
-import poroLink.views.HomeView;
-import poroLink.views.ProfileCandidateView;
 import poroLink.views.ProfileCompanyView;
 
 
@@ -32,19 +20,18 @@ import poroLink.views.ProfileCompanyView;
  */
 public class ProfileCompanyController extends BaseController{
 	private ProfileCompanyView view;
-	private Company user;
 	private JFrame frame;
 
 	public ProfileCompanyController(JFrame frame) {
 		super.frame = frame;
 		super.view = new ProfileCompanyView(this.frame);
-		
-		user = new Company("rrr");
 
 		/**
 		 * Launch the application.
 		 */
 	}
+	
+	private PostDAO dao = new PostDAO();
 
 	@Override
 	public void initEvent() {
@@ -100,5 +87,6 @@ public class ProfileCompanyController extends BaseController{
 				.getLblUserlastname()
 				.setVisible(false);
 	}
+	
 
 }

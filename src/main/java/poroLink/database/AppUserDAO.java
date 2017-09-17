@@ -1,9 +1,5 @@
-/**
- * 
- */
 package poroLink.database;
 
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -41,9 +37,24 @@ public class AppUserDAO extends BaseDAO {
 	 */
 	@Override
 	public BaseEntity parseResultSetToObject(ResultSet rs) {
-		AppUser appUser = new AppUser();
-		
+		AppUser appUser = null;
 		try {
+			CandidateDAO candidateDAO = new CandidateDAO();
+			ResultSet rs2 = candidateDAO.executeRequest("SELECT * FROM " + CandidateDAO.TABLE + " WHERE " + ID + " = " + rs.getDouble(ID));
+			if(rs2.next()) {
+				appUser = new Candidate();
+			}
+			CompanyDAO companyDAO = new CompanyDAO();
+			ResultSet rs3 = companyDAO.executeRequest("SELECT * FROM " + CompanyDAO.TABLE + " WHERE " + ID + " = " + rs.getDouble(ID));
+			if(rs3.next()) {
+				appUser = new Company();
+			}
+			AdministratorDAO administratorDAO = new AdministratorDAO();
+			ResultSet rs4 = administratorDAO.executeRequest("SELECT * FROM " + AdministratorDAO.TABLE + " WHERE " + ID + " = " + rs.getDouble(ID));
+			if(rs4.next()) {
+				appUser = new Administrator();
+			}
+			
 			appUser.setId(rs.getDouble(ID));
 			appUser.setMail(rs.getString(MAIL));
 			appUser.setPassword(rs.getString(PASSWORD));
@@ -53,7 +64,6 @@ public class AppUserDAO extends BaseDAO {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-			appUser = null;
 		}
 
 		return appUser;
