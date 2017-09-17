@@ -1,5 +1,6 @@
 package poroLink.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Candidate extends AppUser {
@@ -17,7 +18,9 @@ public class Candidate extends AppUser {
     private List<Skill> skills;
 	
     public Candidate() {
-
+    	super();
+    	this.role_appuser=Role.CANDIDATE;
+    	this.skills = new ArrayList<Skill>();
     }
     
     /**

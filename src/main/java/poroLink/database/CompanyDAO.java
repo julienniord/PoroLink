@@ -18,9 +18,9 @@ public class CompanyDAO extends BaseDAO{
 	public static final String NAME = "company_name";
 	public static final String ADDRESS = "address";
 	public static final String DESCRIPTION = "description";
-	public static final String LINKS = "links";
+	public static final String LINKLINKEDIN = "linkLinkedin";
+	public static final String LINKWEBSITE = "linkWebsite";
 	public static final String SIRET = "siret";
-	public static final String POSTS = "posts";
 	private static final String PHONE = "phone";
 	
 	public static final String COMPANY_POST = "post";
@@ -48,9 +48,10 @@ public class CompanyDAO extends BaseDAO{
 			company.setCompany_name(rs.getString(NAME));
 			company.setAddress(rs.getString(ADDRESS));
 			company.setDescription(rs.getString(DESCRIPTION));
-			company.setLinks(rs.getString(LINKS));
+			company.setLinkLinkedin(rs.getString(LINKLINKEDIN));
+			company.setLinkWebsite(rs.getString(LINKWEBSITE));
 			company.setSiret(rs.getString(SIRET));
-			company.setPhone(rs.getInt(PHONE));
+			company.setPhone(rs.getString(PHONE));
 			
 			loadMother(company);
 			
@@ -90,9 +91,10 @@ public class CompanyDAO extends BaseDAO{
 		String result = "'" + ViewUtils.SqlTest(company.getCompany_name()) + "',";
 		result += "'" + ViewUtils.SqlTest(company.getAddress()) + "',";
 		result += "'" + ViewUtils.SqlTest(company.getDescription()) + "',";
-		result += "'" + ViewUtils.SqlTest(company.getLinks()) + "',";
+		result += "'" + ViewUtils.SqlTest(company.getLinkLinkedin()) + "',";
+		result += "'" + ViewUtils.SqlTest(company.getLinkWebsite()) + "',";
 		result += "'" + ViewUtils.SqlTest(company.getSiret()) + "',";
-		result += "'" + ViewUtils.SqlTest(String.valueOf(company.getPhone())) + "',";
+		result += "'" + ViewUtils.SqlTest(company.getPhone()) + "',";
 		result += "'" + company.getId() + "'";
 		
 		return result;
@@ -110,7 +112,8 @@ public class CompanyDAO extends BaseDAO{
 		result += NAME + " = '" + company.getCompany_name() + "'";
 		result += ADDRESS + " = '" + company.getAddress() + "'";
 		result += DESCRIPTION + " = '" + company.getDescription() + "'";
-		result += LINKS + " = '" + company.getLinks() + "'";
+		result += LINKLINKEDIN + " = '" + company.getLinkLinkedin() + "'";
+		result += LINKWEBSITE + " = '" + company.getLinkWebsite() + "'";
 		result += SIRET + " = '" + company.getSiret() + "'";
 		result += PHONE + " = '" + company.getPhone() + "'";
 		return result;

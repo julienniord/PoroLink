@@ -2,9 +2,10 @@ CREATE TABLE company(
         company_name Varchar (255) NOT NULL ,
         address      Varchar (255) ,
         description  Text ,
-        links        Varchar (150) ,
+        linkLinkedin Varchar (150) ,
+        linkWebsite	 Varchar (150) ,
         siret        Varchar (14) ,
-        phone        Int ,
+        phone        Varchar (15) ,
         appuser_id   Double NOT NULL ,
         PRIMARY KEY (appuser_id )
 )ENGINE=InnoDB;

@@ -1,5 +1,6 @@
 package poroLink.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import poroLink.entities.base.BaseEntity;
@@ -34,7 +35,8 @@ public class Post extends BaseEntity{
 
 
 	public Post() {
-		// TODO Auto-generated constructor stub
+		super();
+		this.Skills = new ArrayList<Skill>();
 	}
 
 
