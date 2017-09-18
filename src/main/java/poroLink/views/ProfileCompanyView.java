@@ -443,9 +443,9 @@ public class ProfileCompanyView extends BaseView {
 		super.contentPane = panel;
 
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[] { 0, 91, 83, 158, 265, 0 };
+		gbl_contentPane.columnWidths = new int[] { 91, 83, 158, 265, 0 };
 		gbl_contentPane.rowHeights = new int[] { 0, 0, 50, 291, 0 };
-		gbl_contentPane.columnWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE };
+		gbl_contentPane.columnWeights = new double[] { 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE };
 		gbl_contentPane.rowWeights = new double[] { 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE };
 		panel.setLayout(gbl_contentPane);
 		;
@@ -668,7 +668,8 @@ public class ProfileCompanyView extends BaseView {
 								gbc_editPost.gridy = 0;
 								panel_1.add(editPost, gbc_editPost);
 				
-						label = new JLabel("Coordonn\u00E9es du recruteur");
+						label = new JLabel("Coordonnees du recruteur");
+						label.setForeground(new Color(245, 243, 245));
 						GridBagConstraints gbc_label = new GridBagConstraints();
 						gbc_label.anchor = GridBagConstraints.WEST;
 						gbc_label.gridwidth = 2;
@@ -687,6 +688,7 @@ public class ProfileCompanyView extends BaseView {
 				panel_1.add(txtRecruteurCoordonnee, gbc_txtRecruteurCoordonnee);
 				
 						lblDescritpionDuPoste = new JLabel("Descritpion du poste");
+						lblDescritpionDuPoste.setForeground(new Color(245, 243, 245));
 						GridBagConstraints gbc_lblDescritpionDuPoste = new GridBagConstraints();
 						gbc_lblDescritpionDuPoste.anchor = GridBagConstraints.WEST;
 						gbc_lblDescritpionDuPoste.insets = new Insets(0, 0, 5, 5);
