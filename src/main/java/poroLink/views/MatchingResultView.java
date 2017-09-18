@@ -100,23 +100,23 @@ public class MatchingResultView extends BaseView {
 
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{74, 648, 79, 0};
-		gbl_panel.rowHeights = new int[]{0, 598, 0};
+		gbl_panel.rowHeights = new int[]{0, 134, 0};
 		gbl_panel.columnWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{1.0, 1.0, 1.0};
+		gbl_panel.rowWeights = new double[]{0.0, 1.0, 1.0};
 		panel.setLayout(gbl_panel);
-		/*
+		
 		menuBar = new MenuBar();
 		GridBagConstraints gbc_menuBar = new GridBagConstraints();
 		gbc_menuBar.fill = GridBagConstraints.HORIZONTAL;
 		gbc_menuBar.gridx = 0;
 		gbc_menuBar.gridy = 0;
 		gbc_menuBar.gridwidth = 10;
-		panel.add(menuBar.getContentPane(), gbc_menuBar);
-		*/
+		contentPane.add(menuBar.getContentPane(), gbc_menuBar);
 				
 				panel_2 = new JPanel();
 				panel_2.setOpaque(false);
 				GridBagConstraints gbc_panel_2 = new GridBagConstraints();
+				gbc_panel_2.gridheight = 2;
 				gbc_panel_2.insets = new Insets(0, 0, 5, 5);
 				gbc_panel_2.fill = GridBagConstraints.BOTH;
 				gbc_panel_2.gridx = 1;

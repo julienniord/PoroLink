@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import poroLink.entities.Certificate;
 import poroLink.entities.base.BaseEntity;
 
 /**
