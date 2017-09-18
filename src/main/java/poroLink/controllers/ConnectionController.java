@@ -10,7 +10,6 @@ import java.sql.SQLException;
 import javax.swing.JFrame;
 
 import poroLink.database.AppUserDAO;
-import poroLink.entities.AppUser;
 import poroLink.entities.Candidate;
 import poroLink.entities.Company;
 import poroLink.managers.ViewsManager;

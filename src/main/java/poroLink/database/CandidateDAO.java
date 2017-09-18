@@ -5,13 +5,8 @@ package poroLink.database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
 import poroLink.entities.Candidate;
 import poroLink.entities.Certificate;
-import poroLink.entities.Company;
-import poroLink.entities.Post;
 import poroLink.entities.Skill;
 import poroLink.entities.base.BaseEntity;
 import poroLink.utils.views.ViewUtils;
@@ -166,27 +161,8 @@ public class CandidateDAO extends BaseDAO {
 		
 	}
 	
-	/*public Candidate getCertificates(Candidate candidate) {
-		ResultSet rs = executeRequest("SELECT * FROM " + GRADUATE
-				+ " WHERE " + ID + " = " + candidate.getId());
->>>>>>> master
-		List<Double> certifsId = new ArrayList<Double>();
-		try {
-			while (rs.next()) {
-				certifsId.add(rs.getDouble(ID_CERTIF));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		BaseDAO certificateDAO = new CertificateDAO();
-
-		for (Double id : certifsId) {
-			candidate.getCertificates().add((Certificate) certificateDAO.get(id));
-		}
-
-		return candidate;
-	}*/
+	
+	
 
 	/**
 	 * Insert the arrayList of certificates in the database.
@@ -204,6 +180,7 @@ public class CandidateDAO extends BaseDAO {
 		return result;
 	}
 
+	
 	/**
 	 * Delete all certificates of the database with id.
 	 * @param candidate

@@ -2,10 +2,6 @@ package poroLink.database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
-import poroLink.entities.Company;
 import poroLink.entities.Post;
 import poroLink.entities.Skill;
 import poroLink.entities.base.BaseEntity;
