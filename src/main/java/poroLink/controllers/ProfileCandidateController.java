@@ -49,35 +49,30 @@ public class ProfileCandidateController extends BaseController {
 		
 
 
-		ImplementProfile(view.getTextFieldName(), candidate.getFirstname()+candidate.getLastname());
+		ViewUtils.ImplementProfile(view.getTextFieldName(), candidate.getFirstname()+candidate.getLastname());
 		ViewUtils.editText(view, view.getEditTxtName(), view.getTextFieldName());
 
-		ImplementProfile(view.getTextFieldLinkWebSite(), candidate.getLinkGitHub());
+		ViewUtils.ImplementProfile(view.getTextFieldLinkWebSite(), candidate.getLinkGitHub());
 		ViewUtils.editText(view, view.getEdittxtLinkWebSite(),
 		view.getTextFieldLinkWebSite());
 
-		ImplementProfile(view.getTextFieldPhone(), candidate.getPhone());
+		ViewUtils.ImplementProfile(view.getTextFieldPhone(), candidate.getPhone());
 		ViewUtils.editText(view, view.getEditTxtPhone(), view.getTextFieldPhone());
 
-		ImplementProfile(view.getTxtrPresentation(), candidate.getPresentation());
+		ViewUtils.ImplementProfile(view.getTxtrPresentation(), candidate.getPresentation());
 		ViewUtils.editText(view, view.getEditPresentation(),
 		view.getTxtrPresentation());
 
-		ImplementProfile(view.getTextFieldAddress(), candidate.getMail());
+		ViewUtils.ImplementProfile(view.getTextFieldAddress(), candidate.getMail());
 		ViewUtils.editText(view, view.getEditTxtAddress(),
 		view.getTextFieldAddress());
 
-		ImplementProfile(view.getTextFieldLinkLinkedin(), candidate.getLinkLinkedin());
-		 ViewUtils.editText(view, view.getEditTxtLinkLinkedin() , view.getTextFieldLinkLinkedin());
+		ViewUtils.ImplementProfile(view.getTextFieldLinkLinkedin(), candidate.getLinkLinkedin());
+		ViewUtils.editText(view, view.getEditTxtLinkLinkedin() , view.getTextFieldLinkLinkedin());
 		 
 			
 
 	}
 
-	public void ImplementProfile(JTextComponent component, String string) {
-		if (!string.equals("")) {
-			component.setText(string);
-		} else {
-		}
-	}
+	
 }

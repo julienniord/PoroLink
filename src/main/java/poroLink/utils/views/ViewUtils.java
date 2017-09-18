@@ -136,4 +136,11 @@ public class ViewUtils {
 		return result;
 		
 	}
+	
+	public static void ImplementProfile(JTextComponent component, String string) {
+		if (!string.equals("")) {
+			component.setText(string);
+		} else {
+		}
+	}
 }

@@ -107,12 +107,12 @@ public class CompanyDAO extends BaseDAO{
 		String result = "";
 		Company company = (Company) item;
 
-		result += NAME + " = '" + company.getCompany_name() + "'";
-		result += ADDRESS + " = '" + company.getAddress() + "'";
-		result += DESCRIPTION + " = '" + company.getDescription() + "'";
-		result += LINKLINKEDIN + " = '" + company.getLinkLinkedin() + "'";
-		result += LINKWEBSITE + " = '" + company.getLinkWebsite() + "'";
-		result += SIRET + " = '" + company.getSiret() + "'";
+		result += NAME + " = '" + company.getCompany_name() + "',";
+		result += ADDRESS + " = '" + company.getAddress() + "',";
+		result += DESCRIPTION + " = '" + company.getDescription() + "',";
+		result += LINKLINKEDIN + " = '" + company.getLinkLinkedin() + "',";
+		result += LINKWEBSITE + " = '" + company.getLinkWebsite() + "',";
+		result += SIRET + " = '" + company.getSiret() + "',";
 		result += PHONE + " = '" + company.getPhone() + "'";
 		return result;
 	}
