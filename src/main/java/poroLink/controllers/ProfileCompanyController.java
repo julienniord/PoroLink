@@ -1,10 +1,7 @@
 package poroLink.controllers;
 import java.awt.Component;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 
@@ -13,11 +10,9 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import poroLink.database.CompanyDAO;
 import poroLink.database.PostDAO;
-import poroLink.entities.Candidate;
 import poroLink.entities.Company;
 import poroLink.entities.Post;
 import poroLink.utils.views.ViewUtils;
-import poroLink.views.ConnectionView;
 import poroLink.views.ProfileCompanyView;
 
 
@@ -75,12 +70,10 @@ public class ProfileCompanyController extends BaseController{
 		ViewUtils.editText(view, view.getEditDescription(), view.getTxtrDescription());
 		ViewUtils.ImplementProfile(view.getTxtLienLinkedin(), company.getLinkLinkedin());
 		ViewUtils.editText(view, view.getEditLinkedinLink(), view.getTxtLienLinkedin());
-		//ViewUtils.ImplementProfile(view.getTxtRecruteurCoordonnee(), view.getComboBox().getSelectedIndex());
 		ViewUtils.editText(view, view.getEditPost(), view.getTxtRecruteurCoordonnee());
 		ViewUtils.editText(view, view.getEditPost(), view.getTxtDescriptionPost());
 		ViewUtils.showPost(view, view.getComboBox(), view.getTxtDescriptionPost(), view.getTxtRecruteurCoordonnee(), view.getTable());
 		ViewUtils.editTable(view, view.getEditSkillList(), view.getTable());
-//		ViewUtils.showTable(view, view.getTable(), skill);
 		view.getComboBox().setRenderer(new DefaultListCellRenderer() {
 			public Component getListCellRendererComponent(JList<?> list, Object value,
 					int index, boolean isSelected, boolean cellHasFocus) {

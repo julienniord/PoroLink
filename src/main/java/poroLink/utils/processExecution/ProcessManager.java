@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class ProcessManager {
 	
-	public static final String WAMP = "C:\\wamp64\\wampmanager.exe";
+	public static final String WAMP = "D:\\wamp64\\wampmanager.exe";
 	
 	private Process process;
 	private String programName;
