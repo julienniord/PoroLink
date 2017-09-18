@@ -74,7 +74,7 @@ public class NavigationBar extends BaseView {
 	public NavigationBar() {
 		super.pageName = "NavigationBar";
 		JPanel panel = new JPanel();
-		panel.setBackground(new java.awt.Color(87, 108, 168));
+		panel.setBackground(new java.awt.Color(28, 85, 136));
 		super.contentPane = panel;
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{62, 83, 71, 113, 66, 97, 0};
@@ -99,7 +99,7 @@ public class NavigationBar extends BaseView {
 				gbc_btnUserList.gridy = 0;
 				panel.add(btnUserList, gbc_btnUserList);
 		
-		btnDeconnection = new JButton("Déconnection");
+		btnDeconnection = new JButton("Déconnexion");
 		GridBagConstraints gbc_btnDeconnection = new GridBagConstraints();
 		gbc_btnDeconnection.anchor = GridBagConstraints.NORTHWEST;
 		gbc_btnDeconnection.gridx = 5;

@@ -78,16 +78,19 @@ public class MenuBar extends BaseView {
 		super.pageName = "MenuBar";
 		JPanel panel = new JPanel();
 		super.contentPane = panel;
-		panel.setBackground(new java.awt.Color(87, 108, 168));
+		panel.setBackground(new java.awt.Color(28, 85, 136));
 		panel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 
 		lblWelcome = new JLabel("Welcome");
+		lblWelcome.setForeground(new java.awt.Color(245, 243, 245));
 		panel.add(lblWelcome);
 
 		lblUserlastname = new JLabel("UserLastname");
+		lblUserlastname.setForeground(new java.awt.Color(245, 243, 245));
 		panel.add(lblUserlastname);
 
 		lblUserfirstname = new JLabel("UserFirstname");
+		lblUserfirstname.setForeground(new java.awt.Color(245, 243, 245));
 		panel.add(lblUserfirstname);
 		
 		navigationBar = new NavigationBar();
