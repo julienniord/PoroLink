@@ -239,20 +239,6 @@ public class ProfileCompanyView extends BaseView {
 	}
 
 	/**
-	 * // * @return the lblCoordonnesDuRecruteur //
-	 */
-	// public JLabel getLblCoordonnesDuRecruteur() {
-	// return lblCoordonnesDuRecruteur;
-	// }
-	//
-	// /**
-	// * @param lblCoordonnesDuRecruteur the lblCoordonnesDuRecruteur to set
-	// */
-	// public void setLblCoordonnesDuRecruteur(JLabel lblCoordonnesDuRecruteur) {
-	// this.lblCoordonnesDuRecruteur = lblCoordonnesDuRecruteur;
-	// }
-
-	/**
 	 * @return the list_1
 	 */
 

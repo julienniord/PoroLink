@@ -1,24 +1,29 @@
 package poroLink.controllers;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
+
+import poroLink.database.CandidateDAO;
 import poroLink.entities.Candidate;
+import poroLink.entities.Company;
 import poroLink.entities.Post;
 import poroLink.entities.Skill;
+import poroLink.entities.base.BaseEntity;
+import poroLink.views.HomeView;
 import poroLink.views.MatchingResultView;
 
 public class MatchingResultController extends BaseController {
-	
-	private JFrame frame;
-	
 
-	public  MatchingResultController(JFrame frame){
+	private JFrame frame;
+
+	public MatchingResultController(JFrame frame) {
 		super();
 		super.frame = frame;
 		super.view = new MatchingResultView(this.frame);
 	}
-	
+
 	private List<Candidate> candidatlist = new ArrayList<Candidate>();
 	private Candidate candidat = new Candidate();
 
@@ -30,143 +35,117 @@ public class MatchingResultController extends BaseController {
 	}
 
 	/**
-	 * @param candidat the candidat to set
+	 * @param candidat
+	 *            the candidat to set
 	 */
 	public void setCandidat(Candidate candidat) {
 		this.candidat = candidat;
 	}
 
 	/**
-	 * @param candidatlist the candidatlist to set
+	 * @param candidatlist
+	 *            the candidatlist to set
 	 */
 	public void setCandidatlist(ArrayList<Candidate> candidatlist) {
 		this.candidatlist = candidatlist;
 	}
 
+	CandidateDAO dao = new CandidateDAO();
+
 	@Override
 	public void initEvent() {
+
 	}
 
-	
 	@Override
 	public void initView() {
-		//((MatchingResultView)getView()).getTextField().setText(((Post)this.viewDatas.get(CURRENTPOST)).getPost_name());	
-		((MatchingResultView)getView()).getLblRsultatDeLa().setText("Resultat de la recherche pour le poste : " + ((Post)this.viewDatas.get(CURRENTPOST)).getPost_name());
-		
-		//affichage des skills
-		for(int i=0;i<((Post) this.viewDatas.get(CURRENTPOST)).getSkills().size();i++) {
-			((MatchingResultView)getView()).getTextAreaSkills().setText(((MatchingResultView)getView()).getTextAreaSkills().getText()+ "\n" +((Post)this.viewDatas.get(CURRENTPOST)).getSkills().get(i).getSkill_name() + " niveau "+ ((Post)this.viewDatas.get(CURRENTPOST)).getSkills().get(i).getNeed());
+		Company company = (Company) this.viewDatas.get(CURRENTUSER);
+		((MatchingResultView) getView()).getMenuBar().getNavigationBar().setupEvents();
+
+		((MatchingResultView) getView()).getMenuBar().getButtonProfil().setText(company.getCompany_name());
+
+		// ((MatchingResultView)getView()).getTextField().setText(((Post)this.viewDatas.get(CURRENTPOST)).getPost_name());
+		((MatchingResultView) getView()).getLblRsultatDeLa().setText(
+				"Resultat de la recherche pour le poste : " + ((Post) this.viewDatas.get(CURRENTPOST)).getPost_name());
+
+		// affichage des skills
+		for (int i = 0; i < ((Post) this.viewDatas.get(CURRENTPOST)).getSkills().size(); i++) {
+			((MatchingResultView) getView()).getTextAreaSkills()
+					.setText(((MatchingResultView) getView()).getTextAreaSkills().getText() + "\n"
+							+ ((Post) this.viewDatas.get(CURRENTPOST)).getSkills().get(i).getSkill_name() + " niveau "
+							+ ((Post) this.viewDatas.get(CURRENTPOST)).getSkills().get(i).getNeed());
 		}
 		// recherche des besoins en pourcentage
-		//setpurcentageneeds();
-		
-		
+		// setpurcentageneeds();
+
+		ArrayList<Candidate> candidates = new ArrayList<Candidate>();
+		List<BaseEntity> postulant = dao.get();
+		for (int i = 0; i < postulant.size(); i++) {
+			candidates.add(dao.getSkills((Candidate) postulant.get(i)));
+		}
+
 		// affichage des canditats
-		for (Candidate postulant : generateCandidate()) {
-			for(int i=0;i<postulant.getSkills().size();i++) {
-				((MatchingResultView)getView()).getTextAreaCanditate().setText(((MatchingResultView)getView()).getTextAreaCanditate().getText()+ "\n" +(postulant.getFirstname()+" compétences : "+ postulant.getSkills().get(i).getSkill_name()+ " niveau" +postulant.getSkills().get(i).getOwn()));
-				
+
+		for (int i = 0; i < candidates.size(); i++) {
+			for (int j = 0; j < candidates.get(i).getSkills().size(); j++) {
+				((MatchingResultView) getView()).getTextAreaCanditate()
+						.setText(((MatchingResultView) getView()).getTextAreaCanditate().getText() + "\n"
+								+ (candidates.get(i).getFirstname() + " compétences : "
+										+ candidates.get(i).getSkills().get(j).getSkill_name() + " niveau"
+										+ candidates.get(i).getSkills().get(j).getOwn()));
+
 			}
-			// recherche des pourcentages des canditats
-				
-			candidatlist.add(compatibilite(postulant));
-			
 		}
-		//return StudentName1.compareTo(StudentName2);
-		//Collections.sort(candidatlist, getPurcentcompatibility());
-		//candidatlist.sort(null);
-		System.out.println(candidat.firstCandidate(candidatlist).getFirstname());
-		candidatlist.remove(candidat.firstCandidate(candidatlist));
-		System.out.println(candidat.firstCandidate(candidatlist).getFirstname());
-		/*
-		for(int i=0;i<candidatlist.size();i++) {
-			System.out.println(candidatlist.get(i).getPurcentcompatibility());
+		// recherche des pourcentages des canditats
+		for (int i = 0; i < candidates.size(); i++) {
+			candidatlist.add(compatibilite(candidates.get(i)));
 		}
-		*/
-	}	
+
+	}
+
 	public Candidate compatibilite(Candidate candidate) {
-		
-		int purcentagecomatibility=0;
-		int purcentagebesoin=0;
-		int sommebesoin=0;
-		
-		for(int i=0;i<candidate.getSkills().size();i++) {
-			purcentagecomatibility=0;
-			for(int j=0;j<((Post) this.viewDatas.get(CURRENTPOST)).getSkills().size();j++) {
-				sommebesoin=0;
-				for(int k=0;k<((Post) this.viewDatas.get(CURRENTPOST)).getSkills().size();k++) {
-						sommebesoin+=((Post)this.viewDatas.get(CURRENTPOST)).getSkills().get(k).getNeed();	
+
+		int purcentagecomatibility = 0;
+		int purcentagebesoin = 0;
+		int sommebesoin = 0;
+
+		for (int i = 0; i < candidate.getSkills().size(); i++) {
+			for (int j = 0; j < ((Post) this.viewDatas.get(CURRENTPOST)).getSkills().size(); j++) {
+				sommebesoin = 0;
+				for (int k = 0; k < ((Post) this.viewDatas.get(CURRENTPOST)).getSkills().size(); k++) {
+					sommebesoin += ((Post) this.viewDatas.get(CURRENTPOST)).getSkills().get(k).getNeed();
 				}
-				
-				purcentagebesoin=((Post)this.viewDatas.get(CURRENTPOST)).getSkills().get(j).getNeed()*(100/sommebesoin);
-				
-				if(candidate.getSkills().get(i).getId()==((Post) this.viewDatas.get(CURRENTPOST)).getSkills().get(j).getId()) {
-							
+				purcentagebesoin = ((Post) this.viewDatas.get(CURRENTPOST)).getSkills().get(j).getNeed()
+						* (100 / sommebesoin);
+				if (candidate.getSkills().get(i).getId() == ((Post) this.viewDatas.get(CURRENTPOST)).getSkills().get(j)
+						.getId()) {
+
 					switch (candidate.getSkills().get(i).getOwn()) {
 					case 1:
-						purcentagecomatibility+=purcentagebesoin*30/100;
-					break;
+						purcentagecomatibility +=( purcentagebesoin * 30 / 100);
+						break;
 					case 2:
-						purcentagecomatibility+=purcentagebesoin*50/100;
-					break;
+						purcentagecomatibility += (purcentagebesoin * 50 / 100);
+						break;
 					case 3:
-						purcentagecomatibility+=purcentagebesoin*65/100;
-					break;
+						purcentagecomatibility +=( purcentagebesoin * 65 / 100);
+						break;
 					case 4:
-						purcentagecomatibility+=purcentagebesoin*75/100;
-					break;
+						purcentagecomatibility += (purcentagebesoin * 75 / 100);
+						break;
 					case 5:
-						purcentagecomatibility+=purcentagebesoin*100/100;
+						purcentagecomatibility += (purcentagebesoin * 100 / 100);
 
-					break;
-					}	
+						break;
+					}
 				}
 			}
 		}
-		((MatchingResultView)getView()).getTextAreaCanditate().setText(((MatchingResultView)getView()).getTextAreaCanditate().getText()+ "\n" +candidate.getFirstname()+" "+ purcentagecomatibility + " %");
-			//this.tmCandidate.put(candidate.getAppuser_id(), purcentagecomatibility);
+		((MatchingResultView) getView()).getTextAreaCanditate()
+				.setText(((MatchingResultView) getView()).getTextAreaCanditate().getText() + "\n"
+						+ candidate.getFirstname() + " " + purcentagecomatibility + " %");
 		candidate.setPurcentcompatibility(purcentagecomatibility);
-		
+
 		return candidate;
-	}
-	
-	/**
-	 * @return the tmCandidate
-	 */
-	
-
-	public List<Candidate> generateCandidate() {
-		
-		List<Candidate> result = new ArrayList<Candidate>();
-		List<Skill> skills1 = new ArrayList<Skill>();
-		List<Skill> skills2 = new ArrayList<Skill>();
-		
-		Skill s1 = new Skill("JAVA",0,5);
-		Skill s2 = new Skill("C",0,5);
-		Skill s3 = new Skill("C++",0,5);
-		new Skill("html",0,5);
-		new Skill("css",0,5);
-		Skill s6 = new Skill("css",0,5);
-		new Skill("C",0,1);
-		
-		skills1.add(s1);
-		skills1.add(s2);
-		skills1.add(s3);
-		skills1.add(s6);
-
-		skills2.add(s1);
-		//skills2.add(s5);
-		//skills2.add(s7);
-		
-		//Candidate c1 = new Candidate(1,"Jean louis","on");
-		//c1.setSkills(skills1);
-		
-		Candidate c2 = new Candidate(2,"Carl Eric","ongh");
-		c2.setSkills(skills2);
-		result.add(c2);
-		//result.add(c1);
-		
-		return result;
-
 	}
 }

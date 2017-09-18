@@ -33,6 +33,7 @@ public class CandidateDAO extends BaseDAO {
 	public static final String CERTIFICATES = "cetificates";
 	public static final String CERTIFICATE_IN_PROGRESS = "certificate_in_progress";
 	public static final String ID = "appuser_id";
+	public static final String GRADUATE = "graduate";
 	
 	public static final String CANDIDATE_SKILL = "skill";
 	public static final String OWN = "own";
@@ -42,7 +43,7 @@ public class CandidateDAO extends BaseDAO {
 	public static final String CANDIDATE_CERTIF = "certificate";
 	public static final String ID_CERTIF = "id_certif";
 	
-	public static final String GRADUATE = "graduate";
+
 
 
 	public CandidateDAO() {
@@ -144,6 +145,7 @@ public class CandidateDAO extends BaseDAO {
 	 * @param candidate
 	 * @return
 	 */
+
 	public Candidate getCertificates(Candidate candidate) {
 		ResultSet rs = executeRequest(
 				"SELECT " + CANDIDATE_CERTIF + ".*" +
@@ -167,6 +169,7 @@ public class CandidateDAO extends BaseDAO {
 	/*public Candidate getCertificates(Candidate candidate) {
 		ResultSet rs = executeRequest("SELECT * FROM " + GRADUATE
 				+ " WHERE " + ID + " = " + candidate.getId());
+>>>>>>> master
 		List<Double> certifsId = new ArrayList<Double>();
 		try {
 			while (rs.next()) {

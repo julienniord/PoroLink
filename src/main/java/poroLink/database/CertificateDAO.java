@@ -9,7 +9,10 @@ import poroLink.entities.base.BaseEntity;
 public class CertificateDAO extends BaseDAO{
 
 		public static final String TABLE = "certificate";
+
+
 		public static final String ID_CERTIF = "id_certif";
+
 		public static final String NAME = "certificate";
 
 
@@ -68,7 +71,5 @@ public class CertificateDAO extends BaseDAO{
 
 			return result;
 		}
-
-		
 
 }

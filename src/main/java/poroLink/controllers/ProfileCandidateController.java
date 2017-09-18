@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import poroLink.database.CandidateDAO;
+import poroLink.database.CertificateDAO;
 import poroLink.entities.Candidate;
 import poroLink.utils.views.ViewUtils;
 import poroLink.views.ProfileCandidateView;
@@ -33,10 +34,14 @@ public class ProfileCandidateController extends BaseController {
 		Candidate candidate = (Candidate) this.viewDatas.get(CURRENTUSER);
 		
 		candidate = candidateDAO.getSkills(candidate);
+		candidate = candidateDAO.getCertificates(candidate);
+	
 		
 		DefaultTableModel model = new DefaultTableModel();
 		model.addColumn("Compétences");
 		model.addColumn("Niveau");
+		DefaultTableModel model2 = new DefaultTableModel();
+		model2.addColumn("Diplômes");
 		
 		
 		for (int i = 0 ; i <= candidate.getSkills().size() - 1; i++) {
@@ -44,16 +49,17 @@ public class ProfileCandidateController extends BaseController {
 		}
 		view.getTableSkill().setModel(model);
 		
+
 		candidate = candidateDAO.getCertificates(candidate);
 		
-		DefaultTableModel model2 = new DefaultTableModel();
-		model2.addColumn("Diplomes");
+
 		
 		for (int i = 0 ; i < candidate.getCertificates().size() ; i++) {
 			model2.addRow(new Object[] {candidate.getCertificates().get(i).getCertificate()});
 		}
 		view.getTableCertificates().setModel(model2);
 		
+
 
 
 		ViewUtils.ImplementProfile(view.getTextFieldName(), candidate.getFirstname() + " " + candidate.getLastname());
