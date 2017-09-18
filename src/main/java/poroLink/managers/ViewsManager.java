@@ -12,6 +12,7 @@ import poroLink.controllers.BaseController;
 import poroLink.controllers.ConnectionController;
 import poroLink.controllers.HomeController;
 import poroLink.controllers.ListUserController;
+import poroLink.controllers.ProfileCompanyController;
 import poroLink.utils.processExecution.ProcessManager;
 import poroLink.utils.views.ViewUtils;
 
@@ -91,5 +92,9 @@ public class ViewsManager {
 	public void deconnection () {
 		ViewsManager.getInstance().next(new ConnectionController(frame));
 		currentController.onExit();
+	}
+	public void goProfil () {
+		ViewsManager.getInstance().next(new ProfileCompanyController(frame));
+		//currentController.onExit();
 	}
 }

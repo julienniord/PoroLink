@@ -8,9 +8,11 @@ import javax.swing.text.JTextComponent;
 
 import poroLink.database.CandidateDAO;
 import poroLink.entities.Candidate;
+import poroLink.entities.Company;
 import poroLink.entities.Post;
 import poroLink.utils.views.ViewUtils;
 import poroLink.views.ProfileCandidateView;
+import poroLink.views.ProfileCompanyView;
 
 /**
  * @author kai_g
@@ -72,6 +74,27 @@ public class ProfileCandidateController extends BaseController {
 		 
 			
 
+	}
+	
+	@Override
+	public void initView () {
+		Candidate candidate = (Candidate) this.viewDatas.get(CURRENTUSER);
+		((ProfileCandidateView) getView()).getMenuBar().getNavigationBar().setupEvents();
+
+		((ProfileCandidateView) getView())
+				.getMenuBar()
+				.getButtonProfil()
+				.setText(
+						candidate.getFirstname() + " " + candidate.getLastname());
+
+		((ProfileCandidateView) getView()).getMenuBar()
+				.getNavigationBar()
+				.getBtnHome()
+				.setVisible(false);
+		((ProfileCandidateView) getView()).getMenuBar()
+				.getNavigationBar()
+				.getBtnProfil()
+				.setVisible(false);
 	}
 
 	public void ImplementProfile(JTextComponent component, String string) {

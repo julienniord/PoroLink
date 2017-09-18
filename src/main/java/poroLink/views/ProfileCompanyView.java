@@ -443,10 +443,10 @@ public class ProfileCompanyView extends BaseView {
 		super.contentPane = panel;
 
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[] { 0, 91, 83, 158, 265, 0 };
-		gbl_contentPane.rowHeights = new int[] { 0, 0, 50, 291, 0 };
-		gbl_contentPane.columnWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE };
-		gbl_contentPane.rowWeights = new double[] { 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE };
+		gbl_contentPane.columnWidths = new int[] { 0, 0, 91, 83, 158, 265, 0 };
+		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 50, 291, 0 };
+		gbl_contentPane.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE };
+		gbl_contentPane.rowWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE };
 		panel.setLayout(gbl_contentPane);
 		;
 		

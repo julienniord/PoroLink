@@ -15,7 +15,7 @@ import javax.swing.JTextArea;
 import java.awt.Font;
 import javax.swing.border.LineBorder;
 
-
+import poroLink.views.usercontrols.MenuBar;
 
 import javax.swing.JTable;
 
@@ -46,6 +46,22 @@ public class ProfileCandidateView extends BaseView{
 	private JButton editPresentation;
 	private JLabel lblListeDesComptences;
 	private JLabel lblNiveau;
+	private MenuBar menuBar;
+
+	/**
+	 * @return the menuBar
+	 */
+	public MenuBar getMenuBar() {
+		return menuBar;
+	}
+
+	/**
+	 * @param menuBar the menuBar to set
+	 */
+	public void setMenuBar(MenuBar menuBar) {
+		this.menuBar = menuBar;
+	}
+
 
 	/**
 	 * @return the contentPane
@@ -342,10 +358,18 @@ public class ProfileCandidateView extends BaseView{
 		
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[]{20, 262, 157, 105, 36, 46, 20, 0};
-		gbl_contentPane.rowHeights = new int[]{152, 49, 101, 56, 56, 112, 50, 0};
+		gbl_contentPane.rowHeights = new int[]{0, 152, 49, 101, 56, 56, 112, 50, 0};
 		gbl_contentPane.columnWeights = new double[]{0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_contentPane);
+		
+		menuBar = new MenuBar();
+		GridBagConstraints gbc_menuBar = new GridBagConstraints();
+		gbc_menuBar.fill = GridBagConstraints.HORIZONTAL;
+		gbc_menuBar.gridx = 0;
+		gbc_menuBar.gridy = 0;
+		gbc_menuBar.gridwidth = 10;
+		panel.add(menuBar.getContentPane(), gbc_menuBar);
 		
 		panel_3 = new JPanel();
 		GridBagConstraints gbc_panel_3 = new GridBagConstraints();
@@ -353,7 +377,7 @@ public class ProfileCandidateView extends BaseView{
 		gbc_panel_3.gridwidth = 7;
 		gbc_panel_3.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_3.gridx = 0;
-		gbc_panel_3.gridy = 0;
+		gbc_panel_3.gridy = 1;
 		panel.add(panel_3, gbc_panel_3);
 		panel_3.setBackground(new Color(245, 243, 245, 150));
 		GridBagLayout gbl_panel_3 = new GridBagLayout();
@@ -502,7 +526,7 @@ public class ProfileCandidateView extends BaseView{
 		gbc_editPresentation.insets = new Insets(0, 0, 5, 5);
 		editPresentation.setBackground(new Color(87, 108, 168));
 		gbc_editPresentation.gridx = 4;
-		gbc_editPresentation.gridy = 1;
+		gbc_editPresentation.gridy = 2;
 		panel.add(editPresentation, gbc_editPresentation);
 		
 		txtrPresentation = new JTextArea();
@@ -516,7 +540,7 @@ public class ProfileCandidateView extends BaseView{
 		gbc_txtrPresentation.insets = new Insets(0, 0, 5, 5);
 		gbc_txtrPresentation.fill = GridBagConstraints.BOTH;
 		gbc_txtrPresentation.gridx = 1;
-		gbc_txtrPresentation.gridy = 2;
+		gbc_txtrPresentation.gridy = 3;
 		panel.add(txtrPresentation, gbc_txtrPresentation);
 		
 		panelBlock = new JPanel();
@@ -526,7 +550,7 @@ public class ProfileCandidateView extends BaseView{
 		gbc_panel.insets = new Insets(0, 0, 0, 5);
 		gbc_panel.fill = GridBagConstraints.BOTH;
 		gbc_panel.gridx = 1;
-		gbc_panel.gridy = 5;
+		gbc_panel.gridy = 6;
 		panel.add(panelBlock, gbc_panel);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[] {204, 88, 0};
@@ -566,7 +590,7 @@ public class ProfileCandidateView extends BaseView{
 		editSkillList.setBackground(new Color(87, 108, 168));
 		gbc_editSkillList.insets = new Insets(0, 0, 5, 5);
 		gbc_editSkillList.gridx = 2;
-		gbc_editSkillList.gridy = 5;
+		gbc_editSkillList.gridy = 6;
 		panel.add(editSkillList, gbc_editSkillList);
 		
 		panel_1 = new JPanel();
@@ -576,7 +600,7 @@ public class ProfileCandidateView extends BaseView{
 		gbc_panel_1.gridheight = 2;
 		gbc_panel_1.fill = GridBagConstraints.BOTH;
 		gbc_panel_1.gridx = 3;
-		gbc_panel_1.gridy = 5;
+		gbc_panel_1.gridy = 6;
 		panel.add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[]{125, 140, 0};
