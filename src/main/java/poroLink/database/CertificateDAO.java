@@ -9,12 +9,12 @@ import poroLink.entities.base.BaseEntity;
 public class CertificateDAO extends BaseDAO{
 
 		public static final String TABLE = "certificate";
-		public static final String ID = "id_certif";
-		public static final String NAME = "certification";
+		public static final String ID_CERTIF = "id_certif";
+		public static final String NAME = "certificate";
 
 
 		public CertificateDAO() {
-			super(TABLE, ID);
+			super(TABLE, ID_CERTIF);
 			// TODO Auto-generated constructor stub
 		}
 		
@@ -29,10 +29,9 @@ public class CertificateDAO extends BaseDAO{
 			Certificate certificate = new Certificate();
 			
 			try {
-				certificate.setId(rs.getDouble(ID));
+				certificate.setId (rs.getDouble(ID_CERTIF));
 				certificate.setCertificate(rs.getString(NAME));
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				certificate = null;
 			}

@@ -22,6 +22,7 @@ public class Candidate extends AppUser {
     	super();
     	this.role_appuser=Role.CANDIDATE;
     	this.skills = new ArrayList<Skill>();
+    	this.certificates = new ArrayList<Certificate>();
     }
     
     /**
