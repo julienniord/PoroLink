@@ -13,6 +13,7 @@ import poroLink.entities.Company;
 import poroLink.entities.Post;
 import poroLink.entities.Skill;
 import poroLink.managers.ViewsManager;
+import poroLink.views.HomeView;
 import poroLink.views.MatchingView;
 
 public class MatchingController extends BaseController {
@@ -75,7 +76,16 @@ public class MatchingController extends BaseController {
 		}
 		((MatchingView) getView()).getComboBoxPosts().setRenderer(
 				new ListCellPostRender());
-		
+
+		Company company = (Company) this.viewDatas.get(CURRENTUSER);
+		((MatchingView) getView()).getMenuBar().getNavigationBar().setupEvents();
+
+		((MatchingView) getView())
+				.getMenuBar()
+				.getButtonProfil()
+				.setText(
+						company.getCompany_name());
+	
 	}
 	
 	@Override
