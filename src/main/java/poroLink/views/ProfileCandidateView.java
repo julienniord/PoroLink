@@ -18,6 +18,7 @@ import javax.swing.border.LineBorder;
 import poroLink.views.usercontrols.MenuBar;
 
 import javax.swing.JTable;
+import javax.swing.JScrollPane;
 
 public class ProfileCandidateView extends BaseView{
 	private JTextField textFieldName;
@@ -47,6 +48,7 @@ public class ProfileCandidateView extends BaseView{
 	private JLabel lblListeDesComptences;
 	private JLabel lblNiveau;
 	private MenuBar menuBar;
+	private JScrollPane scrollPane;
 
 	/**
 	 * @return the menuBar
@@ -645,14 +647,17 @@ public class ProfileCandidateView extends BaseView{
 		gbc_lblNewLabel_2.gridy = 2;
 		panel_1.add(lblNewLabel_2, gbc_lblNewLabel_2);
 		
+		scrollPane = new JScrollPane();
+		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
+		gbc_scrollPane.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane.gridwidth = 2;
+		gbc_scrollPane.insets = new Insets(0, 0, 0, 5);
+		gbc_scrollPane.gridx = 0;
+		gbc_scrollPane.gridy = 3;
+		panel_1.add(scrollPane, gbc_scrollPane);
+		
 		tableCertificates = new JTable();
+		scrollPane.setViewportView(tableCertificates);
 		tableCertificates.setEnabled(false);
-		GridBagConstraints gbc_tableCertificates = new GridBagConstraints();
-		gbc_tableCertificates.gridwidth = 2;
-		gbc_tableCertificates.insets = new Insets(0, 0, 0, 5);
-		gbc_tableCertificates.fill = GridBagConstraints.BOTH;
-		gbc_tableCertificates.gridx = 0;
-		gbc_tableCertificates.gridy = 3;
-		panel_1.add(tableCertificates, gbc_tableCertificates);
 	}
 }

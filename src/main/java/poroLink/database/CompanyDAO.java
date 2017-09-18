@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import poroLink.entities.AppUser;
 import poroLink.entities.Company;
 import poroLink.entities.Post;
 import poroLink.entities.base.BaseEntity;
