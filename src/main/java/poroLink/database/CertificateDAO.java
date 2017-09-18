@@ -10,7 +10,7 @@ public class CertificateDAO extends BaseDAO{
 
 		public static final String TABLE = "certificate";
 		public static final String ID = "id_certif";
-		public static final String NAME = "certification";
+		public static final String NAME = "certificate";
 
 
 		public CertificateDAO() {
@@ -69,7 +69,5 @@ public class CertificateDAO extends BaseDAO{
 
 			return result;
 		}
-
-		
 
 }

@@ -32,6 +32,7 @@ public class CandidateDAO extends BaseDAO {
 	public static final String CERTIFICATES = "cetificates";
 	public static final String CERTIFICATE_IN_PROGRESS = "certificate_in_progress";
 	public static final String ID = "appuser_id";
+	public static final String GRADUATE = "graduate";
 	
 	public static final String CANDIDATE_SKILL = "skill";
 	public static final String OWN = "own";
@@ -143,8 +144,8 @@ public class CandidateDAO extends BaseDAO {
 	 * @return
 	 */
 	public Candidate getCertificate(Candidate candidate) {
-		ResultSet rs = executeRequest("SELECT * FROM " + CANDIDATE_CERTIF
-				+ " WHERE " + ID + " = " + candidate.getId());
+		ResultSet rs = executeRequest("SELECT * FROM " + GRADUATE
+				+ " WHERE " + ID_CERTIF + " = " + candidate.getId());
 		List<Double> certifsId = new ArrayList<Double>();
 		try {
 			while (rs.next()) {

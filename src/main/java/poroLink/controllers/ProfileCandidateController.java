@@ -7,6 +7,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.text.JTextComponent;
 
 import poroLink.database.CandidateDAO;
+import poroLink.database.CertificateDAO;
 import poroLink.entities.Candidate;
 import poroLink.entities.Company;
 import poroLink.entities.Post;
@@ -38,10 +39,14 @@ public class ProfileCandidateController extends BaseController {
 		Candidate candidate = (Candidate) this.viewDatas.get(CURRENTUSER);
 		
 		candidate = candidateDAO.getSkills(candidate);
+		candidate = candidateDAO.getCertificate(candidate);
+	
 		
 		DefaultTableModel model = new DefaultTableModel();
 		model.addColumn("Compétences");
 		model.addColumn("Niveau");
+		DefaultTableModel model2 = new DefaultTableModel();
+		model2.addColumn("Diplômes");
 		
 		
 		for (int i = 0 ; i <= candidate.getSkills().size() - 1; i++) {
@@ -49,7 +54,12 @@ public class ProfileCandidateController extends BaseController {
 		}
 		view.getTableSkill().setModel(model);
 		
-
+		
+//		for (int i = 0 ; i <= candidate.getCertificates().size() - 1; i++) {
+//			model2.addRow(new Object[]{candidate.getCertificates().get(i).getCertificate()});
+//		}
+//		view.getTableSkill().setModel(model);
+		
 
 		ViewUtils.ImplementProfile(view.getTextFieldName(), candidate.getFirstname()+candidate.getLastname());
 		ViewUtils.editText(view, view.getEditTxtName(), view.getTextFieldName());
