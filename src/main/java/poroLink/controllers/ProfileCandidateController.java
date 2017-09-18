@@ -1,19 +1,14 @@
 package poroLink.controllers;
 
-import java.util.List;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.JTextComponent;
-
 import poroLink.database.CandidateDAO;
 import poroLink.database.CertificateDAO;
 import poroLink.entities.Candidate;
-import poroLink.entities.Company;
-import poroLink.entities.Post;
 import poroLink.utils.views.ViewUtils;
 import poroLink.views.ProfileCandidateView;
-import poroLink.views.ProfileCompanyView;
 
 /**
  * @author kai_g
@@ -31,15 +26,15 @@ public class ProfileCandidateController extends BaseController {
 
 	}
 
+	CandidateDAO candidateDAO = new CandidateDAO();
 	@Override
 	public void initEvent() {
 		view = (ProfileCandidateView) super.view;
-		CandidateDAO candidateDAO = new CandidateDAO();
 		
 		Candidate candidate = (Candidate) this.viewDatas.get(CURRENTUSER);
 		
 		candidate = candidateDAO.getSkills(candidate);
-		candidate = candidateDAO.getCertificate(candidate);
+		candidate = candidateDAO.getCertificates(candidate);
 	
 		
 		DefaultTableModel model = new DefaultTableModel();
@@ -54,14 +49,20 @@ public class ProfileCandidateController extends BaseController {
 		}
 		view.getTableSkill().setModel(model);
 		
-		
-//		for (int i = 0 ; i <= candidate.getCertificates().size() - 1; i++) {
-//			model2.addRow(new Object[]{candidate.getCertificates().get(i).getCertificate()});
-//		}
-//		view.getTableSkill().setModel(model);
+
+		candidate = candidateDAO.getCertificates(candidate);
 		
 
-		ViewUtils.ImplementProfile(view.getTextFieldName(), candidate.getFirstname()+candidate.getLastname());
+		
+		for (int i = 0 ; i < candidate.getCertificates().size() ; i++) {
+			model2.addRow(new Object[] {candidate.getCertificates().get(i).getCertificate()});
+		}
+		view.getTableCertificates().setModel(model2);
+		
+
+
+
+		ViewUtils.ImplementProfile(view.getTextFieldName(), candidate.getFirstname() + " " + candidate.getLastname());
 		ViewUtils.editText(view, view.getEditTxtName(), view.getTextFieldName());
 
 		ViewUtils.ImplementProfile(view.getTextFieldLinkWebSite(), candidate.getLinkGitHub());
@@ -82,7 +83,8 @@ public class ProfileCandidateController extends BaseController {
 		ViewUtils.ImplementProfile(view.getTextFieldLinkLinkedin(), candidate.getLinkLinkedin());
 		ViewUtils.editText(view, view.getEditTxtLinkLinkedin() , view.getTextFieldLinkLinkedin());
 		 
-			
+		ViewUtils.ImplementProfile(view.getTxtCertificatesInProgress(), candidate.getCertificate_in_progress());
+		ViewUtils.editText(view, view.getEditTxtCertificates(), view.getTxtCertificatesInProgress());	
 
 	}
 	
@@ -105,6 +107,33 @@ public class ProfileCandidateController extends BaseController {
 				.getNavigationBar()
 				.getBtnProfil()
 				.setVisible(false);
+	}
+	
+	public void updateUser() {
+		Candidate candidate = (Candidate) this.viewDatas.get(CURRENTUSER);
+		//candidate.setFirstname(view.getTxtAddress().getText());
+		//candidate.setLastname(view.getTxtNomEntreprise().getText());
+		candidate.setPhone(view.getTextFieldPhone().getText());
+		candidate.setLinkLinkedin(view.getTextFieldLinkLinkedin().getText());
+		candidate.setLinkGitHub(view.getTextFieldLinkWebSite().getText());
+		candidate.setCertificate_in_progress(view.getTxtCertificatesInProgress().getText());
+		candidateDAO.update(candidate);
+	}
+	
+	public void setupDatas() {
+		ProfileCandidateView view = (ProfileCandidateView) super.view;
+		view.getMenuBar().getNavigationBar().getBtnHome().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				updateUser();
+			}
+		});
+		view.getMenuBar().getNavigationBar().getBtnDeconnection().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				updateUser();
+			}
+		});
 	}
 
 	

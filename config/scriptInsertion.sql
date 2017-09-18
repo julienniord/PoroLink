@@ -15,7 +15,7 @@ VALUES ("tactfactory", "3 rue des champ de la paquerette", "Entreprise créatric
 INSERT INTO candidate (firstname, lastname, phone, transport, presentation, linkLinkedin, linkGitHub, certificate_in_progress, appuser_id)
 VALUES ('Jean Louis', 'ON', '08 36 65 65 65', 'trotinette', 'Pere Noel de son état, il est trop stylé', 'JeanLouiOn.fr', 'GitJeanLouiOn.fr', 'Master Pro', 3);
 INSERT INTO candidate (firstname, lastname, phone, transport, presentation, linkLinkedin, linkGitHub, certificate_in_progress, appuser_id)
-VALUES ('Roger', 'Durand', '08 37 65 65 65', 'trotinette', 'J\'ai du style et je m\'épile', 'ROgerDurand.fr', 'GitROgerDurand.fr', 'BTS', 4);
+VALUES ('Roger', 'Durand', '08 37 65 65 65', 'trotinette', 'J ai du style et je m épile', 'ROgerDurand.fr', 'GitROgerDurand.fr', 'BTS', 4);
 
 INSERT INTO skill (skill_id, skill_name) VALUES (1, 'Java');
 INSERT INTO skill (skill_id, skill_name) VALUES (2, 'PhP');
@@ -25,7 +25,7 @@ INSERT INTO skill (skill_id, skill_name) VALUES (5, 'Git');
 INSERT INTO skill (skill_id, skill_name) VALUES (6, 'Méthode Agiles');
 
 INSERT INTO post (post_id, post_name, presentation, created_at, updated_at, mail_agent, firstname_agent, lastname_agent, appuser_id) 
-VALUES (1, 'dévellopeur Java', 'Recrute dévellopeur en Java pour un projet d\'alternance', '2017/09/04 14:28:35', '2017/09/04 14:28:35', 'agent@enterprise.fr', 'agent', 'super', 1);
+VALUES (1, 'dévellopeur Java', 'Recrute dévellopeur en Java pour un projet d alternance', '2017/09/04 14:28:35', '2017/09/04 14:28:35', 'agent@enterprise.fr', 'agent', 'super', 1);
 INSERT INTO post (post_id, post_name, presentation, created_at, updated_at, mail_agent, firstname_agent, lastname_agent, appuser_id) 
 VALUES (2, 'dévellopeur PhP', 'Recherche un dévellopeur en Php pour un CDI', '2017/09/04 14:28:35', '2017/09/04 14:28:35', 'agent@super.fr', 'super', 'agent', 2);
 INSERT INTO post (post_id, post_name, presentation, created_at, updated_at, mail_agent, firstname_agent, lastname_agent, appuser_id) 

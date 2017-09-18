@@ -10,9 +10,10 @@ import java.util.List;
 
 import poroLink.entities.Candidate;
 import poroLink.entities.Certificate;
+import poroLink.entities.Company;
+import poroLink.entities.Post;
 import poroLink.entities.Skill;
 import poroLink.entities.base.BaseEntity;
-import poroLink.utils.date.DateConverter;
 import poroLink.utils.views.ViewUtils;
 
 /**
@@ -41,6 +42,8 @@ public class CandidateDAO extends BaseDAO {
 
 	public static final String CANDIDATE_CERTIF = "certificate";
 	public static final String ID_CERTIF = "id_certif";
+	
+
 
 
 	public CandidateDAO() {
@@ -132,7 +135,6 @@ public class CandidateDAO extends BaseDAO {
 		result += PRESENTATION + " = '" + ViewUtils.SqlTest(candidate.getPresentation()) + "',";
 		result += LINKLINKEDIN + " = '" + ViewUtils.SqlTest(candidate.getLinkLinkedin()) + "',";
 		result += LINKGITHUB + " = '" + ViewUtils.SqlTest(candidate.getLinkGitHub()) + "',";
-		result += CERTIFICATES + " = '" + candidate.getCertificates() + "',";
 		result += CERTIFICATE_IN_PROGRESS + " = '" + ViewUtils.SqlTest(candidate.getCertificate_in_progress()) + "'";
 		
 		return result;
@@ -143,9 +145,31 @@ public class CandidateDAO extends BaseDAO {
 	 * @param candidate
 	 * @return
 	 */
-	public Candidate getCertificate(Candidate candidate) {
+
+	public Candidate getCertificates(Candidate candidate) {
+		ResultSet rs = executeRequest(
+				"SELECT " + CANDIDATE_CERTIF + ".*" +
+				" FROM " + CANDIDATE_CERTIF + " LEFT JOIN " + GRADUATE + 
+					" ON " + CANDIDATE_CERTIF + "." + ID_CERTIF + " = " + GRADUATE + "." + ID_CERTIF + 
+				" WHERE " + GRADUATE + "." + ID + " = " + (int)candidate.getId());
+		
+		try {
+			CertificateDAO certificateDAO = new CertificateDAO();
+			while (rs.next()) {
+				candidate.getCertificates().add((Certificate) certificateDAO.parseResultSetToObject(rs));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return candidate;
+		
+	}
+	
+	/*public Candidate getCertificates(Candidate candidate) {
 		ResultSet rs = executeRequest("SELECT * FROM " + GRADUATE
-				+ " WHERE " + ID_CERTIF + " = " + candidate.getId());
+				+ " WHERE " + ID + " = " + candidate.getId());
+>>>>>>> master
 		List<Double> certifsId = new ArrayList<Double>();
 		try {
 			while (rs.next()) {
@@ -155,14 +179,14 @@ public class CandidateDAO extends BaseDAO {
 			e.printStackTrace();
 		}
 
-		BaseDAO CertificateDAO = new CertificateDAO();
+		BaseDAO certificateDAO = new CertificateDAO();
 
 		for (Double id : certifsId) {
-			candidate.getCertificates().add((Certificate) CertificateDAO.get(id));
+			candidate.getCertificates().add((Certificate) certificateDAO.get(id));
 		}
 
 		return candidate;
-	}
+	}*/
 
 	/**
 	 * Insert the arrayList of certificates in the database.
@@ -201,7 +225,7 @@ public class CandidateDAO extends BaseDAO {
 				"SELECT " + CANDIDATE_SKILL + " .*, " + OWN + "." + MASTERIES +
 				" FROM " + CANDIDATE_SKILL + " LEFT JOIN " + OWN + 
 					" ON " + CANDIDATE_SKILL + "." + ID_SKILL + " = " + OWN + "." + ID_SKILL + 
-					" WHERE " + OWN + "." + ID + " = " + candidate.getId());
+				" WHERE " + OWN + "." + ID + " = " + candidate.getId());
 		try {
 			SkillDAO skillDAO = new SkillDAO();
 			while (rs.next()) {
@@ -213,6 +237,7 @@ public class CandidateDAO extends BaseDAO {
 
 		return candidate;
 	}
+	
 
 	/**
 	 * Insert the arrayList of skill in the database.
