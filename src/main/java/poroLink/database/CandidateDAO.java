@@ -34,6 +34,8 @@ public class CandidateDAO extends BaseDAO {
 	public static final String ID = "appuser_id";
 	
 	public static final String CANDIDATE_SKILL = "skill";
+	public static final String OWN = "own";
+	public static final String MASTERIES = "indice_masteries";
 	public static final String ID_SKILL = "skill_id";
 
 	public static final String CANDIDATE_CERTIF = "certificate";
@@ -194,21 +196,18 @@ public class CandidateDAO extends BaseDAO {
 	 * @return
 	 */
 	public Candidate getSkills(Candidate candidate) {
-		ResultSet rs = executeRequest("SELECT * FROM " + CANDIDATE_SKILL
-				+ " WHERE " + ID + " = " + candidate.getId());
-		List<Double> skillsId = new ArrayList<Double>();
+		ResultSet rs = executeRequest(
+				"SELECT " + CANDIDATE_SKILL + " .*, " + OWN + "." + MASTERIES +
+				" FROM " + CANDIDATE_SKILL + " LEFT JOIN " + OWN + 
+					" ON " + CANDIDATE_SKILL + "." + ID_SKILL + " = " + OWN + "." + ID_SKILL + 
+					" WHERE " + OWN + "." + ID + " = " + candidate.getId());
 		try {
+			SkillDAO skillDAO = new SkillDAO();
 			while (rs.next()) {
-				skillsId.add(rs.getDouble(ID_SKILL));
+				candidate.getSkills().add((Skill) skillDAO.parseResultSetToObjectForCandidate(rs));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-
-		BaseDAO skillDAO = new SkillDAO();
-
-		for (Double id : skillsId) {
-			candidate.getSkills().add((Skill) skillDAO.get(id));
 		}
 
 		return candidate;

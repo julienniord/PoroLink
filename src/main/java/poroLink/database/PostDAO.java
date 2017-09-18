@@ -99,20 +99,15 @@ public class PostDAO extends BaseDAO{
 				" FROM " + POST_SKILL + " LEFT JOIN " + NEED + 
 					" ON " + POST_SKILL + "." + ID_SKILL + " = " + NEED + "." + ID_SKILL + 
 					" WHERE " + NEED + "." + ID + " = " + post.getId());
-		List<Double> skillsId = new ArrayList<Double>();
 		try {
+			SkillDAO skillDAO = new SkillDAO();
 			while (rs.next()) {
-				skillsId.add(rs.getDouble(ID_SKILL));
+				post.getSkills().add((Skill) skillDAO.parseResultSetToObjectForPost(rs));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		BaseDAO skillDAO = new SkillDAO();
-
-		for (Double id : skillsId) {
-			post.getSkills().add((Skill) skillDAO.get(id));
-		}
 
 		return post;
 	}
