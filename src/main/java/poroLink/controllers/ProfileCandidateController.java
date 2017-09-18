@@ -34,7 +34,6 @@ public class ProfileCandidateController extends BaseController {
 		Candidate candidate = (Candidate) this.viewDatas.get(CURRENTUSER);
 		
 		candidate = candidateDAO.getSkills(candidate);
-		candidate = candidateDAO.getCertificates(candidate);
 	
 		
 		DefaultTableModel model = new DefaultTableModel();
