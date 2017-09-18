@@ -100,14 +100,16 @@ public class ProfileCompanyController extends BaseController{
 
 		((ProfileCompanyView) getView())
 				.getMenuBar()
-				.getLblUserfirstname()
+				.getButtonProfil()
 				.setText(
 						company.getCompany_name());
-		((ProfileCompanyView) getView())
-				.getMenuBar()
-				.getLblUserlastname()
-				.setVisible(false);
 		
+		((ProfileCompanyView) getView())
+		.getMenuBar()
+		.getNavigationBar()
+		.getBtnProfil()
+		.setVisible(false);
+
 	}
 	
 	public void updateUser() {

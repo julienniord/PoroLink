@@ -9,6 +9,7 @@ import java.awt.GridBagLayout;
 import javax.swing.JTextField;
 
 import poroLink.entities.Post;
+import poroLink.views.usercontrols.MenuBar;
 
 import java.awt.GridBagConstraints;
 import javax.swing.JButton;
@@ -23,7 +24,24 @@ public class MatchingView extends BaseView {
 	private JLabel lblRecherche;
 	private JTextField textField;
 	private JButton btnMatch;
+	private MenuBar menuBar;
 	
+	/**
+	 * @return the menuBar
+	 */
+	public MenuBar getMenuBar() {
+		return menuBar;
+	}
+
+
+	/**
+	 * @param menuBar the menuBar to set
+	 */
+	public void setMenuBar(MenuBar menuBar) {
+		this.menuBar = menuBar;
+	}
+
+
 	/**
 	 * @return the btnValide
 	 */
@@ -107,14 +125,20 @@ public class MatchingView extends BaseView {
 		super.pageName = "Matching";
 		contentPane = new JPanel();
 
-
-		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{1.0, 1.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 1.0, 1.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
 		getContentPane().setLayout(gridBagLayout);
+		
+		menuBar = new MenuBar();
+		GridBagConstraints gbc_menuBar = new GridBagConstraints();
+		gbc_menuBar.fill = GridBagConstraints.HORIZONTAL;
+		gbc_menuBar.gridx = 0;
+		gbc_menuBar.gridy = 0;
+		gbc_menuBar.gridwidth = 10;
+		contentPane.add(menuBar.getContentPane(), gbc_menuBar);
 		
 		textField = new JTextField();
 		textField.setFont(new Font("Arial", Font.PLAIN, 18));
@@ -122,7 +146,7 @@ public class MatchingView extends BaseView {
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField.gridx = 2;
-		gbc_textField.gridy = 1;
+		gbc_textField.gridy = 2;
 		contentPane.add(textField, gbc_textField);
 		textField.setColumns(10);
 		textField.setText("dsd");
@@ -135,7 +159,7 @@ public class MatchingView extends BaseView {
 		gbc_lblRecherche.anchor = GridBagConstraints.EAST;
 		gbc_lblRecherche.insets = new Insets(0, 0, 5, 5);
 		gbc_lblRecherche.gridx = 1;
-		gbc_lblRecherche.gridy = 2;
+		gbc_lblRecherche.gridy = 3;
 		contentPane.add(lblRecherche, gbc_lblRecherche);
 		
 		comboBoxPosts = new JComboBox<Post>();
@@ -144,7 +168,7 @@ public class MatchingView extends BaseView {
 		gbc_comboBoxPosts.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxPosts.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxPosts.gridx = 2;
-		gbc_comboBoxPosts.gridy = 2;
+		gbc_comboBoxPosts.gridy = 3;
 		contentPane.add(comboBoxPosts, gbc_comboBoxPosts);
 		
 		btnMatch = new JButton("Match !");
@@ -154,7 +178,7 @@ public class MatchingView extends BaseView {
 				gbc_btnMatch.gridwidth = 3;
 				gbc_btnMatch.insets = new Insets(0, 0, 5, 5);
 				gbc_btnMatch.gridx = 1;
-				gbc_btnMatch.gridy = 3;
+				gbc_btnMatch.gridy = 4;
 				contentPane.add(btnMatch, gbc_btnMatch);
 		
 	}

@@ -5,13 +5,14 @@ import javax.swing.JPanel;
 import poroLink.views.BaseView;
 
 import java.awt.FlowLayout;
+
+import javax.swing.JButton;
 import javax.swing.JLabel;
 
 public class MenuBar extends BaseView {
 
 	private JLabel lblWelcome;
-	private JLabel lblUserlastname;
-	private JLabel lblUserfirstname;
+	private JLabel buttonProfil;
 	private NavigationBar navigationBar;
 
 	/**
@@ -31,31 +32,16 @@ public class MenuBar extends BaseView {
 	/**
 	 * @return the lblUserlastname
 	 */
-	public JLabel getLblUserlastname() {
-		return lblUserlastname;
+	public JLabel getButtonProfil() {
+		return buttonProfil;
 	}
 
 	/**
 	 * @param lblUserlastname the lblUserlastname to set
 	 */
-	public void setLblUserlastname(JLabel lblUserlastname) {
-		this.lblUserlastname = lblUserlastname;
+	public void setButtonProfil(JLabel buttonProfil) {
+		this.buttonProfil = buttonProfil;
 	}
-
-	/**
-	 * @return the lblUserfirstname
-	 */
-	public JLabel getLblUserfirstname() {
-		return lblUserfirstname;
-	}
-
-	/**
-	 * @param lblUserfirstname the lblUserfirstname to set
-	 */
-	public void setLblUserfirstname(JLabel lblUserfirstname) {
-		this.lblUserfirstname = lblUserfirstname;
-	}
-	
 
 	/**
 	 * @return the navigationBar
@@ -85,15 +71,14 @@ public class MenuBar extends BaseView {
 		lblWelcome.setForeground(new java.awt.Color(245, 243, 245));
 		panel.add(lblWelcome);
 
-		lblUserlastname = new JLabel("UserLastname");
-		lblUserlastname.setForeground(new java.awt.Color(245, 243, 245));
-		panel.add(lblUserlastname);
+		buttonProfil = new JLabel("Profil");
+		buttonProfil.setForeground(new java.awt.Color(245, 243, 245));
+		panel.add(buttonProfil);
 
-		lblUserfirstname = new JLabel("UserFirstname");
-		lblUserfirstname.setForeground(new java.awt.Color(245, 243, 245));
-		panel.add(lblUserfirstname);
 		
 		navigationBar = new NavigationBar();
 		panel.add(navigationBar.getContentPane());
 	}
+	
+
 }

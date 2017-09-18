@@ -19,7 +19,7 @@ import java.awt.Insets;
 public class NavigationBar extends BaseView {
 
 	private JButton btnHome;
-	private JButton btnUserList;
+	private JButton btnProfil;
 	private JButton btnDeconnection;
 	private ActionListener HomeListener;
 	private ActionListener UserListener;
@@ -38,8 +38,8 @@ public class NavigationBar extends BaseView {
 	/**
 	 * @return the btnUserList
 	 */
-	public JButton getBtnUserList() {
-		return btnUserList;
+	public JButton getBtnProfil() {
+		return btnProfil;
 	}
 
 	/**
@@ -91,13 +91,13 @@ public class NavigationBar extends BaseView {
 						gbc_btnHome.gridy = 0;
 						panel.add(btnHome, gbc_btnHome);
 		
-				btnUserList = new JButton("Liste des utilisateurs");
+				btnProfil = new JButton("Profil");
 				GridBagConstraints gbc_btnUserList = new GridBagConstraints();
 				gbc_btnUserList.anchor = GridBagConstraints.NORTHWEST;
 				gbc_btnUserList.insets = new Insets(0, 0, 0, 5);
 				gbc_btnUserList.gridx = 3;
 				gbc_btnUserList.gridy = 0;
-				panel.add(btnUserList, gbc_btnUserList);
+				panel.add(btnProfil, gbc_btnUserList);
 		
 		btnDeconnection = new JButton("Déconnexion");
 		GridBagConstraints gbc_btnDeconnection = new GridBagConstraints();
@@ -123,10 +123,10 @@ public class NavigationBar extends BaseView {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ViewsManager.getInstance().goUserList();
+				ViewsManager.getInstance().goProfil();
 			}
 		};
-		this.btnUserList.addActionListener(UserListener);
+		this.btnProfil.addActionListener(UserListener);
 		
 		DeconnectionListener = new ActionListener() {
 
@@ -142,7 +142,7 @@ public class NavigationBar extends BaseView {
 
 	public void resetEvents() {
 		this.btnHome.removeActionListener(HomeListener);
-		this.btnUserList.removeActionListener(UserListener);
+		this.btnProfil.removeActionListener(UserListener);
 		this.btnDeconnection.removeActionListener(DeconnectionListener);
 	}
 }
